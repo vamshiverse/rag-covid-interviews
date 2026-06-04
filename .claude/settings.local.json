@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($ErrorActionPreference='SilentlyContinue'; foreach\\($c in 'python','python3','py'\\){ $p=Get-Command $c; if\\($p\\){ \"$c -> $\\($p.Source\\)\"; & $c --version 2>&1 } }; \"---\"; \"node:\"; \\(Get-Command node\\).Source; node --version 2>&1)",
+      "PowerShell(winget install --id Python.Python.3.12 -e --source winget --accept-package-agreements --accept-source-agreements --scope user --silent 2>&1)",
+      "mcp__Claude_Preview__preview_start"
+    ]
+  }
+}

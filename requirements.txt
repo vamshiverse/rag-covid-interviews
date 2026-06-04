@@ -1,0 +1,23 @@
+# On Streamlit Community Cloud (Linux) this line makes pip pull CPU-only PyTorch,
+# which keeps the build inside the free-tier memory/disk limits. Harmless locally.
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# ---- Core (required, lightweight, runs with ZERO API keys) ----
+streamlit>=1.58
+pypdf>=6.0
+python-docx>=1.1
+rank-bm25>=0.2.2
+scikit-learn>=1.5
+numpy>=1.26
+pandas>=2.2
+plotly>=5.22
+
+# ---- Semantic embeddings (recommended; enables true hybrid + good fallback) ----
+# Pulls in torch + transformers (~a few hundred MB, CPU is fine).
+# If you skip this, the system auto-falls back to TF-IDF embeddings.
+sentence-transformers>=3.0
+
+# ---- Optional: hosted LLM generation + LLM-as-judge evaluation ----
+# Install only if you set RAG_LLM_PROVIDER=openai or =anthropic.
+# openai>=1.40
+# anthropic>=0.34

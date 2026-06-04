@@ -1,0 +1,1599 @@
+{
+  "per_item": [
+    {
+      "id": "G01",
+      "question": "What is MIS-C and how was it treated in children?",
+      "type": "specific_term",
+      "difficulty": "easy",
+      "answerable": true,
+      "expected_answer": "MIS-C (Multi-System Inflammatory Syndrome in Children) is a post-infectious syndrome that appeared weeks after COVID infection, even after mild or asymptomatic disease, presenting with persistent fever, rash, low blood pressure and cardiac involvement. It was treated with IV immunoglobulin (IVIG) and steroids, and early recognition was key to good outcomes.",
+      "result": {
+        "query": "What is MIS-C and how was it treated in children?",
+        "answer": "Based on the interviews with Dr. Anjali Singh, Dr. Clara Hoffmann:\n\nWe later discovered the post-infectious syndrome called MIS-C, which can be life-threatening. Yes, the MIS-C cases - Multi-System Inflammatory Syndrome in Children - were our biggest concern. By late 2020, however, MIS-C began appearing: high fevers, rashes, shock, and cardiac involvement weeks after infection. These children came in with persistent fever, rash, low blood pressure, and cardiac involvement.",
+        "is_fallback": false,
+        "fallback_reason": "",
+        "confidence": 0.646,
+        "provider": "extractive",
+        "citations": [
+          {
+            "chunk_id": "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q02",
+            "doctor": "Dr. Clara Hoffmann",
+            "country": "Germany",
+            "source_file": "Dr_Clara_Hoffmann_Germany_Detailed_Interview.pdf",
+            "quote": "We later discovered the post-infectious syndrome called MIS-C, which can be life-threatening.",
+            "relevance": 0.633
+          },
+          {
+            "chunk_id": "Dr_Anjali_Singh_India_Detailed_Interview::q05",
+            "doctor": "Dr. Anjali Singh",
+            "country": "India",
+            "source_file": "Dr_Anjali_Singh_India_Detailed_Interview.pdf",
+            "quote": "Yes, the MIS-C cases - Multi-System Inflammatory Syndrome in Children - were our biggest concern.",
+            "relevance": 0.624
+          },
+          {
+            "chunk_id": "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q03",
+            "doctor": "Dr. Clara Hoffmann",
+            "country": "Germany",
+            "source_file": "Dr_Clara_Hoffmann_Germany_Detailed_Interview.pdf",
+            "quote": "By late 2020, however, MIS-C began appearing: high fevers, rashes, shock, and cardiac involvement weeks after infection.",
+            "relevance": 0.608
+          },
+          {
+            "chunk_id": "Dr_Anjali_Singh_India_Detailed_Interview::q05",
+            "doctor": "Dr. Anjali Singh",
+            "country": "India",
+            "source_file": "Dr_Anjali_Singh_India_Detailed_Interview.pdf",
+            "quote": "These children came in with persistent fever, rash, low blood pressure, and cardiac involvement.",
+            "relevance": 0.409
+          }
+        ],
+        "used_chunk_ids": [
+          "Dr_Anjali_Singh_India_Detailed_Interview::q05",
+          "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q02",
+          "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q03"
+        ],
+        "retrieved_chunk_ids": [
+          "Dr_Anjali_Singh_India_Detailed_Interview::q05",
+          "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q02",
+          "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q03",
+          "Dr_Anjali_Singh_India_Detailed_Interview::q02",
+          "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q04"
+        ],
+        "timings_ms": {
+          "retrieval": 67.7,
+          "generation": 300.2,
+          "total": 367.9
+        }
+      },
+      "metrics": {
+        "context_relevance": 0.49217966198921204,
+        "groundedness": 0.7344485223293304,
+        "answer_relevance": 0.672626256942749,
+        "answer_correctness": 0.8447533845901489,
+        "hit_rate": 1.0,
+        "mrr": 1.0,
+        "context_precision": 0.4,
+        "context_recall": 0.6666666666666666,
+        "citation_grounding": 1.0,
+        "citation_source_precision": 0.6666666666666666,
+        "citation_source_recall": 0.6666666666666666,
+        "n_citations": 4,
+        "fallback_correct": 1.0,
+        "latency_ms_total": 367.9,
+        "latency_ms_retrieval": 67.7,
+        "latency_ms_generation": 300.2
+      },
+      "is_fallback": false,
+      "fallback_correct": true
+    },
+    {
+      "id": "G02",
+      "question": "What is 'happy hypoxia' and why was it dangerous?",
+      "type": "specific_term",
+      "difficulty": "medium",
+      "answerable": true,
+      "expected_answer": "'Happy hypoxia' described COVID patients who were sitting up and talking, appearing stable, despite dangerously low oxygen saturations (SpO2 as low as 60%). It was dangerous because these patients looked fine and then could crash suddenly.",
+      "result": {
+        "query": "What is 'happy hypoxia' and why was it dangerous?",
+        "answer": "Based on the interviews with Dr. Anna Weber, Dr. Arjun Mehta, Dr. Michael Anderson:\n\nThe hardest cases were those in the “happy hypoxia” category — patients sitting up and talking with SpO₂ of 60%. One of the most startling patterns early on was \"silent hypoxia,\" where patients presented with dangerously low oxygen saturations but relatively little subjective dyspnea. Some patients responded well to oxygen therapy and steroids, while others deteriorated suddenly with cytokine storms. We also faced the challenge of disinformation false claims about masks causing hypoxia or vaccines altering DNA.",
+        "is_fallback": false,
+        "fallback_reason": "",
+        "confidence": 0.455,
+        "provider": "extractive",
+        "citations": [
+          {
+            "chunk_id": "Dr_Arjun_Mehta_India_Detailed_Interview::q03",
+            "doctor": "Dr. Arjun Mehta",
+            "country": "India",
+            "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
+            "quote": "The hardest cases were those in the “happy hypoxia” category — patients sitting up and talking with SpO₂ of 60%.",
+            "relevance": 0.584
+          },
+          {
+            "chunk_id": "Dr_Michael_Anderson_US_Detailed_Interview::q03",
+            "doctor": "Dr. Michael Anderson",
+            "country": "US",
+            "source_file": "Dr_Michael_Anderson_US_Detailed_Interview.pdf",
+            "quote": "One of the most startling patterns early on was \"silent hypoxia,\" where patients presented with dangerously low oxygen saturations but relatively little subjective dyspnea.",
+            "relevance": 0.581
+          },
+          {
+            "chunk_id": "Dr_Arjun_Mehta_India_Detailed_Interview::q03",
+            "doctor": "Dr. Arjun Mehta",
+            "country": "India",
+            "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
+            "quote": "Some patients responded well to oxygen therapy and steroids, while others deteriorated suddenly with cytokine storms.",
+            "relevance": 0.339
+          },
+          {
+            "chunk_id": "Dr_Anna_Weber_Germany_Detailed_Interview::q04",
+            "doctor": "Dr. Anna Weber",
+            "country": "Germany",
+            "source_file": "Dr_Anna_Weber_Germany_Detailed_Interview.pdf",
+            "quote": "We also faced the challenge of disinformation false claims about masks causing hypoxia or vaccines altering DNA.",
+            "relevance": 0.325
+          }
+        ],
+        "used_chunk_ids": [
+          "Dr_Arjun_Mehta_India_Detailed_Interview::q03",
+          "Dr_Michael_Anderson_US_Detailed_Interview::q03",
+          "Dr_Anna_Weber_Germany_Detailed_Interview::q04"
+        ],
+        "retrieved_chunk_ids": [
+          "Dr_Arjun_Mehta_India_Detailed_Interview::q03",
+          "Dr_Anna_Weber_Germany_Detailed_Interview::q13",
+          "Dr_Michael_Anderson_US_Detailed_Interview::q03",
+          "Dr_Anna_Weber_Germany_Detailed_Interview::q04",
+          "Dr_James_Miller_US_Detailed_Interview::q07"
+        ],
+        "timings_ms": {
+          "retrieval": 47.2,
+          "generation": 341.5,
+          "total": 388.7
+        }
+      },
+      "metrics": {
+        "context_relevance": 0.27744549661874773,
+        "groundedness": 0.6574678208146777,
+        "answer_relevance": 0.6159133911132812,
+        "answer_correctness": 0.679084062576294,
+        "hit_rate": 1.0,
+        "mrr": 1.0,
+        "context_precision": 0.2,
+        "context_recall": 1.0,
+        "citation_grounding": 1.0,
+        "citation_source_precision": 0.3333333333333333,
+        "citation_source_recall": 1.0,
+        "n_citations": 4,
+        "fallback_correct": 1.0,
+        "latency_ms_total": 388.7,
+        "latency_ms_retrieval": 47.2,
+        "latency_ms_generation": 341.5
+      },
+      "is_fallback": false,
+      "fallback_correct": true
+    },
+    {
+      "id": "G03",
+      "question": "How did hospitals cope with oxygen shortages during surges?",
+      "type": "multi_hop",
+      "difficulty": "hard",
+      "answerable": true,
+      "expected_answer": "Hospitals used several strategies: real-time oxygen dashboards and a dedicated oxygen officer to track flow and avoid wastage, prioritizing ventilators by likelihood of benefit, and using non-invasive ventilation/high-flow nasal cannula to delay intubation (Dr. Mehta, Mumbai). Rural US hospitals relied on cylinders and concentrators, mobile oxygen trailers, and pooling supplies with nearby hospitals, coordinating with state emergency management (Dr. Thompson, Ohio).",
+      "result": {
+        "query": "How did hospitals cope with oxygen shortages during surges?",
+        "answer": "Based on the interviews with Dr. David Thompson, Dr. James Miller, Dr. Lukas Meier:\n\nFor oxygen, we coordinated with suppliers and the state emergency management to prioritize deliveries; we also used concentrators when cylinders were scarce. By late 2021, staff shortages not ventilator shortages became our bottleneck. That required converting post-anesthesia care units, step-downs, and even parts of the cafeteria into patient care areas. When ICUs in Munich or Hamburg filled up, patients were airlifted to less burdened regions.",
+        "is_fallback": false,
+        "fallback_reason": "",
+        "confidence": 0.731,
+        "provider": "extractive",
+        "citations": [
+          {
+            "chunk_id": "Dr_David_Thompson_US_Detailed_Interview::q11",
+            "doctor": "Dr. David Thompson",
+            "country": "US",
+            "source_file": "Dr_David_Thompson_US_Detailed_Interview.docx",
+            "quote": "For oxygen, we coordinated with suppliers and the state emergency management to prioritize deliveries; we also used concentrators when cylinders were scarce.",
+            "relevance": 0.532
+          },
+          {
+            "chunk_id": "Dr_Lukas_Meier_Germany_Detailed_Interview::q03",
+            "doctor": "Dr. Lukas Meier",
+            "country": "Germany",
+            "source_file": "Dr_Lukas_Meier_Germany_Detailed_Interview.pdf",
+            "quote": "By late 2021, staff shortages not ventilator shortages became our bottleneck.",
+            "relevance": 0.528
+          },
+          {
+            "chunk_id": "Dr_James_Miller_US_Detailed_Interview::q04",
+            "doctor": "Dr. James Miller",
+            "country": "US",
+            "source_file": "Dr_James_Miller_US_Detailed_Interview.docx",
+            "quote": "That required converting post-anesthesia care units, step-downs, and even parts of the cafeteria into patient care areas.",
+            "relevance": 0.486
+          },
+          {
+            "chunk_id": "Dr_Lukas_Meier_Germany_Detailed_Interview::q03",
+            "doctor": "Dr. Lukas Meier",
+            "country": "Germany",
+            "source_file": "Dr_Lukas_Meier_Germany_Detailed_Interview.pdf",
+            "quote": "When ICUs in Munich or Hamburg filled up, patients were airlifted to less burdened regions.",
+            "relevance": 0.479
+          }
+        ],
+        "used_chunk_ids": [
+          "Dr_Lukas_Meier_Germany_Detailed_Interview::q03",
+          "Dr_James_Miller_US_Detailed_Interview::q04",
+          "Dr_David_Thompson_US_Detailed_Interview::q11"
+        ],
+        "retrieved_chunk_ids": [
+          "Dr_David_Thompson_US_Detailed_Interview::q03",
+          "Dr_Arjun_Mehta_India_Detailed_Interview::q06",
+          "Dr_Lukas_Meier_Germany_Detailed_Interview::q03",
+          "Dr_James_Miller_US_Detailed_Interview::q04",
+          "Dr_David_Thompson_US_Detailed_Interview::q11"
+        ],
+        "timings_ms": {
+          "retrieval": 50.4,
+          "generation": 302.0,
+          "total": 352.4
+        }
+      },
+      "metrics": {
+        "context_relevance": 0.6142159104347229,
+        "groundedness": 0.6682454517909459,
+        "answer_relevance": 0.6959034204483032,
+        "answer_correctness": 0.6769686937332153,
+        "hit_rate": 1.0,
+        "mrr": 1.0,
+        "context_precision": 0.6,
+        "context_recall": 1.0,
+        "citation_grounding": 1.0,
+        "citation_source_precision": 0.3333333333333333,
+        "citation_source_recall": 0.3333333333333333,
+        "n_citations": 4,
+        "fallback_correct": 1.0,
+        "latency_ms_total": 352.4,
+        "latency_ms_retrieval": 50.4,
+        "latency_ms_generation": 302.0
+      },
+      "is_fallback": false,
+      "fallback_correct": true
+    },
+    {
+      "id": "G04",
+      "question": "Which medication emerged as the game-changer for moderate to severe COVID?",
+      "type": "factual",
+      "difficulty": "medium",
+      "answerable": true,
+      "expected_answer": "Dexamethasone (a steroid) emerged as the game-changer for moderate to severe COVID. Other learnings included early proning, anticoagulation, and conservative fluid management, while remdesivir gave only modest results.",
+      "result": {
+        "query": "Which medication emerged as the game-changer for moderate to severe COVID?",
+        "answer": "Based on the interviews with Dr. Arjun Mehta, Dr. Felix Schneider:\n\nThe game-changer was dexamethasone for moderate to severe cases. Noninvasive therapies were used more aggressively, balanced by close surveillance. For example, ivermectin and unproven antivirals were rejected in our protocols until sufficient evidence emerged. But COVID challenged nearly every assumption we had about respiratory failure.",
+        "is_fallback": false,
+        "fallback_reason": "",
+        "confidence": 0.598,
+        "provider": "extractive",
+        "citations": [
+          {
+            "chunk_id": "Dr_Arjun_Mehta_India_Detailed_Interview::q08",
+            "doctor": "Dr. Arjun Mehta",
+            "country": "India",
+            "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
+            "quote": "The game-changer was dexamethasone for moderate to severe cases.",
+            "relevance": 0.563
+          },
+          {
+            "chunk_id": "Dr_Felix_Schneider_Germany_Detailed_Interview::q06",
+            "doctor": "Dr. Felix Schneider",
+            "country": "Germany",
+            "source_file": "Dr_Felix_Schneider_Germany_Detailed_Interview.pdf",
+            "quote": "Noninvasive therapies were used more aggressively, balanced by close surveillance.",
+            "relevance": 0.523
+          },
+          {
+            "chunk_id": "Dr_Felix_Schneider_Germany_Detailed_Interview::q06",
+            "doctor": "Dr. Felix Schneider",
+            "country": "Germany",
+            "source_file": "Dr_Felix_Schneider_Germany_Detailed_Interview.pdf",
+            "quote": "For example, ivermectin and unproven antivirals were rejected in our protocols until sufficient evidence emerged.",
+            "relevance": 0.472
+          },
+          {
+            "chunk_id": "Dr_Felix_Schneider_Germany_Detailed_Interview::q01",
+            "doctor": "Dr. Felix Schneider",
+            "country": "Germany",
+            "source_file": "Dr_Felix_Schneider_Germany_Detailed_Interview.pdf",
+            "quote": "But COVID challenged nearly every assumption we had about respiratory failure.",
+            "relevance": 0.416
+          }
+        ],
+        "used_chunk_ids": [
+          "Dr_Arjun_Mehta_India_Detailed_Interview::q08",
+          "Dr_Felix_Schneider_Germany_Detailed_Interview::q01",
+          "Dr_Felix_Schneider_Germany_Detailed_Interview::q06"
+        ],
+        "retrieved_chunk_ids": [
+          "Dr_Arjun_Mehta_India_Detailed_Interview::q08",
+          "Dr_Sarah_Johnson_US_Detailed_Interview::q08",
+          "Dr_Felix_Schneider_Germany_Detailed_Interview::q01",
+          "Dr_Felix_Schneider_Germany_Detailed_Interview::q06",
+          "Dr_Sarah_Johnson_US_Detailed_Interview::q02"
+        ],
+        "timings_ms": {
+          "retrieval": 50.6,
+          "generation": 365.8,
+          "total": 416.4
+        }
+      },
+      "metrics": {
+        "context_relevance": 0.5158221125602722,
+        "groundedness": 0.7551281452178955,
+        "answer_relevance": 0.7544560432434082,
+        "answer_correctness": 0.7580405473709106,
+        "hit_rate": 1.0,
+        "mrr": 1.0,
+        "context_precision": 0.2,
+        "context_recall": 1.0,
+        "citation_grounding": 1.0,
+        "citation_source_precision": 0.3333333333333333,
+        "citation_source_recall": 1.0,
+        "n_citations": 4,
+        "fallback_correct": 1.0,
+        "latency_ms_total": 416.4,
+        "latency_ms_retrieval": 50.6,
+        "latency_ms_generation": 365.8
+      },
+      "is_fallback": false,
+      "fallback_correct": true
+    },
+    {
+      "id": "G05",
+      "question": "What was the black market problem during India's Delta wave?",
+      "type": "factual",
+      "difficulty": "medium",
+      "answerable": true,
+      "expected_answer": "During the Delta wave, desperate families paid absurd prices on the black market for oxygen cylinders and drugs like remdesivir and tocilizumab. Dr. Mehta recalled a relative who paid ₹40,000 for a remdesivir vial that wouldn't even help at that disease stage. The government eventually cracked down, but chaos ruled during peak weeks.",
+      "result": {
+        "query": "What was the black market problem during India's Delta wave?",
+        "answer": "Based on the interviews with Dr. Arjun Mehta, Dr. Kavita Joshi, Dr. Siddharth Rao:\n\nThe Delta wave in 2021 was ten times worse than the first. The Delta variant was an epidemiologist s nightmare. What was most striking was how heterogeneous the epidemic became urban centers peaked and declined while rural districts were still climbing. Bengaluru s healthcare system was stretched to the edge.",
+        "is_fallback": false,
+        "fallback_reason": "",
+        "confidence": 0.504,
+        "provider": "extractive",
+        "citations": [
+          {
+            "chunk_id": "Dr_Arjun_Mehta_India_Detailed_Interview::q04",
+            "doctor": "Dr. Arjun Mehta",
+            "country": "India",
+            "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
+            "quote": "The Delta wave in 2021 was ten times worse than the first.",
+            "relevance": 0.381
+          },
+          {
+            "chunk_id": "Dr_Kavita_Joshi_India_Detailed_Interview::q05",
+            "doctor": "Dr. Kavita Joshi",
+            "country": "India",
+            "source_file": "Dr_Kavita_Joshi_India_Detailed_Interview.pdf",
+            "quote": "The Delta variant was an epidemiologist s nightmare.",
+            "relevance": 0.359
+          },
+          {
+            "chunk_id": "Dr_Kavita_Joshi_India_Detailed_Interview::q05",
+            "doctor": "Dr. Kavita Joshi",
+            "country": "India",
+            "source_file": "Dr_Kavita_Joshi_India_Detailed_Interview.pdf",
+            "quote": "What was most striking was how heterogeneous the epidemic became urban centers peaked and declined while rural districts were still climbing.",
+            "relevance": 0.278
+          },
+          {
+            "chunk_id": "Dr_Siddharth_Rao_India_Detailed_Interview::q05",
+            "doctor": "Dr. Siddharth Rao",
+            "country": "India",
+            "source_file": "Dr_Siddharth_Rao_India_Detailed_Interview.pdf",
+            "quote": "Bengaluru s healthcare system was stretched to the edge.",
+            "relevance": 0.273
+          }
+        ],
+        "used_chunk_ids": [
+          "Dr_Kavita_Joshi_India_Detailed_Interview::q05",
+          "Dr_Arjun_Mehta_India_Detailed_Interview::q04",
+          "Dr_Siddharth_Rao_India_Detailed_Interview::q05"
+        ],
+        "retrieved_chunk_ids": [
+          "Dr_Arjun_Mehta_India_Detailed_Interview::q05",
+          "Dr_Priya_Sharma_India_Detailed_Interview::q08",
+          "Dr_Kavita_Joshi_India_Detailed_Interview::q05",
+          "Dr_Arjun_Mehta_India_Detailed_Interview::q04",
+          "Dr_Siddharth_Rao_India_Detailed_Interview::q05"
+        ],
+        "timings_ms": {
+          "retrieval": 57.2,
+          "generation": 335.7,
+          "total": 392.9
+        }
+      },
+      "metrics": {
+        "context_relevance": 0.4343747317790985,
+        "groundedness": 0.6662858703306743,
+        "answer_relevance": 0.554149866104126,
+        "answer_correctness": 0.38436436653137207,
+        "hit_rate": 1.0,
+        "mrr": 1.0,
+        "context_precision": 0.2,
+        "context_recall": 1.0,
+        "citation_grounding": 1.0,
+        "citation_source_precision": 0.0,
+        "citation_source_recall": 0.0,
+        "n_citations": 4,
+        "fallback_correct": 1.0,
+        "latency_ms_total": 392.9,
+        "latency_ms_retrieval": 57.2,
+        "latency_ms_generation": 335.7
+      },
+      "is_fallback": false,
+      "fallback_correct": true
+    },
+    {
+      "id": "G06",
+      "question": "What drove the mucormycosis (black fungus) outbreak in India?",
+      "type": "specific_term",
+      "difficulty": "medium",
+      "answerable": true,
+      "expected_answer": "The mucormycosis ('black fungus') outbreak in mid-2021 was driven by the overuse of steroids and uncontrolled diabetes. Cases were disfiguring, painful and often fatal, requiring round-the-clock debridement surgeries by ENT and ophthalmology teams.",
+      "result": {
+        "query": "What drove the mucormycosis (black fungus) outbreak in India?",
+        "answer": "Based on the interviews with Dr. Arjun Mehta, Dr. Kavita Joshi:\n\nWe saw dozens of patients with black fungus infections — disfiguring, painful, and often fatal. The mucormycosis crisis in mid-2021 was another nightmare. In January 2020, we were monitoring the outbreak in Wuhan closely. Initially, vaccine hesitancy was significant, especially in rural areas.",
+        "is_fallback": false,
+        "fallback_reason": "",
+        "confidence": 0.559,
+        "provider": "extractive",
+        "citations": [
+          {
+            "chunk_id": "Dr_Arjun_Mehta_India_Detailed_Interview::q10",
+            "doctor": "Dr. Arjun Mehta",
+            "country": "India",
+            "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
+            "quote": "We saw dozens of patients with black fungus infections — disfiguring, painful, and often fatal.",
+            "relevance": 0.567
+          },
+          {
+            "chunk_id": "Dr_Arjun_Mehta_India_Detailed_Interview::q10",
+            "doctor": "Dr. Arjun Mehta",
+            "country": "India",
+            "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
+            "quote": "The mucormycosis crisis in mid-2021 was another nightmare.",
+            "relevance": 0.544
+          },
+          {
+            "chunk_id": "Dr_Kavita_Joshi_India_Detailed_Interview::q02",
+            "doctor": "Dr. Kavita Joshi",
+            "country": "India",
+            "source_file": "Dr_Kavita_Joshi_India_Detailed_Interview.pdf",
+            "quote": "In January 2020, we were monitoring the outbreak in Wuhan closely.",
+            "relevance": 0.43
+          },
+          {
+            "chunk_id": "Dr_Kavita_Joshi_India_Detailed_Interview::q11",
+            "doctor": "Dr. Kavita Joshi",
+            "country": "India",
+            "source_file": "Dr_Kavita_Joshi_India_Detailed_Interview.pdf",
+            "quote": "Initially, vaccine hesitancy was significant, especially in rural areas.",
+            "relevance": 0.405
+          }
+        ],
+        "used_chunk_ids": [
+          "Dr_Arjun_Mehta_India_Detailed_Interview::q10",
+          "Dr_Kavita_Joshi_India_Detailed_Interview::q02",
+          "Dr_Kavita_Joshi_India_Detailed_Interview::q11"
+        ],
+        "retrieved_chunk_ids": [
+          "Dr_Arjun_Mehta_India_Detailed_Interview::q10",
+          "Dr_Kavita_Joshi_India_Detailed_Interview::q02",
+          "Dr_Emily_Roberts_US_Detailed_Interview::q11",
+          "Dr_Kavita_Joshi_India_Detailed_Interview::q11",
+          "Dr_Kavita_Joshi_India_Detailed_Interview::q01"
+        ],
+        "timings_ms": {
+          "retrieval": 50.1,
+          "generation": 297.4,
+          "total": 347.5
+        }
+      },
+      "metrics": {
+        "context_relevance": 0.4185055911540985,
+        "groundedness": 0.7418969298402468,
+        "answer_relevance": 0.7833645343780518,
+        "answer_correctness": 0.8316770195960999,
+        "hit_rate": 1.0,
+        "mrr": 1.0,
+        "context_precision": 0.2,
+        "context_recall": 1.0,
+        "citation_grounding": 1.0,
+        "citation_source_precision": 0.3333333333333333,
+        "citation_source_recall": 1.0,
+        "n_citations": 4,
+        "fallback_correct": 1.0,
+        "latency_ms_total": 347.5,
+        "latency_ms_retrieval": 50.1,
+        "latency_ms_generation": 297.4
+      },
+      "is_fallback": false,
+      "fallback_correct": true
+    },
+    {
+      "id": "G07",
+      "question": "How did doctors address vaccine hesitancy and misinformation?",
+      "type": "multi_hop",
+      "difficulty": "hard",
+      "answerable": true,
+      "expected_answer": "Doctors used trusted local messengers and empathy rather than argument: community awareness camps and explanations in local languages via radio and WhatsApp in India (Dr. Singh); 'compassionate correction' that acknowledges fears while presenting facts, plus webinars with pastors and local influencers in the US (Dr. Roberts); and mobile clinics at churches and community centers using local physicians and clergy (Dr. Thompson).",
+      "result": {
+        "query": "How did doctors address vaccine hesitancy and misinformation?",
+        "answer": "Based on the interviews with Dr. Anjali Singh, Dr. Lukas Meier, Dr. Neha Reddy:\n\nVaccine hesitancy wasn t just ignorance it was mistrust, amplified by online echo chambers. Some patients came in unvaccinated and dying, still convinced COVID was exaggerated. We spoke in local languages, through radio and WhatsApp groups, explaining simply: \"The vaccine teaches your child's body to fight, not harm it.\" The key was empathy, not argument. Myths about infertility, rapid vaccine development, and side effects were rampant.",
+        "is_fallback": false,
+        "fallback_reason": "",
+        "confidence": 0.702,
+        "provider": "extractive",
+        "citations": [
+          {
+            "chunk_id": "Dr_Lukas_Meier_Germany_Detailed_Interview::q07",
+            "doctor": "Dr. Lukas Meier",
+            "country": "Germany",
+            "source_file": "Dr_Lukas_Meier_Germany_Detailed_Interview.pdf",
+            "quote": "Vaccine hesitancy wasn t just ignorance it was mistrust, amplified by online echo chambers.",
+            "relevance": 0.695
+          },
+          {
+            "chunk_id": "Dr_Lukas_Meier_Germany_Detailed_Interview::q07",
+            "doctor": "Dr. Lukas Meier",
+            "country": "Germany",
+            "source_file": "Dr_Lukas_Meier_Germany_Detailed_Interview.pdf",
+            "quote": "Some patients came in unvaccinated and dying, still convinced COVID was exaggerated.",
+            "relevance": 0.66
+          },
+          {
+            "chunk_id": "Dr_Anjali_Singh_India_Detailed_Interview::q07",
+            "doctor": "Dr. Anjali Singh",
+            "country": "India",
+            "source_file": "Dr_Anjali_Singh_India_Detailed_Interview.pdf",
+            "quote": "We spoke in local languages, through radio and WhatsApp groups, explaining simply: \"The vaccine teaches your child's body to fight, not harm it.\" The key was empathy, not argument.",
+            "relevance": 0.619
+          },
+          {
+            "chunk_id": "Dr_Neha_Reddy_India_Detailed_Interview::q08",
+            "doctor": "Dr. Neha Reddy",
+            "country": "India",
+            "source_file": "Dr_Neha_Reddy_India_Detailed_Interview.docx",
+            "quote": "Myths about infertility, rapid vaccine development, and side effects were rampant.",
+            "relevance": 0.572
+          }
+        ],
+        "used_chunk_ids": [
+          "Dr_Neha_Reddy_India_Detailed_Interview::q08",
+          "Dr_Lukas_Meier_Germany_Detailed_Interview::q07",
+          "Dr_Anjali_Singh_India_Detailed_Interview::q07"
+        ],
+        "retrieved_chunk_ids": [
+          "Dr_Olivia_Davis_US_Detailed_Interview::q08",
+          "Dr_Neha_Reddy_India_Detailed_Interview::q08",
+          "Dr_David_Thompson_US_Detailed_Interview::q08",
+          "Dr_Lukas_Meier_Germany_Detailed_Interview::q07",
+          "Dr_Anjali_Singh_India_Detailed_Interview::q07"
+        ],
+        "timings_ms": {
+          "retrieval": 52.3,
+          "generation": 360.9,
+          "total": 413.2
+        }
+      },
+      "metrics": {
+        "context_relevance": 0.6688869833946228,
+        "groundedness": 0.6664063079016549,
+        "answer_relevance": 0.736162543296814,
+        "answer_correctness": 0.41195911169052124,
+        "hit_rate": 1.0,
+        "mrr": 0.3333333333333333,
+        "context_precision": 0.4,
+        "context_recall": 0.6666666666666666,
+        "citation_grounding": 1.0,
+        "citation_source_precision": 0.3333333333333333,
+        "citation_source_recall": 0.3333333333333333,
+        "n_citations": 4,
+        "fallback_correct": 1.0,
+        "latency_ms_total": 413.2,
+        "latency_ms_retrieval": 52.3,
+        "latency_ms_generation": 360.9
+      },
+      "is_fallback": false,
+      "fallback_correct": true
+    },
+    {
+      "id": "G08",
+      "question": "What digital tools and data systems supported Germany's pandemic response?",
+      "type": "factual",
+      "difficulty": "medium",
+      "answerable": true,
+      "expected_answer": "Germany used RKI dashboards, digital contact-tracing apps like the Corona-Warn-App, and interoperable hospital databases, enabling near real-time surveillance of transmission in neighborhoods and workplaces. Data privacy laws, while essential, sometimes slowed integration.",
+      "result": {
+        "query": "What digital tools and data systems supported Germany's pandemic response?",
+        "answer": "Based on the interviews with Dr. Anna Weber, Dr. Erik Vogel, Dr. Kavita Joshi:\n\nI believe the next phase of digital health in Germany will need clearer frameworks for responsible data sharing, especially during crises. Harmonizing that into a unified national dataset required digital modernization that Germany had long postponed. The ICMR COVID Data Portal integrating lab results nationwide was a game-changer. For the first time, we had near real-time epidemiological data at a national scale.",
+        "is_fallback": false,
+        "fallback_reason": "",
+        "confidence": 0.69,
+        "provider": "extractive",
+        "citations": [
+          {
+            "chunk_id": "Dr_Anna_Weber_Germany_Detailed_Interview::q10",
+            "doctor": "Dr. Anna Weber",
+            "country": "Germany",
+            "source_file": "Dr_Anna_Weber_Germany_Detailed_Interview.pdf",
+            "quote": "I believe the next phase of digital health in Germany will need clearer frameworks for responsible data sharing, especially during crises.",
+            "relevance": 0.696
+          },
+          {
+            "chunk_id": "Dr_Erik_Vogel_Germany_Detailed_Interview::q06",
+            "doctor": "Dr. Erik Vogel",
+            "country": "Germany",
+            "source_file": "Dr_Erik_Vogel_Germany_Detailed_Interview.pdf",
+            "quote": "Harmonizing that into a unified national dataset required digital modernization that Germany had long postponed.",
+            "relevance": 0.587
+          },
+          {
+            "chunk_id": "Dr_Kavita_Joshi_India_Detailed_Interview::q10",
+            "doctor": "Dr. Kavita Joshi",
+            "country": "India",
+            "source_file": "Dr_Kavita_Joshi_India_Detailed_Interview.pdf",
+            "quote": "The ICMR COVID Data Portal integrating lab results nationwide was a game-changer.",
+            "relevance": 0.447
+          },
+          {
+            "chunk_id": "Dr_Kavita_Joshi_India_Detailed_Interview::q10",
+            "doctor": "Dr. Kavita Joshi",
+            "country": "India",
+            "source_file": "Dr_Kavita_Joshi_India_Detailed_Interview.pdf",
+            "quote": "For the first time, we had near real-time epidemiological data at a national scale.",
+            "relevance": 0.442
+          }
+        ],
+        "used_chunk_ids": [
+          "Dr_Anna_Weber_Germany_Detailed_Interview::q10",
+          "Dr_Kavita_Joshi_India_Detailed_Interview::q10",
+          "Dr_Erik_Vogel_Germany_Detailed_Interview::q06"
+        ],
+        "retrieved_chunk_ids": [
+          "Dr_Anna_Weber_Germany_Detailed_Interview::q10",
+          "Dr_Kavita_Joshi_India_Detailed_Interview::q10",
+          "Dr_Erik_Vogel_Germany_Detailed_Interview::q11",
+          "Dr_Erik_Vogel_Germany_Detailed_Interview::q06",
+          "Dr_Jonas_Fischer_Germany_Detailed_Interview::q11"
+        ],
+        "timings_ms": {
+          "retrieval": 62.6,
+          "generation": 292.0,
+          "total": 354.6
+        }
+      },
+      "metrics": {
+        "context_relevance": 0.6521752357482911,
+        "groundedness": 0.6537586088691439,
+        "answer_relevance": 0.7750339508056641,
+        "answer_correctness": 0.6070727705955505,
+        "hit_rate": 1.0,
+        "mrr": 1.0,
+        "context_precision": 0.2,
+        "context_recall": 1.0,
+        "citation_grounding": 1.0,
+        "citation_source_precision": 0.3333333333333333,
+        "citation_source_recall": 1.0,
+        "n_citations": 4,
+        "fallback_correct": 1.0,
+        "latency_ms_total": 354.6,
+        "latency_ms_retrieval": 62.6,
+        "latency_ms_generation": 292.0
+      },
+      "is_fallback": false,
+      "fallback_correct": true
+    },
+    {
+      "id": "G09",
+      "question": "How did Germany detect and document asymptomatic spread?",
+      "type": "factual",
+      "difficulty": "medium",
+      "answerable": true,
+      "expected_answer": "Dr. Weber's hospital documented asymptomatic spread early by finding viral loads in patients with no symptoms similar to those who were severely ill - a discovery that changed global infection control strategy. They later did genomic sequencing with the Robert Koch Institute to track Alpha and Delta variants in Bavaria.",
+      "result": {
+        "query": "How did Germany detect and document asymptomatic spread?",
+        "answer": "Based on the interviews with Dr. Anna Weber, Dr. Lukas Meier:\n\nThat early success gave Germany a brief sense of control one that faded quickly once community spread began. Germany had a head start thanks to our strong laboratory network and decentralized health system. On the positive side, Germany s data transparency allowed us to prove vaccine effectiveness quickly hospitalization rates dropped sharply among the vaccinated. In January 2020, I was part of the team that treated Germany s first confirmed COVID case a man infected via a business meeting with visitors from China.",
+        "is_fallback": false,
+        "fallback_reason": "",
+        "confidence": 0.569,
+        "provider": "extractive",
+        "citations": [
+          {
+            "chunk_id": "Dr_Anna_Weber_Germany_Detailed_Interview::q01",
+            "doctor": "Dr. Anna Weber",
+            "country": "Germany",
+            "source_file": "Dr_Anna_Weber_Germany_Detailed_Interview.pdf",
+            "quote": "That early success gave Germany a brief sense of control one that faded quickly once community spread began.",
+            "relevance": 0.533
+          },
+          {
+            "chunk_id": "Dr_Lukas_Meier_Germany_Detailed_Interview::q02",
+            "doctor": "Dr. Lukas Meier",
+            "country": "Germany",
+            "source_file": "Dr_Lukas_Meier_Germany_Detailed_Interview.pdf",
+            "quote": "Germany had a head start thanks to our strong laboratory network and decentralized health system.",
+            "relevance": 0.482
+          },
+          {
+            "chunk_id": "Dr_Lukas_Meier_Germany_Detailed_Interview::q07",
+            "doctor": "Dr. Lukas Meier",
+            "country": "Germany",
+            "source_file": "Dr_Lukas_Meier_Germany_Detailed_Interview.pdf",
+            "quote": "On the positive side, Germany s data transparency allowed us to prove vaccine effectiveness quickly hospitalization rates dropped sharply among the vaccinated.",
+            "relevance": 0.468
+          },
+          {
+            "chunk_id": "Dr_Anna_Weber_Germany_Detailed_Interview::q01",
+            "doctor": "Dr. Anna Weber",
+            "country": "Germany",
+            "source_file": "Dr_Anna_Weber_Germany_Detailed_Interview.pdf",
+            "quote": "In January 2020, I was part of the team that treated Germany s first confirmed COVID case a man infected via a business meeting with visitors from China.",
+            "relevance": 0.435
+          }
+        ],
+        "used_chunk_ids": [
+          "Dr_Lukas_Meier_Germany_Detailed_Interview::q02",
+          "Dr_Lukas_Meier_Germany_Detailed_Interview::q07",
+          "Dr_Anna_Weber_Germany_Detailed_Interview::q01"
+        ],
+        "retrieved_chunk_ids": [
+          "Dr_Lukas_Meier_Germany_Detailed_Interview::q02",
+          "Dr_Anna_Weber_Germany_Detailed_Interview::q10",
+          "Dr_Anna_Weber_Germany_Detailed_Interview::q06",
+          "Dr_Lukas_Meier_Germany_Detailed_Interview::q07",
+          "Dr_Anna_Weber_Germany_Detailed_Interview::q01"
+        ],
+        "timings_ms": {
+          "retrieval": 49.9,
+          "generation": 350.6,
+          "total": 400.5
+        }
+      },
+      "metrics": {
+        "context_relevance": 0.4839707612991333,
+        "groundedness": 0.8542235593001047,
+        "answer_relevance": 0.5590376853942871,
+        "answer_correctness": 0.49737390875816345,
+        "hit_rate": 1.0,
+        "mrr": 0.3333333333333333,
+        "context_precision": 0.2,
+        "context_recall": 1.0,
+        "citation_grounding": 1.0,
+        "citation_source_precision": 0.0,
+        "citation_source_recall": 0.0,
+        "n_citations": 4,
+        "fallback_correct": 1.0,
+        "latency_ms_total": 400.5,
+        "latency_ms_retrieval": 49.9,
+        "latency_ms_generation": 350.6
+      },
+      "is_fallback": false,
+      "fallback_correct": true
+    },
+    {
+      "id": "G10",
+      "question": "What infection-control measures worked best in hospitals?",
+      "type": "factual",
+      "difficulty": "easy",
+      "answerable": true,
+      "expected_answer": "The three measures that made the biggest difference were universal masking (which dramatically dropped healthcare-worker infections), airflow redesign converting wards to negative-pressure units with portable HEPA filters, and testing/triage at the front door, alongside a cohorting model dedicating entire wings to COVID-positive patients.",
+      "result": {
+        "query": "What infection-control measures worked best in hospitals?",
+        "answer": "Based on the interviews with Dr. Anna Weber, Dr. Emily Roberts, Dr. Neha Reddy:\n\nWe also helped design hospital-wide infection control protocols, covering everything from elevator use to handling lab samples. On a broader level, infection prevention is recognized as a cornerstone of hospital resilience, not an afterthought. That simple measure drastically reduced staff infections. Infection prevention became everyone’s business, not just the infection control team’s.",
+        "is_fallback": false,
+        "fallback_reason": "",
+        "confidence": 0.778,
+        "provider": "extractive",
+        "citations": [
+          {
+            "chunk_id": "Dr_Anna_Weber_Germany_Detailed_Interview::q02",
+            "doctor": "Dr. Anna Weber",
+            "country": "Germany",
+            "source_file": "Dr_Anna_Weber_Germany_Detailed_Interview.pdf",
+            "quote": "We also helped design hospital-wide infection control protocols, covering everything from elevator use to handling lab samples.",
+            "relevance": 0.656
+          },
+          {
+            "chunk_id": "Dr_Emily_Roberts_US_Detailed_Interview::q11",
+            "doctor": "Dr. Emily Roberts",
+            "country": "US",
+            "source_file": "Dr_Emily_Roberts_US_Detailed_Interview.docx",
+            "quote": "On a broader level, infection prevention is recognized as a cornerstone of hospital resilience, not an afterthought.",
+            "relevance": 0.647
+          },
+          {
+            "chunk_id": "Dr_Neha_Reddy_India_Detailed_Interview::q03",
+            "doctor": "Dr. Neha Reddy",
+            "country": "India",
+            "source_file": "Dr_Neha_Reddy_India_Detailed_Interview.docx",
+            "quote": "That simple measure drastically reduced staff infections.",
+            "relevance": 0.62
+          },
+          {
+            "chunk_id": "Dr_Emily_Roberts_US_Detailed_Interview::q11",
+            "doctor": "Dr. Emily Roberts",
+            "country": "US",
+            "source_file": "Dr_Emily_Roberts_US_Detailed_Interview.docx",
+            "quote": "Infection prevention became everyone’s business, not just the infection control team’s.",
+            "relevance": 0.612
+          }
+        ],
+        "used_chunk_ids": [
+          "Dr_Neha_Reddy_India_Detailed_Interview::q03",
+          "Dr_Emily_Roberts_US_Detailed_Interview::q11",
+          "Dr_Anna_Weber_Germany_Detailed_Interview::q02"
+        ],
+        "retrieved_chunk_ids": [
+          "Dr_Emily_Roberts_US_Detailed_Interview::q03",
+          "Dr_Neha_Reddy_India_Detailed_Interview::q03",
+          "Dr_Emily_Roberts_US_Detailed_Interview::q11",
+          "Dr_Anna_Weber_Germany_Detailed_Interview::q02",
+          "Dr_Emily_Roberts_US_Detailed_Interview::q01"
+        ],
+        "timings_ms": {
+          "retrieval": 51.0,
+          "generation": 314.6,
+          "total": 365.6
+        }
+      },
+      "metrics": {
+        "context_relevance": 0.6480360984802246,
+        "groundedness": 0.6757382197039468,
+        "answer_relevance": 0.7377889156341553,
+        "answer_correctness": 0.49093952775001526,
+        "hit_rate": 1.0,
+        "mrr": 1.0,
+        "context_precision": 0.2,
+        "context_recall": 1.0,
+        "citation_grounding": 1.0,
+        "citation_source_precision": 0.0,
+        "citation_source_recall": 0.0,
+        "n_citations": 4,
+        "fallback_correct": 1.0,
+        "latency_ms_total": 365.6,
+        "latency_ms_retrieval": 51.0,
+        "latency_ms_generation": 314.6
+      },
+      "is_fallback": false,
+      "fallback_correct": true
+    },
+    {
+      "id": "G11",
+      "question": "What creative solutions did hospitals use during PPE shortages?",
+      "type": "multi_hop",
+      "difficulty": "medium",
+      "answerable": true,
+      "expected_answer": "Hospitals reused and extended N95 use with sterilization via vaporized hydrogen peroxide and UV systems, trained 'PPE monitors' to oversee donning/doffing, and relied on 3D-printed face shields and community-sewn fabric gowns (Dr. Roberts). Rural hospitals used conservation, regional distributors, and local manufacturers who pivoted to making masks and gowns (Dr. Thompson).",
+      "result": {
+        "query": "What creative solutions did hospitals use during PPE shortages?",
+        "answer": "Based on the interviews with Dr. David Thompson, Dr. Olivia Davis, Dr. Ravi Kumar:\n\nThat allowed EMS and transfer centers to direct patients efficiently and reduced unnecessary delays in care. Some creative solutions included mobile oxygen trailer deployments and pooling resources with nearby hospitals to balance supplies. The first few weeks were chaotic - PPE shortages, unclear protocols - but the team adapted fast. It also helped the state allocate ventilators and PPE where they were most needed.",
+        "is_fallback": false,
+        "fallback_reason": "",
+        "confidence": 0.748,
+        "provider": "extractive",
+        "citations": [
+          {
+            "chunk_id": "Dr_Olivia_Davis_US_Detailed_Interview::q03",
+            "doctor": "Dr. Olivia Davis",
+            "country": "US",
+            "source_file": "Dr_Olivia_Davis_US_Detailed_Interview.docx",
+            "quote": "That allowed EMS and transfer centers to direct patients efficiently and reduced unnecessary delays in care.",
+            "relevance": 0.5
+          },
+          {
+            "chunk_id": "Dr_David_Thompson_US_Detailed_Interview::q11",
+            "doctor": "Dr. David Thompson",
+            "country": "US",
+            "source_file": "Dr_David_Thompson_US_Detailed_Interview.docx",
+            "quote": "Some creative solutions included mobile oxygen trailer deployments and pooling resources with nearby hospitals to balance supplies.",
+            "relevance": 0.48
+          },
+          {
+            "chunk_id": "Dr_Ravi_Kumar_India_Detailed_Interview::q02",
+            "doctor": "Dr. Ravi Kumar",
+            "country": "India",
+            "source_file": "Dr_Ravi_Kumar_India_Detailed_Interview.pdf",
+            "quote": "The first few weeks were chaotic - PPE shortages, unclear protocols - but the team adapted fast.",
+            "relevance": 0.48
+          },
+          {
+            "chunk_id": "Dr_Olivia_Davis_US_Detailed_Interview::q03",
+            "doctor": "Dr. Olivia Davis",
+            "country": "US",
+            "source_file": "Dr_Olivia_Davis_US_Detailed_Interview.docx",
+            "quote": "It also helped the state allocate ventilators and PPE where they were most needed.",
+            "relevance": 0.463
+          }
+        ],
+        "used_chunk_ids": [
+          "Dr_David_Thompson_US_Detailed_Interview::q11",
+          "Dr_Ravi_Kumar_India_Detailed_Interview::q02",
+          "Dr_Olivia_Davis_US_Detailed_Interview::q03"
+        ],
+        "retrieved_chunk_ids": [
+          "Dr_Emily_Roberts_US_Detailed_Interview::q04",
+          "Dr_David_Thompson_US_Detailed_Interview::q11",
+          "Dr_Ravi_Kumar_India_Detailed_Interview::q02",
+          "Dr_James_Miller_US_Detailed_Interview::q07",
+          "Dr_Olivia_Davis_US_Detailed_Interview::q03"
+        ],
+        "timings_ms": {
+          "retrieval": 48.6,
+          "generation": 312.0,
+          "total": 360.6
+        }
+      },
+      "metrics": {
+        "context_relevance": 0.5767941236495971,
+        "groundedness": 0.6664714046886989,
+        "answer_relevance": 0.6072453260421753,
+        "answer_correctness": 0.4352402687072754,
+        "hit_rate": 1.0,
+        "mrr": 1.0,
+        "context_precision": 0.4,
+        "context_recall": 1.0,
+        "citation_grounding": 1.0,
+        "citation_source_precision": 0.3333333333333333,
+        "citation_source_recall": 0.5,
+        "n_citations": 4,
+        "fallback_correct": 1.0,
+        "latency_ms_total": 360.6,
+        "latency_ms_retrieval": 48.6,
+        "latency_ms_generation": 312.0
+      },
+      "is_fallback": false,
+      "fallback_correct": true
+    },
+    {
+      "id": "G12",
+      "question": "At what oxygen saturation did Dr. Johnson tell home-monitored patients to seek emergency care?",
+      "type": "factual",
+      "difficulty": "easy",
+      "answerable": true,
+      "expected_answer": "Patients on home remote monitoring were instructed to seek emergency care if their SpO2 (oxygen saturation) fell below 92%, or if they developed new confusion or chest pain.",
+      "result": {
+        "query": "At what oxygen saturation did Dr. Johnson tell home-monitored patients to seek emergency care?",
+        "answer": "Based on the interviews with Dr. Felix Schneider, Dr. Priya Sharma, Dr. Sarah Johnson:\n\nSome Scandinavian centers emphasized home-care oxygen and telemonitoring early on sending moderate patients home with pulse oximeters and monitoring rather than admitting them prematurely. We had over 150 patients on oxygen. We were monitoring oxygen levels in tanks like we monitor blood pressure in patients — every hour mattered. Remote monitoring with pulse oximeters was a game changer for managing mild to moderate cases at home, with clear thresholds for escalation.",
+        "is_fallback": false,
+        "fallback_reason": "",
+        "confidence": 0.577,
+        "provider": "extractive",
+        "citations": [
+          {
+            "chunk_id": "Dr_Felix_Schneider_Germany_Detailed_Interview::q11",
+            "doctor": "Dr. Felix Schneider",
+            "country": "Germany",
+            "source_file": "Dr_Felix_Schneider_Germany_Detailed_Interview.pdf",
+            "quote": "Some Scandinavian centers emphasized home-care oxygen and telemonitoring early on sending moderate patients home with pulse oximeters and monitoring rather than admitting them prematurely.",
+            "relevance": 0.655
+          },
+          {
+            "chunk_id": "Dr_Priya_Sharma_India_Detailed_Interview::q03",
+            "doctor": "Dr. Priya Sharma",
+            "country": "India",
+            "source_file": "Dr_Priya_Sharma_India_Detailed_Interview.docx",
+            "quote": "We had over 150 patients on oxygen.",
+            "relevance": 0.597
+          },
+          {
+            "chunk_id": "Dr_Priya_Sharma_India_Detailed_Interview::q03",
+            "doctor": "Dr. Priya Sharma",
+            "country": "India",
+            "source_file": "Dr_Priya_Sharma_India_Detailed_Interview.docx",
+            "quote": "We were monitoring oxygen levels in tanks like we monitor blood pressure in patients — every hour mattered.",
+            "relevance": 0.576
+          },
+          {
+            "chunk_id": "Dr_Sarah_Johnson_US_Detailed_Interview::q03",
+            "doctor": "Dr. Sarah Johnson",
+            "country": "US",
+            "source_file": "Dr_Sarah_Johnson_US_Detailed_Interview.pdf",
+            "quote": "Remote monitoring with pulse oximeters was a game changer for managing mild to moderate cases at home, with clear thresholds for escalation.",
+            "relevance": 0.474
+          }
+        ],
+        "used_chunk_ids": [
+          "Dr_Priya_Sharma_India_Detailed_Interview::q03",
+          "Dr_Felix_Schneider_Germany_Detailed_Interview::q11",
+          "Dr_Sarah_Johnson_US_Detailed_Interview::q03"
+        ],
+        "retrieved_chunk_ids": [
+          "Dr_Priya_Sharma_India_Detailed_Interview::q03",
+          "Dr_Felix_Schneider_Germany_Detailed_Interview::q11",
+          "Dr_Neha_Reddy_India_Detailed_Interview::q07",
+          "Dr_Sarah_Johnson_US_Detailed_Interview::q03",
+          "Dr_Michael_Anderson_US_Detailed_Interview::q04"
+        ],
+        "timings_ms": {
+          "retrieval": 57.2,
+          "generation": 346.7,
+          "total": 403.9
+        }
+      },
+      "metrics": {
+        "context_relevance": 0.5076206803321839,
+        "groundedness": 0.6848606914281845,
+        "answer_relevance": 0.6645458936691284,
+        "answer_correctness": 0.5492697954177856,
+        "hit_rate": 0.0,
+        "mrr": 0.0,
+        "context_precision": 0.0,
+        "context_recall": 0.0,
+        "citation_grounding": 1.0,
+        "citation_source_precision": 0.0,
+        "citation_source_recall": 0.0,
+        "n_citations": 4,
+        "fallback_correct": 1.0,
+        "latency_ms_total": 403.9,
+        "latency_ms_retrieval": 57.2,
+        "latency_ms_generation": 346.7
+      },
+      "is_fallback": false,
+      "fallback_correct": true
+    },
+    {
+      "id": "G13",
+      "question": "How were children's routine immunizations and nutrition affected during India's lockdowns?",
+      "type": "factual",
+      "difficulty": "medium",
+      "answerable": true,
+      "expected_answer": "Routine immunizations were delayed for months, especially in rural and peri-urban areas, and nutritional programs like the mid-day meal scheme were suspended, worsening malnutrition. Children presented with weight loss, anemia and developmental delays.",
+      "result": {
+        "query": "How were children's routine immunizations and nutrition affected during India's lockdowns?",
+        "answer": "Based on the interview with Dr. Anjali Singh:\n\nBeyond direct infections, the pandemic disrupted immunizations, nutrition programs, and mental health among children. Immunizations and nutrition programs must continue even during lockdowns. For months, routine immunizations were delayed, especially in rural and peri-urban areas. We saw children coming in with weight loss, anemia, and developmental delays.",
+        "is_fallback": false,
+        "fallback_reason": "",
+        "confidence": 0.624,
+        "provider": "extractive",
+        "citations": [
+          {
+            "chunk_id": "Dr_Anjali_Singh_India_Detailed_Interview::q01",
+            "doctor": "Dr. Anjali Singh",
+            "country": "India",
+            "source_file": "Dr_Anjali_Singh_India_Detailed_Interview.pdf",
+            "quote": "Beyond direct infections, the pandemic disrupted immunizations, nutrition programs, and mental health among children.",
+            "relevance": 0.606
+          },
+          {
+            "chunk_id": "Dr_Anjali_Singh_India_Detailed_Interview::q12",
+            "doctor": "Dr. Anjali Singh",
+            "country": "India",
+            "source_file": "Dr_Anjali_Singh_India_Detailed_Interview.pdf",
+            "quote": "Immunizations and nutrition programs must continue even during lockdowns.",
+            "relevance": 0.573
+          },
+          {
+            "chunk_id": "Dr_Anjali_Singh_India_Detailed_Interview::q03",
+            "doctor": "Dr. Anjali Singh",
+            "country": "India",
+            "source_file": "Dr_Anjali_Singh_India_Detailed_Interview.pdf",
+            "quote": "For months, routine immunizations were delayed, especially in rural and peri-urban areas.",
+            "relevance": 0.54
+          },
+          {
+            "chunk_id": "Dr_Anjali_Singh_India_Detailed_Interview::q03",
+            "doctor": "Dr. Anjali Singh",
+            "country": "India",
+            "source_file": "Dr_Anjali_Singh_India_Detailed_Interview.pdf",
+            "quote": "We saw children coming in with weight loss, anemia, and developmental delays.",
+            "relevance": 0.525
+          }
+        ],
+        "used_chunk_ids": [
+          "Dr_Anjali_Singh_India_Detailed_Interview::q03",
+          "Dr_Anjali_Singh_India_Detailed_Interview::q12",
+          "Dr_Anjali_Singh_India_Detailed_Interview::q01"
+        ],
+        "retrieved_chunk_ids": [
+          "Dr_Anjali_Singh_India_Detailed_Interview::q03",
+          "Dr_Anjali_Singh_India_Detailed_Interview::q12",
+          "Dr_Anjali_Singh_India_Detailed_Interview::q01",
+          "Dr_Anjali_Singh_India_Detailed_Interview::q10",
+          "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q05"
+        ],
+        "timings_ms": {
+          "retrieval": 49.3,
+          "generation": 322.2,
+          "total": 371.5
+        }
+      },
+      "metrics": {
+        "context_relevance": 0.5584606170654297,
+        "groundedness": 0.8554581999778748,
+        "answer_relevance": 0.7392376065254211,
+        "answer_correctness": 0.7952132225036621,
+        "hit_rate": 1.0,
+        "mrr": 1.0,
+        "context_precision": 0.2,
+        "context_recall": 1.0,
+        "citation_grounding": 1.0,
+        "citation_source_precision": 0.3333333333333333,
+        "citation_source_recall": 1.0,
+        "n_citations": 4,
+        "fallback_correct": 1.0,
+        "latency_ms_total": 371.5,
+        "latency_ms_retrieval": 49.3,
+        "latency_ms_generation": 322.2
+      },
+      "is_fallback": false,
+      "fallback_correct": true
+    },
+    {
+      "id": "G14",
+      "question": "What unique challenges did rural hospitals face compared to urban centers?",
+      "type": "factual",
+      "difficulty": "medium",
+      "answerable": true,
+      "expected_answer": "Rural hospitals faced a lack of local ICU beds (nearest tertiary center often an hour-plus away), forcing rapid stabilize-and-transfer; oxygen logistics dependent on cylinders and concentrators rather than pipelines; and acute workforce shortages where a single infected or quarantined staff member had outsized impact.",
+      "result": {
+        "query": "What unique challenges did rural hospitals face compared to urban centers?",
+        "answer": "Based on the interviews with Dr. David Thompson, Dr. Olivia Davis:\n\nThe pandemic showed the fragility and resilience of rural healthcare simultaneously. If we act on lessons learned, rural hospitals can be stronger and more equitable partners in national health security. Policy makers must recognize rural healthcare's distinct needs and fund durable solutions — not temporary stopgaps. Hospitals were overwhelmed and understandably focused on patient care.",
+        "is_fallback": false,
+        "fallback_reason": "",
+        "confidence": 0.745,
+        "provider": "extractive",
+        "citations": [
+          {
+            "chunk_id": "Dr_David_Thompson_US_Detailed_Interview::q16",
+            "doctor": "Dr. David Thompson",
+            "country": "US",
+            "source_file": "Dr_David_Thompson_US_Detailed_Interview.docx",
+            "quote": "The pandemic showed the fragility and resilience of rural healthcare simultaneously.",
+            "relevance": 0.549
+          },
+          {
+            "chunk_id": "Dr_David_Thompson_US_Detailed_Interview::q16",
+            "doctor": "Dr. David Thompson",
+            "country": "US",
+            "source_file": "Dr_David_Thompson_US_Detailed_Interview.docx",
+            "quote": "If we act on lessons learned, rural hospitals can be stronger and more equitable partners in national health security.",
+            "relevance": 0.537
+          },
+          {
+            "chunk_id": "Dr_David_Thompson_US_Detailed_Interview::q16",
+            "doctor": "Dr. David Thompson",
+            "country": "US",
+            "source_file": "Dr_David_Thompson_US_Detailed_Interview.docx",
+            "quote": "Policy makers must recognize rural healthcare's distinct needs and fund durable solutions — not temporary stopgaps.",
+            "relevance": 0.462
+          },
+          {
+            "chunk_id": "Dr_Olivia_Davis_US_Detailed_Interview::q03",
+            "doctor": "Dr. Olivia Davis",
+            "country": "US",
+            "source_file": "Dr_Olivia_Davis_US_Detailed_Interview.docx",
+            "quote": "Hospitals were overwhelmed and understandably focused on patient care.",
+            "relevance": 0.457
+          }
+        ],
+        "used_chunk_ids": [
+          "Dr_Olivia_Davis_US_Detailed_Interview::q03",
+          "Dr_David_Thompson_US_Detailed_Interview::q16"
+        ],
+        "retrieved_chunk_ids": [
+          "Dr_David_Thompson_US_Detailed_Interview::q03",
+          "Dr_David_Thompson_US_Detailed_Interview::q15",
+          "Dr_David_Thompson_US_Detailed_Interview::q10",
+          "Dr_Olivia_Davis_US_Detailed_Interview::q03",
+          "Dr_David_Thompson_US_Detailed_Interview::q16"
+        ],
+        "timings_ms": {
+          "retrieval": 53.7,
+          "generation": 255.4,
+          "total": 309.1
+        }
+      },
+      "metrics": {
+        "context_relevance": 0.6057869911193847,
+        "groundedness": 0.7099113638202349,
+        "answer_relevance": 0.5875168442726135,
+        "answer_correctness": 0.49139469861984253,
+        "hit_rate": 1.0,
+        "mrr": 1.0,
+        "context_precision": 0.2,
+        "context_recall": 1.0,
+        "citation_grounding": 1.0,
+        "citation_source_precision": 0.0,
+        "citation_source_recall": 0.0,
+        "n_citations": 4,
+        "fallback_correct": 1.0,
+        "latency_ms_total": 309.1,
+        "latency_ms_retrieval": 53.7,
+        "latency_ms_generation": 255.4
+      },
+      "is_fallback": false,
+      "fallback_correct": true
+    },
+    {
+      "id": "G15",
+      "question": "How did the approved age ranges for adolescent COVID vaccination compare between India and Germany?",
+      "type": "comparative",
+      "difficulty": "hard",
+      "answerable": true,
+      "expected_answer": "India approved vaccines for 15- to 18-year-olds and ran school-based vaccination drives (Dr. Singh). In Germany, the European Medicines Agency approved vaccines for 12- to 15-year-olds in mid-2021, with younger groups later; adolescent uptake in Dr. Hoffmann's region exceeded 70% by early 2022.",
+      "result": {
+        "query": "How did the approved age ranges for adolescent COVID vaccination compare between India and Germany?",
+        "answer": "Based on the interviews with Dr. Anjali Singh, Dr. Clara Hoffmann, Dr. Kavita Joshi:\n\nThe European Medicines Agency approved vaccines for 12- to 15-year-olds mid-2021, and younger age groups later. When India approved vaccines for 15 18-year-olds, we organized school-based vaccination drives in coordination with the district health department. By early 2022, vaccination uptake among adolescents in our region exceeded 70%. Initially, vaccine hesitancy was significant, especially in rural areas.",
+        "is_fallback": false,
+        "fallback_reason": "",
+        "confidence": 0.66,
+        "provider": "extractive",
+        "citations": [
+          {
+            "chunk_id": "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q06",
+            "doctor": "Dr. Clara Hoffmann",
+            "country": "Germany",
+            "source_file": "Dr_Clara_Hoffmann_Germany_Detailed_Interview.pdf",
+            "quote": "The European Medicines Agency approved vaccines for 12- to 15-year-olds mid-2021, and younger age groups later.",
+            "relevance": 0.658
+          },
+          {
+            "chunk_id": "Dr_Anjali_Singh_India_Detailed_Interview::q06",
+            "doctor": "Dr. Anjali Singh",
+            "country": "India",
+            "source_file": "Dr_Anjali_Singh_India_Detailed_Interview.pdf",
+            "quote": "When India approved vaccines for 15 18-year-olds, we organized school-based vaccination drives in coordination with the district health department.",
+            "relevance": 0.632
+          },
+          {
+            "chunk_id": "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q06",
+            "doctor": "Dr. Clara Hoffmann",
+            "country": "Germany",
+            "source_file": "Dr_Clara_Hoffmann_Germany_Detailed_Interview.pdf",
+            "quote": "By early 2022, vaccination uptake among adolescents in our region exceeded 70%.",
+            "relevance": 0.62
+          },
+          {
+            "chunk_id": "Dr_Kavita_Joshi_India_Detailed_Interview::q11",
+            "doctor": "Dr. Kavita Joshi",
+            "country": "India",
+            "source_file": "Dr_Kavita_Joshi_India_Detailed_Interview.pdf",
+            "quote": "Initially, vaccine hesitancy was significant, especially in rural areas.",
+            "relevance": 0.546
+          }
+        ],
+        "used_chunk_ids": [
+          "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q06",
+          "Dr_Anjali_Singh_India_Detailed_Interview::q06",
+          "Dr_Kavita_Joshi_India_Detailed_Interview::q11"
+        ],
+        "retrieved_chunk_ids": [
+          "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q06",
+          "Dr_Anjali_Singh_India_Detailed_Interview::q06",
+          "Dr_Priya_Sharma_India_Detailed_Interview::q07",
+          "Dr_Neha_Reddy_India_Detailed_Interview::q13",
+          "Dr_Kavita_Joshi_India_Detailed_Interview::q11"
+        ],
+        "timings_ms": {
+          "retrieval": 54.7,
+          "generation": 306.9,
+          "total": 361.6
+        }
+      },
+      "metrics": {
+        "context_relevance": 0.5770996928215026,
+        "groundedness": 0.6638166776725224,
+        "answer_relevance": 0.7384158372879028,
+        "answer_correctness": 0.9365638494491577,
+        "hit_rate": 1.0,
+        "mrr": 1.0,
+        "context_precision": 0.4,
+        "context_recall": 1.0,
+        "citation_grounding": 1.0,
+        "citation_source_precision": 0.6666666666666666,
+        "citation_source_recall": 1.0,
+        "n_citations": 4,
+        "fallback_correct": 1.0,
+        "latency_ms_total": 361.6,
+        "latency_ms_retrieval": 54.7,
+        "latency_ms_generation": 306.9
+      },
+      "is_fallback": false,
+      "fallback_correct": true
+    },
+    {
+      "id": "G16",
+      "question": "What was the COVID-19 mortality rate in Brazil during 2021?",
+      "type": "fallback",
+      "difficulty": "easy",
+      "answerable": false,
+      "expected_answer": "FALLBACK: The interview corpus only covers doctors from the US, India, and Germany and does not contain mortality statistics for Brazil, so this question cannot be answered from the available transcripts.",
+      "result": {
+        "query": "What was the COVID-19 mortality rate in Brazil during 2021?",
+        "answer": "Based on the interviews with Dr. Emily Roberts, Dr. Lukas Meier, Dr. Priya Sharma:\n\nThe pandemic underscored that pathogens don’t respect borders, and neither should solutions. I’ve been in critical care medicine for over 12 years, but nothing in my training prepared me for what we faced in 2020 and especially during the Delta wave in 2021. COVID may have isolated people physically, but it united scientists intellectually. During the first wave, we shared ventilator protocols and mortality data weekly with colleagues abroad.",
+        "is_fallback": false,
+        "fallback_reason": "",
+        "confidence": 0.446,
+        "provider": "extractive",
+        "citations": [
+          {
+            "chunk_id": "Dr_Emily_Roberts_US_Detailed_Interview::q13",
+            "doctor": "Dr. Emily Roberts",
+            "country": "US",
+            "source_file": "Dr_Emily_Roberts_US_Detailed_Interview.docx",
+            "quote": "The pandemic underscored that pathogens don’t respect borders, and neither should solutions.",
+            "relevance": 0.349
+          },
+          {
+            "chunk_id": "Dr_Priya_Sharma_India_Detailed_Interview::q01",
+            "doctor": "Dr. Priya Sharma",
+            "country": "India",
+            "source_file": "Dr_Priya_Sharma_India_Detailed_Interview.docx",
+            "quote": "I’ve been in critical care medicine for over 12 years, but nothing in my training prepared me for what we faced in 2020 and especially during the Delta wave in 2021.",
+            "relevance": 0.348
+          },
+          {
+            "chunk_id": "Dr_Lukas_Meier_Germany_Detailed_Interview::q09",
+            "doctor": "Dr. Lukas Meier",
+            "country": "Germany",
+            "source_file": "Dr_Lukas_Meier_Germany_Detailed_Interview.pdf",
+            "quote": "COVID may have isolated people physically, but it united scientists intellectually.",
+            "relevance": 0.331
+          },
+          {
+            "chunk_id": "Dr_Lukas_Meier_Germany_Detailed_Interview::q09",
+            "doctor": "Dr. Lukas Meier",
+            "country": "Germany",
+            "source_file": "Dr_Lukas_Meier_Germany_Detailed_Interview.pdf",
+            "quote": "During the first wave, we shared ventilator protocols and mortality data weekly with colleagues abroad.",
+            "relevance": 0.283
+          }
+        ],
+        "used_chunk_ids": [
+          "Dr_Priya_Sharma_India_Detailed_Interview::q01",
+          "Dr_Lukas_Meier_Germany_Detailed_Interview::q09",
+          "Dr_Emily_Roberts_US_Detailed_Interview::q13"
+        ],
+        "retrieved_chunk_ids": [
+          "Dr_David_Thompson_US_Detailed_Interview::q02",
+          "Dr_Priya_Sharma_India_Detailed_Interview::q01",
+          "Dr_Lukas_Meier_Germany_Detailed_Interview::q09",
+          "Dr_Emily_Roberts_US_Detailed_Interview::q05",
+          "Dr_Emily_Roberts_US_Detailed_Interview::q13"
+        ],
+        "timings_ms": {
+          "retrieval": 45.1,
+          "generation": 351.4,
+          "total": 396.5
+        }
+      },
+      "metrics": {
+        "context_relevance": 0.4176613211631775,
+        "groundedness": 0.718032249382564,
+        "answer_relevance": 0.5165406465530396,
+        "answer_correctness": 0.3705670237541199,
+        "hit_rate": NaN,
+        "mrr": NaN,
+        "context_precision": NaN,
+        "context_recall": NaN,
+        "citation_grounding": 1.0,
+        "citation_source_precision": NaN,
+        "citation_source_recall": NaN,
+        "n_citations": 4,
+        "fallback_correct": 0.0,
+        "latency_ms_total": 396.5,
+        "latency_ms_retrieval": 45.1,
+        "latency_ms_generation": 351.4
+      },
+      "is_fallback": false,
+      "fallback_correct": false
+    },
+    {
+      "id": "G17",
+      "question": "What is the exact recommended dose of dexamethasone for a COVID-19 patient?",
+      "type": "fallback",
+      "difficulty": "hard",
+      "answerable": false,
+      "expected_answer": "FALLBACK: The transcripts mention that dexamethasone became the game-changer for moderate-to-severe COVID, but they do NOT specify any dosage. The system should refuse to invent a dose rather than hallucinate one.",
+      "result": {
+        "query": "What is the exact recommended dose of dexamethasone for a COVID-19 patient?",
+        "answer": "Based on the interviews with Dr. Arjun Mehta, Dr. Michael Anderson, Dr. Priya Sharma, Dr. Ravi Kumar:\n\nThe game-changer was dexamethasone for moderate to severe cases. Trials that later demonstrated benefit, such as dexamethasone for hypoxic patients, were rapidly adopted and became part of our standardized order sets. We were treating hundreds of patients a day — from mild infections to fulminant ARDS — with limited staff and resources. I've been managing ICUs for more than 15 years, but COVID-19 was unlike anything we had ever faced.",
+        "is_fallback": false,
+        "fallback_reason": "",
+        "confidence": 0.441,
+        "provider": "extractive",
+        "citations": [
+          {
+            "chunk_id": "Dr_Arjun_Mehta_India_Detailed_Interview::q08",
+            "doctor": "Dr. Arjun Mehta",
+            "country": "India",
+            "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
+            "quote": "The game-changer was dexamethasone for moderate to severe cases.",
+            "relevance": 0.49
+          },
+          {
+            "chunk_id": "Dr_Michael_Anderson_US_Detailed_Interview::q08",
+            "doctor": "Dr. Michael Anderson",
+            "country": "US",
+            "source_file": "Dr_Michael_Anderson_US_Detailed_Interview.pdf",
+            "quote": "Trials that later demonstrated benefit, such as dexamethasone for hypoxic patients, were rapidly adopted and became part of our standardized order sets.",
+            "relevance": 0.479
+          },
+          {
+            "chunk_id": "Dr_Priya_Sharma_India_Detailed_Interview::q01",
+            "doctor": "Dr. Priya Sharma",
+            "country": "India",
+            "source_file": "Dr_Priya_Sharma_India_Detailed_Interview.docx",
+            "quote": "We were treating hundreds of patients a day — from mild infections to fulminant ARDS — with limited staff and resources.",
+            "relevance": 0.341
+          },
+          {
+            "chunk_id": "Dr_Ravi_Kumar_India_Detailed_Interview::q01",
+            "doctor": "Dr. Ravi Kumar",
+            "country": "India",
+            "source_file": "Dr_Ravi_Kumar_India_Detailed_Interview.pdf",
+            "quote": "I've been managing ICUs for more than 15 years, but COVID-19 was unlike anything we had ever faced.",
+            "relevance": 0.327
+          }
+        ],
+        "used_chunk_ids": [
+          "Dr_Arjun_Mehta_India_Detailed_Interview::q08",
+          "Dr_Priya_Sharma_India_Detailed_Interview::q01",
+          "Dr_Michael_Anderson_US_Detailed_Interview::q08",
+          "Dr_Ravi_Kumar_India_Detailed_Interview::q01"
+        ],
+        "retrieved_chunk_ids": [
+          "Dr_Arjun_Mehta_India_Detailed_Interview::q08",
+          "Dr_Priya_Sharma_India_Detailed_Interview::q01",
+          "Dr_Michael_Anderson_US_Detailed_Interview::q08",
+          "Dr_Ravi_Kumar_India_Detailed_Interview::q01",
+          "Dr_Felix_Schneider_Germany_Detailed_Interview::q01"
+        ],
+        "timings_ms": {
+          "retrieval": 52.3,
+          "generation": 377.4,
+          "total": 429.7
+        }
+      },
+      "metrics": {
+        "context_relevance": 0.33001878261566164,
+        "groundedness": 0.7676075212657452,
+        "answer_relevance": 0.6203956604003906,
+        "answer_correctness": 0.736327052116394,
+        "hit_rate": NaN,
+        "mrr": NaN,
+        "context_precision": NaN,
+        "context_recall": NaN,
+        "citation_grounding": 1.0,
+        "citation_source_precision": NaN,
+        "citation_source_recall": NaN,
+        "n_citations": 4,
+        "fallback_correct": 0.0,
+        "latency_ms_total": 429.7,
+        "latency_ms_retrieval": 52.3,
+        "latency_ms_generation": 377.4
+      },
+      "is_fallback": false,
+      "fallback_correct": false
+    },
+    {
+      "id": "G18",
+      "question": "Can you give me a step-by-step recipe for chicken biryani?",
+      "type": "fallback",
+      "difficulty": "easy",
+      "answerable": false,
+      "expected_answer": "FALLBACK: This is unrelated to the COVID-19 medical interview corpus; no relevant passages exist, so the system should decline and explain why.",
+      "result": {
+        "query": "Can you give me a step-by-step recipe for chicken biryani?",
+        "answer": "I'm not able to answer this question from the available interview transcripts. Reason: The knowledge base does not contain interview passages that are semantically relevant to this question (best match similarity 0.09 < threshold 0.40). It may be outside the scope of these COVID-19 doctor interviews.",
+        "is_fallback": true,
+        "fallback_reason": "The knowledge base does not contain interview passages that are semantically relevant to this question (best match similarity 0.09 < threshold 0.40). It may be outside the scope of these COVID-19 doctor interviews.",
+        "confidence": 0.088,
+        "provider": "extractive",
+        "citations": [],
+        "used_chunk_ids": [],
+        "retrieved_chunk_ids": [
+          "Dr_Sarah_Johnson_US_Detailed_Interview::q01",
+          "Dr_Michael_Anderson_US_Detailed_Interview::q01",
+          "Dr_Priya_Sharma_India_Detailed_Interview::q01",
+          "Dr_Neha_Reddy_India_Detailed_Interview::q13",
+          "Dr_James_Miller_US_Detailed_Interview::q04"
+        ],
+        "timings_ms": {
+          "retrieval": 54.6,
+          "generation": 0.0,
+          "total": 54.6
+        }
+      },
+      "metrics": {
+        "context_relevance": 0.028956525772809983,
+        "groundedness": NaN,
+        "answer_relevance": NaN,
+        "answer_correctness": NaN,
+        "hit_rate": NaN,
+        "mrr": NaN,
+        "context_precision": NaN,
+        "context_recall": NaN,
+        "citation_grounding": NaN,
+        "citation_source_precision": NaN,
+        "citation_source_recall": NaN,
+        "n_citations": 0,
+        "fallback_correct": 1.0,
+        "latency_ms_total": 54.6,
+        "latency_ms_retrieval": 54.6,
+        "latency_ms_generation": 0.0
+      },
+      "is_fallback": true,
+      "fallback_correct": true
+    }
+  ],
+  "aggregate": {
+    "n_items": 18,
+    "n_answerable": 15,
+    "n_fallback_expected": 3,
+    "rag_triad": {
+      "context_relevance": 0.4893,
+      "groundedness": 0.7141,
+      "answer_relevance": 0.6681
+    },
+    "rag_triad_score": 0.6238,
+    "all_metrics": {
+      "context_relevance": 0.4893,
+      "groundedness": 0.7141,
+      "answer_relevance": 0.6681,
+      "answer_correctness": 0.6175,
+      "hit_rate": 0.9333,
+      "mrr": 0.8444,
+      "context_precision": 0.2667,
+      "context_recall": 0.8889,
+      "citation_grounding": 1.0,
+      "citation_source_precision": 0.2667,
+      "citation_source_recall": 0.5222,
+      "fallback_correct": 0.8889,
+      "latency_ms_total": 360.4,
+      "latency_ms_retrieval": 53.0278,
+      "latency_ms_generation": 307.3722
+    },
+    "by_type": {
+      "comparative": {
+        "n": 1,
+        "answer_correctness": 0.9366,
+        "context_recall": 1.0,
+        "fallback_correct": 1.0
+      },
+      "factual": {
+        "n": 8,
+        "answer_correctness": 0.5717,
+        "context_recall": 0.875,
+        "fallback_correct": 1.0
+      },
+      "fallback": {
+        "n": 3,
+        "answer_correctness": 0.5534,
+        "context_recall": NaN,
+        "fallback_correct": 0.3333
+      },
+      "multi_hop": {
+        "n": 3,
+        "answer_correctness": 0.5081,
+        "context_recall": 0.8889,
+        "fallback_correct": 1.0
+      },
+      "specific_term": {
+        "n": 3,
+        "answer_correctness": 0.7852,
+        "context_recall": 0.8889,
+        "fallback_correct": 1.0
+      }
+    }
+  },
+  "meta": {
+    "embedder": "sentence-transformers:all-MiniLM-L6-v2",
+    "provider": "extractive",
+    "judge_llm": false,
+    "generated_at": "2026-06-04T12:41:19"
+  }
+}

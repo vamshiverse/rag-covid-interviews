@@ -1,0 +1,268 @@
+{
+  "metadata": {
+    "name": "COVID-19 Doctor Interviews - Golden Benchmark v1",
+    "description": "Curated Q&A grounded in the interview transcripts. Each item carries the IDEAL final answer AND the expected intermediate outputs (which Q&A chunks should be retrieved + which lines should be cited), so the evaluation pipeline can score retrieval, answering, AND grounding. Includes unanswerable cases that SHOULD trigger the fallback system.",
+    "authoring": "Hand-crafted tricky/comparative/fallback cases + auto-drafted factual cases, all verified against the source chunks.",
+    "n_items": 18
+  },
+  "items": [
+    {
+      "id": "G01",
+      "question": "What is MIS-C and how was it treated in children?",
+      "type": "specific_term",
+      "difficulty": "easy",
+      "topic": "Pediatrics & MIS-C",
+      "countries": ["India", "Germany"],
+      "answerable": true,
+      "expected_answer": "MIS-C (Multi-System Inflammatory Syndrome in Children) is a post-infectious syndrome that appeared weeks after COVID infection, even after mild or asymptomatic disease, presenting with persistent fever, rash, low blood pressure and cardiac involvement. It was treated with IV immunoglobulin (IVIG) and steroids, and early recognition was key to good outcomes.",
+      "expected_source_ids": ["Dr_Anjali_Singh_India_Detailed_Interview::q05", "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q03", "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q09"],
+      "expected_citations": [
+        "the MIS-C cases - Multi-System Inflammatory Syndrome in Children - were our biggest concern",
+        "We treated several with IV immunoglobulin and steroids. Early recognition was key.",
+        "We coordinated with cardiology and immunology units to design treatment pathways using IVIG and steroids."
+      ]
+    },
+    {
+      "id": "G02",
+      "question": "What is 'happy hypoxia' and why was it dangerous?",
+      "type": "specific_term",
+      "difficulty": "medium",
+      "topic": "ICU & Critical Care",
+      "countries": ["India"],
+      "answerable": true,
+      "expected_answer": "'Happy hypoxia' described COVID patients who were sitting up and talking, appearing stable, despite dangerously low oxygen saturations (SpO2 as low as 60%). It was dangerous because these patients looked fine and then could crash suddenly.",
+      "expected_source_ids": ["Dr_Arjun_Mehta_India_Detailed_Interview::q03"],
+      "expected_citations": [
+        "The hardest cases were those in the “happy hypoxia” category - patients sitting up and talking with SpO₂ of 60%. You’d think they were stable, and then they’d crash."
+      ]
+    },
+    {
+      "id": "G03",
+      "question": "How did hospitals cope with oxygen shortages during surges?",
+      "type": "multi_hop",
+      "difficulty": "hard",
+      "topic": "ICU & Critical Care",
+      "countries": ["India", "US"],
+      "answerable": true,
+      "expected_answer": "Hospitals used several strategies: real-time oxygen dashboards and a dedicated oxygen officer to track flow and avoid wastage, prioritizing ventilators by likelihood of benefit, and using non-invasive ventilation/high-flow nasal cannula to delay intubation (Dr. Mehta, Mumbai). Rural US hospitals relied on cylinders and concentrators, mobile oxygen trailers, and pooling supplies with nearby hospitals, coordinating with state emergency management (Dr. Thompson, Ohio).",
+      "expected_source_ids": ["Dr_Arjun_Mehta_India_Detailed_Interview::q06", "Dr_David_Thompson_US_Detailed_Interview::q11", "Dr_David_Thompson_US_Detailed_Interview::q03"],
+      "expected_citations": [
+        "We implemented a real-time oxygen dashboard and appointed a central oxygen officer",
+        "We also used non-invasive ventilation and high-flow nasal cannula to delay intubation when possible.",
+        "Some creative solutions included mobile oxygen trailer deployments and pooling resources with nearby hospitals to balance supplies."
+      ]
+    },
+    {
+      "id": "G04",
+      "question": "Which medication emerged as the game-changer for moderate to severe COVID?",
+      "type": "factual",
+      "difficulty": "medium",
+      "topic": "ICU & Critical Care",
+      "countries": ["India"],
+      "answerable": true,
+      "expected_answer": "Dexamethasone (a steroid) emerged as the game-changer for moderate to severe COVID. Other learnings included early proning, anticoagulation, and conservative fluid management, while remdesivir gave only modest results.",
+      "expected_source_ids": ["Dr_Arjun_Mehta_India_Detailed_Interview::q08"],
+      "expected_citations": [
+        "The game-changer was dexamethasone for moderate to severe cases. We also learned the value of early proning, anticoagulation, and conservative fluid management."
+      ]
+    },
+    {
+      "id": "G05",
+      "question": "What was the black market problem during India's Delta wave?",
+      "type": "factual",
+      "difficulty": "medium",
+      "topic": "Policy & Preparedness",
+      "countries": ["India"],
+      "answerable": true,
+      "expected_answer": "During the Delta wave, desperate families paid absurd prices on the black market for oxygen cylinders and drugs like remdesivir and tocilizumab. Dr. Mehta recalled a relative who paid ₹40,000 for a remdesivir vial that wouldn't even help at that disease stage. The government eventually cracked down, but chaos ruled during peak weeks.",
+      "expected_source_ids": ["Dr_Arjun_Mehta_India_Detailed_Interview::q05"],
+      "expected_citations": [
+        "Desperate families were paying absurd prices for oxygen cylinders and drugs like remdesivir and tocilizumab.",
+        "a patient’s relative showed me a vial of remdesivir bought for ₹40,000 on the black market"
+      ]
+    },
+    {
+      "id": "G06",
+      "question": "What drove the mucormycosis (black fungus) outbreak in India?",
+      "type": "specific_term",
+      "difficulty": "medium",
+      "topic": "Long COVID & Aftercare",
+      "countries": ["India"],
+      "answerable": true,
+      "expected_answer": "The mucormycosis ('black fungus') outbreak in mid-2021 was driven by the overuse of steroids and uncontrolled diabetes. Cases were disfiguring, painful and often fatal, requiring round-the-clock debridement surgeries by ENT and ophthalmology teams.",
+      "expected_source_ids": ["Dr_Arjun_Mehta_India_Detailed_Interview::q10"],
+      "expected_citations": [
+        "We saw dozens of patients with black fungus infections - disfiguring, painful, and often fatal. The overuse of steroids and uncontrolled diabetes were key drivers."
+      ]
+    },
+    {
+      "id": "G07",
+      "question": "How did doctors address vaccine hesitancy and misinformation?",
+      "type": "multi_hop",
+      "difficulty": "hard",
+      "topic": "Misinformation & Trust",
+      "countries": ["India", "US"],
+      "answerable": true,
+      "expected_answer": "Doctors used trusted local messengers and empathy rather than argument: community awareness camps and explanations in local languages via radio and WhatsApp in India (Dr. Singh); 'compassionate correction' that acknowledges fears while presenting facts, plus webinars with pastors and local influencers in the US (Dr. Roberts); and mobile clinics at churches and community centers using local physicians and clergy (Dr. Thompson).",
+      "expected_source_ids": ["Dr_Anjali_Singh_India_Detailed_Interview::q07", "Dr_Emily_Roberts_US_Detailed_Interview::q07", "Dr_David_Thompson_US_Detailed_Interview::q08"],
+      "expected_citations": [
+        "We organized community awareness camps, using pediatricians as trusted messengers. We spoke in local languages, through radio and WhatsApp groups",
+        "training clinicians in “compassionate correction” - acknowledging fears while calmly presenting facts",
+        "using local family physicians, clergy, and community leaders to communicate benefits helped substantially"
+      ]
+    },
+    {
+      "id": "G08",
+      "question": "What digital tools and data systems supported Germany's pandemic response?",
+      "type": "factual",
+      "difficulty": "medium",
+      "topic": "Policy & Preparedness",
+      "countries": ["Germany"],
+      "answerable": true,
+      "expected_answer": "Germany used RKI dashboards, digital contact-tracing apps like the Corona-Warn-App, and interoperable hospital databases, enabling near real-time surveillance of transmission in neighborhoods and workplaces. Data privacy laws, while essential, sometimes slowed integration.",
+      "expected_source_ids": ["Dr_Anna_Weber_Germany_Detailed_Interview::q10"],
+      "expected_citations": [
+        "The RKI dashboards, digital contact tracing apps like Corona-Warn-App, and interoperable hospital databases allowed near real-time surveillance."
+      ]
+    },
+    {
+      "id": "G09",
+      "question": "How did Germany detect and document asymptomatic spread?",
+      "type": "factual",
+      "difficulty": "medium",
+      "topic": "Testing & Contact Tracing",
+      "countries": ["Germany"],
+      "answerable": true,
+      "expected_answer": "Dr. Weber's hospital documented asymptomatic spread early by finding viral loads in patients with no symptoms similar to those who were severely ill - a discovery that changed global infection control strategy. They later did genomic sequencing with the Robert Koch Institute to track Alpha and Delta variants in Bavaria.",
+      "expected_source_ids": ["Dr_Anna_Weber_Germany_Detailed_Interview::q06"],
+      "expected_citations": [
+        "we found viral loads in patients with no symptoms similar to those who were severely ill. That discovery changed global infection control strategy."
+      ]
+    },
+    {
+      "id": "G10",
+      "question": "What infection-control measures worked best in hospitals?",
+      "type": "factual",
+      "difficulty": "easy",
+      "topic": "PPE & Infection Control",
+      "countries": ["US"],
+      "answerable": true,
+      "expected_answer": "The three measures that made the biggest difference were universal masking (which dramatically dropped healthcare-worker infections), airflow redesign converting wards to negative-pressure units with portable HEPA filters, and testing/triage at the front door, alongside a cohorting model dedicating entire wings to COVID-positive patients.",
+      "expected_source_ids": ["Dr_Emily_Roberts_US_Detailed_Interview::q03"],
+      "expected_citations": [
+        "First, universal masking - once we implemented it hospital-wide, healthcare worker infections dropped dramatically.",
+        "designating entire wings for COVID-positive patients to minimize staff cross-contamination"
+      ]
+    },
+    {
+      "id": "G11",
+      "question": "What creative solutions did hospitals use during PPE shortages?",
+      "type": "multi_hop",
+      "difficulty": "medium",
+      "topic": "PPE & Infection Control",
+      "countries": ["US"],
+      "answerable": true,
+      "expected_answer": "Hospitals reused and extended N95 use with sterilization via vaporized hydrogen peroxide and UV systems, trained 'PPE monitors' to oversee donning/doffing, and relied on 3D-printed face shields and community-sewn fabric gowns (Dr. Roberts). Rural hospitals used conservation, regional distributors, and local manufacturers who pivoted to making masks and gowns (Dr. Thompson).",
+      "expected_source_ids": ["Dr_Emily_Roberts_US_Detailed_Interview::q04", "Dr_David_Thompson_US_Detailed_Interview::q11"],
+      "expected_citations": [
+        "Reuse and extended use of N95s were implemented with sterilization via vaporized hydrogen peroxide and UV systems.",
+        "Local universities 3D-printed face shields, and some community sewing groups produced fabric gowns",
+        "For PPE, we initially relied on conservation strategies, such as extended use of N95s and reprocessing where feasible."
+      ]
+    },
+    {
+      "id": "G12",
+      "question": "At what oxygen saturation did Dr. Johnson tell home-monitored patients to seek emergency care?",
+      "type": "factual",
+      "difficulty": "easy",
+      "topic": "Telemedicine & Remote Care",
+      "countries": ["US"],
+      "answerable": true,
+      "expected_answer": "Patients on home remote monitoring were instructed to seek emergency care if their SpO2 (oxygen saturation) fell below 92%, or if they developed new confusion or chest pain.",
+      "expected_source_ids": ["Dr_Sarah_Johnson_US_Detailed_Interview::q05"],
+      "expected_citations": [
+        "instructing patients to seek emergency care if SpO2 fell below 92% or if they developed new confusion or chest pain"
+      ]
+    },
+    {
+      "id": "G13",
+      "question": "How were children's routine immunizations and nutrition affected during India's lockdowns?",
+      "type": "factual",
+      "difficulty": "medium",
+      "topic": "Equity & Vulnerable Groups",
+      "countries": ["India"],
+      "answerable": true,
+      "expected_answer": "Routine immunizations were delayed for months, especially in rural and peri-urban areas, and nutritional programs like the mid-day meal scheme were suspended, worsening malnutrition. Children presented with weight loss, anemia and developmental delays.",
+      "expected_source_ids": ["Dr_Anjali_Singh_India_Detailed_Interview::q03"],
+      "expected_citations": [
+        "routine immunizations were delayed, especially in rural and peri-urban areas. Nutritional programs like the mid-day meal scheme were suspended, worsening malnutrition."
+      ]
+    },
+    {
+      "id": "G14",
+      "question": "What unique challenges did rural hospitals face compared to urban centers?",
+      "type": "factual",
+      "difficulty": "medium",
+      "topic": "Equity & Vulnerable Groups",
+      "countries": ["US"],
+      "answerable": true,
+      "expected_answer": "Rural hospitals faced a lack of local ICU beds (nearest tertiary center often an hour-plus away), forcing rapid stabilize-and-transfer; oxygen logistics dependent on cylinders and concentrators rather than pipelines; and acute workforce shortages where a single infected or quarantined staff member had outsized impact.",
+      "expected_source_ids": ["Dr_David_Thompson_US_Detailed_Interview::q03"],
+      "expected_citations": [
+        "the nearest tertiary center with full ICU services was often an hour-plus away",
+        "oxygen supply logistics - we don't have large pipeline systems; we rely on cylinders and concentrators"
+      ]
+    },
+    {
+      "id": "G15",
+      "question": "How did the approved age ranges for adolescent COVID vaccination compare between India and Germany?",
+      "type": "comparative",
+      "difficulty": "hard",
+      "topic": "Vaccination & Hesitancy",
+      "countries": ["India", "Germany"],
+      "answerable": true,
+      "expected_answer": "India approved vaccines for 15- to 18-year-olds and ran school-based vaccination drives (Dr. Singh). In Germany, the European Medicines Agency approved vaccines for 12- to 15-year-olds in mid-2021, with younger groups later; adolescent uptake in Dr. Hoffmann's region exceeded 70% by early 2022.",
+      "expected_source_ids": ["Dr_Anjali_Singh_India_Detailed_Interview::q06", "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q06"],
+      "expected_citations": [
+        "When India approved vaccines for 15 18-year-olds, we organized school-based vaccination drives",
+        "The European Medicines Agency approved vaccines for 12- to 15-year-olds mid-2021, and younger age groups later."
+      ]
+    },
+    {
+      "id": "G16",
+      "question": "What was the COVID-19 mortality rate in Brazil during 2021?",
+      "type": "fallback",
+      "difficulty": "easy",
+      "topic": "Out of scope",
+      "countries": [],
+      "answerable": false,
+      "expected_answer": "FALLBACK: The interview corpus only covers doctors from the US, India, and Germany and does not contain mortality statistics for Brazil, so this question cannot be answered from the available transcripts.",
+      "expected_source_ids": [],
+      "expected_citations": []
+    },
+    {
+      "id": "G17",
+      "question": "What is the exact recommended dose of dexamethasone for a COVID-19 patient?",
+      "type": "fallback",
+      "difficulty": "hard",
+      "topic": "Out of scope (detail not in corpus)",
+      "countries": [],
+      "answerable": false,
+      "expected_answer": "FALLBACK: The transcripts mention that dexamethasone became the game-changer for moderate-to-severe COVID, but they do NOT specify any dosage. The system should refuse to invent a dose rather than hallucinate one.",
+      "expected_source_ids": [],
+      "expected_citations": []
+    },
+    {
+      "id": "G18",
+      "question": "Can you give me a step-by-step recipe for chicken biryani?",
+      "type": "fallback",
+      "difficulty": "easy",
+      "topic": "Out of scope",
+      "countries": [],
+      "answerable": false,
+      "expected_answer": "FALLBACK: This is unrelated to the COVID-19 medical interview corpus; no relevant passages exist, so the system should decline and explain why.",
+      "expected_source_ids": [],
+      "expected_citations": []
+    }
+  ]
+}

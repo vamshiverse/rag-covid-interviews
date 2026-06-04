@@ -1,0 +1,10 @@
+# Streamlit configuration (used locally and on Streamlit Community Cloud)
+[theme]
+base = "light"
+primaryColor = "#1d6fb8"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f4f7fb"
+
+[server]
+headless = true
+maxUploadSize = 50

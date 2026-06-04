@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# macOS junk from the zipped corpus
+__MACOSX/
+._*
+.DS_Store
+
+# Streamlit / app scratch
+storage/*.log
+storage/chunks_dump.txt
+.streamlit/secrets.toml   # never commit secrets; config.toml IS committed for deploy
+
+# Keep the built index + cached eval results so the demo loads instantly:
+# (comment these out if you'd rather rebuild from scratch each clone)
+# storage/index/
+# storage/eval_results.json
