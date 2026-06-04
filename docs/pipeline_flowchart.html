@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>RAG Pipeline — Flowchart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    body{font-family:Segoe UI,Arial,sans-serif;margin:0;background:#f4f7fb;color:#0d3b66;}
+    header{background:linear-gradient(120deg,#0d3b66,#1d6fb8);color:#fff;padding:18px 28px;}
+    header h1{margin:0;font-size:1.4rem;}
+    header p{margin:4px 0 0;color:#dbeafe;font-size:.9rem;}
+    .wrap{padding:18px;}
+    .card{background:#fff;border:1px solid #e6e9ef;border-radius:12px;padding:14px;overflow:auto;}
+    .hint{color:#5b6573;font-size:.85rem;margin:10px 28px;}
+    @media print{header{-webkit-print-color-adjust:exact;print-color-adjust:exact;} .hint{display:none;}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Conversational RAG over COVID-19 Doctor Interviews — Pipeline</h1>
+    <p>Current config: MiniLM embeddings · hybrid (dense + BM25 → RRF) · MMR λ=0.8 · extractive generation · math judge</p>
+  </header>
+  <p class="hint">Tip: press <b>Ctrl+P → Save as PDF</b> to drop this into a slide deck. Edit the diagram in the
+  <code>&lt;pre class="mermaid"&gt;</code> block below (same source as <code>docs/PIPELINE.md</code>).</p>
+  <div class="wrap"><div class="card">
+<pre class="mermaid">
+flowchart TD
+  subgraph INGEST["① Ingestion &amp; Processing"]
+    A[PDF / DOCX transcripts<br/>20 interviews] --> B[Clean &amp; normalize text]
+    B --> C["Q&amp;A-aware chunking<br/>split on 'Interviewer:'<br/>question + answer kept together"]
+    C --> D["Extract metadata + topics<br/>doctor · country · specialty · topic"]
+  end
+  subgraph INDEX["② Hybrid Index (persisted to disk)"]
+    D --> E["Dense embeddings<br/>MiniLM · 384-dim"]
+    D --> F["BM25 lexical index"]
+    E --> G[(Hybrid Store<br/>dense.npy + chunks.json + BM25)]
+    F --> G
+  end
+  Q([User question]) --> R
+  subgraph RETRIEVE["③ Hybrid Retrieval Engine"]
+    R["Score every chunk:<br/>dense cosine + BM25"] --> S["Reciprocal Rank Fusion (RRF)"]
+    S --> T{"Metadata filter?<br/>(country / topic)"}
+    T -->|yes| U[Restrict to matching chunks]
+    T -->|no| V[Keep all candidates]
+    U --> W
+    V --> W["MMR re-rank<br/>drop near-duplicates · λ=0.8"]
+    W --> X[Top-k chunks + scores]
+  end
+  G -.loads.-> R
+  X --> GATE{"Fallback gate:<br/>best similarity ≥ threshold?"}
+  GATE -->|no| FB["⚠️ Fallback answer + reason<br/>(anti-hallucination)"]
+  GATE -->|yes| GEN
+  subgraph RESPOND["④ Response Engine"]
+    GEN["Generate answer<br/>extractive (default) · or LLM"] --> CITE["Attach citations<br/>quoted lines + doctor/country/file"]
+  end
+  CITE --> ANS([Grounded answer + citations])
+  FB --> ANS
+  subgraph EVAL["⑤ Evaluation Pipeline (self-scoring)"]
+    GD[(Golden dataset<br/>18 Q&amp;A + expected chunks/citations)] --> EV["Run engine on each question"]
+    EV --> JUDGE["Judge: math (default) · or LLM-as-judge"]
+    JUDGE --> M1["RAG Triad<br/>Context Relevance · Groundedness · Answer Relevance"]
+    JUDGE --> M2["Retrieval<br/>Hit Rate · MRR · Recall · Precision"]
+    JUDGE --> M3["Grounding<br/>Citation accuracy"]
+    JUDGE --> M4["Ops<br/>Fallback correctness · Latency"]
+  end
+  ANS -.evaluated by.-> EV
+  classDef store fill:#eef4fb,stroke:#1d6fb8,color:#0d3b66;
+  classDef gate fill:#fff7ed,stroke:#ea8c00,color:#7a3e00;
+  class G,GD store;
+  class GATE,T gate;
+</pre>
+  </div></div>
+  <script>mermaid.initialize({startOnLoad:true, theme:"base", flowchart:{useMaxWidth:true}});</script>
+</body>
+</html>
