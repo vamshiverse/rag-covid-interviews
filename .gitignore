@@ -8,6 +8,9 @@ __MACOSX/
 ._*
 .DS_Store
 
+# Excel/Office temp lock files (created while a workbook is open)
+~$*
+
 # Streamlit / app scratch
 storage/*.log
 storage/chunks_dump.txt
