@@ -93,30 +93,6 @@ chosen retrieval method after reading the corpus.
 - **Fallback:** a relevance gate refuses to answer when nothing relevant is found,
   and **explains why** (e.g. off-topic, or out of scope). See limitations below.
 
-### d) MMR + metadata filtering (retrieval refinements)
-Two techniques from the courses, chosen *because they fit this data*:
-
-- **Metadata filtering** — every chunk carries `country / doctor / specialty / topic`,
-  so you can scope a query (e.g. *“what did **German** doctors say about vaccines”*).
-  Clear precision win; exposed as filters in the Ask tab.
-- **MMR (Maximal Marginal Relevance)** — re-ranks the hybrid candidate pool to drop
-  **near-duplicate** chunks (e.g. three doctors giving the same vaccine-rollout
-  answer at 0.72–0.75 similarity) so the k slots hold *distinct* evidence. Relevance
-  in the MMR objective is the **normalised hybrid (fused) score** (keeps BM25 in play);
-  diversity is dense cosine. `λ` (default 0.8) trades relevance vs diversity.
-
-**Honest, measured finding:** on our golden benchmark MMR is roughly *neutral*
-(MRR 0.839 → 0.844, recall unchanged) — because the hybrid top-5 is already mostly
-distinct, and our gold evidence is intentionally topic-clustered, so aggressive
-diversity (low λ) actually *hurts* recall. MMR’s value here is **situational
-de-duplication** (fewer redundant chunks fed to the LLM, your exact intuition), not
-a headline metric jump. **Auto-merging was rejected** for the same data reason — our
-short, flat Q&A turns are already the right unit; merging would inject off-topic text.
-
-> Earlier a naive MMR (dense-only relevance + unnormalised scores) *degraded* recall
-> by 0.10 and MRR by 0.18 — a good reminder that a retrieval method must be matched to
-> the data and the scores must be on a comparable scale.
-
 ---
 
 ## 4. Evaluation framework

@@ -285,33 +285,11 @@ with tab_ask:
         query = st.text_input("Your question", value=default_q,
                               placeholder="Ask about the COVID-19 doctor interviews …")
 
-        with st.expander("⚙️ Retrieval options (metadata filters + MMR)"):
-            fc1, fc2, fc3 = st.columns([2, 2, 2])
-            with fc1:
-                f_country = st.multiselect("Filter by country",
-                                           res["retriever"].facet_values("country"))
-            with fc2:
-                f_topic = st.multiselect("Filter by topic",
-                                         res["retriever"].facet_values("topics"))
-            with fc3:
-                use_mmr = st.toggle("MMR diversification", value=True,
-                                    help="Drops near-duplicate chunks so the k slots "
-                                         "hold distinct evidence.")
-                mmr_lambda = st.slider("MMR λ (1=relevance, 0=diversity)", 0.0, 1.0,
-                                       config.MMR_LAMBDA, 0.05, disabled=not use_mmr)
-            filters = {}
-            if f_country:
-                filters["country"] = f_country
-            if f_topic:
-                filters["topics"] = f_topic
-
         go_btn = st.button("🔍 Answer", type="primary", disabled=not query.strip())
 
         if go_btn and query.strip():
-            res["retriever"].mmr_lambda = mmr_lambda
             with st.spinner("Retrieving + composing grounded answer …"):
-                result = res["engine"].answer(query, filters=filters or None,
-                                              use_mmr=use_mmr)
+                result = res["engine"].answer(query)
 
             # --- confidence + latency strip ---
             t = st.columns([1, 1, 1, 3])
@@ -343,11 +321,6 @@ with tab_ask:
 
             # --- retrieval transparency ---
             with st.expander("🔬 Retrieval details — how hybrid search ranked the chunks"):
-                bits = ["**dense + BM25 → RRF**"]
-                bits.append(f"**MMR** λ={mmr_lambda:.2f}" if use_mmr else "MMR off")
-                if filters:
-                    bits.append("filters: " + ", ".join(f"{k}={v}" for k, v in filters.items()))
-                st.caption("Pipeline: " + "  ·  ".join(bits))
                 rows = [{
                     "chunk": rc.id.split("::")[-1],
                     "doctor": rc.chunk["doctor"].replace("Dr. ", ""),

@@ -59,12 +59,6 @@ RRF_K = int(_env("RAG_RRF_K", "60"))           # reciprocal-rank-fusion constant
 DENSE_WEIGHT = float(_env("RAG_DENSE_WEIGHT", "1.0"))
 SPARSE_WEIGHT = float(_env("RAG_SPARSE_WEIGHT", "1.0"))
 
-# Maximal Marginal Relevance: re-rank the hybrid candidate pool to drop near-
-# duplicate chunks (e.g. two doctors saying the same thing) and spend the k slots
-# on DISTINCT relevant material. lambda=1.0 -> pure relevance, 0.0 -> pure diversity.
-USE_MMR = _env("RAG_USE_MMR", "true").lower() in ("1", "true", "yes")
-MMR_LAMBDA = float(_env("RAG_MMR_LAMBDA", "0.8"))   # relevance-leaning; only drops near-dups
-
 # ----------------------------------------------------------- fallback -------
 # If the best retrieved chunk's similarity to the query is below this, the
 # response engine refuses to answer and explains why (anti-hallucination).

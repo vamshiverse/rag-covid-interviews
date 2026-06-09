@@ -103,35 +103,25 @@ class ResponseEngine:
                 self.provider = "extractive"   # key missing -> degrade
 
     # ------------------------------------------------------ public API ------
-    def answer(self, query: str, top_k: int | None = None,
-               filters: dict | None = None,
-               use_mmr: bool | None = None) -> AnswerResult:
+    def answer(self, query: str, top_k: int | None = None) -> AnswerResult:
         top_k = top_k or self.top_k
         timings = {}
 
         t0 = time.perf_counter()
-        retrieved = self.retriever.search(query, top_k=top_k, filters=filters,
-                                          use_mmr=use_mmr)
-        # Best semantic similarity drives the fallback gate. Without filters we use
-        # the global corpus max (a truer "is anything relevant?" signal); with
-        # filters we judge within the filtered subset (the retrieved chunks).
-        if not retrieved:
-            best_sim = 0.0
-        elif filters:
-            best_sim = max(rc.dense_score for rc in retrieved)
-        else:
-            best_sim = self.retriever.max_dense_similarity(query)
+        retrieved = self.retriever.search(query, top_k=top_k)
+        # Global best semantic similarity drives the fallback gate (a truer
+        # "is anything in the corpus relevant?" signal than the fused top-k).
+        best_sim = self.retriever.max_dense_similarity(query) if retrieved else 0.0
         timings["retrieval"] = round((time.perf_counter() - t0) * 1000, 1)
 
         confidence = float(np.clip(best_sim, 0.0, 1.0))
 
         # ---- Fallback gate (anti-hallucination) ----
         if not retrieved or best_sim < self.fallback_min_sim:
-            scope = " matching the selected filters" if filters else ""
             reason = (
-                "The knowledge base does not contain interview passages"
-                f"{scope} that are semantically relevant to this question (best "
-                f"match similarity {best_sim:.2f} < threshold {self.fallback_min_sim:.2f}). "
+                "The knowledge base does not contain interview passages that are "
+                f"semantically relevant to this question (best match similarity "
+                f"{best_sim:.2f} < threshold {self.fallback_min_sim:.2f}). "
                 "It may be outside the scope of these COVID-19 doctor interviews.")
             timings["generation"] = 0.0
             timings["total"] = timings["retrieval"]

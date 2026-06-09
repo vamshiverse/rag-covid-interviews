@@ -41,48 +41,12 @@ class HybridRetriever:
                  candidate_k: int = config.CANDIDATE_K,
                  rrf_k: int = config.RRF_K,
                  dense_weight: float = config.DENSE_WEIGHT,
-                 sparse_weight: float = config.SPARSE_WEIGHT,
-                 use_mmr: bool = config.USE_MMR,
-                 mmr_lambda: float = config.MMR_LAMBDA):
+                 sparse_weight: float = config.SPARSE_WEIGHT):
         self.index = index
         self.candidate_k = candidate_k
         self.rrf_k = rrf_k
         self.dense_weight = dense_weight
         self.sparse_weight = sparse_weight
-        self.use_mmr = use_mmr
-        self.mmr_lambda = mmr_lambda
-
-    # --------------------------------------------------- metadata facets ----
-    def facet_values(self, field: str) -> list[str]:
-        """Distinct values of a metadata field, for UI filter dropdowns."""
-        vals = set()
-        for c in self.index.chunks:
-            v = c.get(field)
-            if isinstance(v, list):
-                vals.update(v)
-            elif v:
-                vals.add(v)
-        return sorted(vals)
-
-    def _matching_positions(self, filters: dict | None) -> set[int] | None:
-        """Positions whose metadata satisfy ALL filters. None = no filter."""
-        if not filters:
-            return None
-        keep = set()
-        for i, c in enumerate(self.index.chunks):
-            ok = True
-            for field, wanted in filters.items():
-                if wanted in (None, "", [], "All"):
-                    continue
-                wanted_set = set(wanted) if isinstance(wanted, (list, tuple, set)) else {wanted}
-                have = c.get(field)
-                have_set = set(have) if isinstance(have, list) else {have}
-                if not (wanted_set & have_set):
-                    ok = False
-                    break
-            if ok:
-                keep.add(i)
-        return keep
 
     # ----------------------------------------------------- raw signals ------
     def _dense_scores(self, query: str) -> np.ndarray:
@@ -105,57 +69,13 @@ class HybridRetriever:
         top = np.argsort(-scores)[:k]
         return {int(pos): rank + 1 for rank, pos in enumerate(top)}
 
-    @staticmethod
-    def _rank_map_over(scores: np.ndarray, allowed: set[int] | None, k: int) -> dict[int, int]:
-        order = np.argsort(-scores)
-        if allowed is not None:
-            order = [p for p in order if int(p) in allowed]
-        return {int(pos): rank + 1 for rank, pos in enumerate(order[:k])}
-
-    def _mmr_select(self, pool: list[int], fused: dict[int, float], top_k: int,
-                    lambda_: float) -> list[int]:
-        """Maximal Marginal Relevance over the candidate pool.
-
-        Relevance = the HYBRID (fused) score, min-max normalised to [0,1] so it
-        is on the same scale as the cosine redundancy term. Redundancy = max
-        cosine similarity (dense space) to an already-selected chunk. This keeps
-        the BM25 contribution in the ranking and only trades a little relevance
-        to avoid near-duplicate chunks.
-        """
-        M = self.index.dense_matrix
-        vals = [fused[p] for p in pool]
-        lo, hi = min(vals), max(vals)
-        span = (hi - lo) or 1.0
-        rel = {p: (fused[p] - lo) / span for p in pool}
-        selected: list[int] = []
-        remaining = list(pool)
-        while remaining and len(selected) < top_k:
-            if not selected:
-                best = max(remaining, key=lambda p: rel[p])
-            else:
-                def mmr_score(p):
-                    redundancy = max(float(M[p] @ M[s]) for s in selected)
-                    return lambda_ * rel[p] - (1.0 - lambda_) * redundancy
-                best = max(remaining, key=mmr_score)
-            selected.append(best)
-            remaining.remove(best)
-        return selected
-
     # ----------------------------------------------------- hybrid search ----
-    def search(self, query: str, top_k: int = config.TOP_K,
-               filters: dict | None = None,
-               use_mmr: bool | None = None,
-               mmr_lambda: float | None = None) -> list[RetrievedChunk]:
-        use_mmr = self.use_mmr if use_mmr is None else use_mmr
-        mmr_lambda = self.mmr_lambda if mmr_lambda is None else mmr_lambda
-
+    def search(self, query: str, top_k: int = config.TOP_K) -> list[RetrievedChunk]:
         dense = self._dense_scores(query)
         sparse = self._sparse_scores(query)
-        allowed = self._matching_positions(filters)   # None unless filtering
 
-        # Rank each signal (restricted to metadata-matching chunks if filtering).
-        dense_ranks = self._rank_map_over(dense, allowed, self.candidate_k)
-        sparse_ranks = self._rank_map_over(sparse, allowed, self.candidate_k)
+        dense_ranks = self._rank_map(dense, self.candidate_k)
+        sparse_ranks = self._rank_map(sparse, self.candidate_k)
 
         # Reciprocal Rank Fusion over the union of both candidate sets.
         fused: dict[int, float] = {}
@@ -163,26 +83,17 @@ class HybridRetriever:
             fused[pos] = fused.get(pos, 0.0) + self.dense_weight / (self.rrf_k + r)
         for pos, r in sparse_ranks.items():
             fused[pos] = fused.get(pos, 0.0) + self.sparse_weight / (self.rrf_k + r)
-        if not fused:
-            return []
 
-        # Candidate pool ranked by fused relevance, then optionally MMR-diversified.
-        pool = [p for p, _ in sorted(fused.items(), key=lambda x: -x[1])][:self.candidate_k]
-        if use_mmr and len(pool) > 1:
-            chosen = self._mmr_select(pool, fused, top_k, mmr_lambda)
-        else:
-            chosen = pool[:top_k]
-
+        ordered = sorted(fused.items(), key=lambda x: -x[1])[:top_k]
         results = []
-        for pos in chosen:
+        for pos, score in ordered:
             results.append(RetrievedChunk(
                 chunk=self.index.chunks[pos],
-                fused_score=float(fused.get(pos, 0.0)),
+                fused_score=float(score),
                 dense_score=float(dense[pos]),
                 sparse_score=float(sparse[pos]),
                 dense_rank=dense_ranks.get(pos),
                 sparse_rank=sparse_ranks.get(pos),
-                debug={"mmr": use_mmr},
             ))
         return results
 

@@ -50,20 +50,20 @@
         ],
         "used_chunk_ids": [
           "Dr_Anjali_Singh_India_Detailed_Interview::q05",
-          "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q02",
-          "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q03"
+          "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q03",
+          "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q02"
         ],
         "retrieved_chunk_ids": [
           "Dr_Anjali_Singh_India_Detailed_Interview::q05",
-          "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q02",
           "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q03",
+          "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q02",
           "Dr_Anjali_Singh_India_Detailed_Interview::q02",
           "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q04"
         ],
         "timings_ms": {
-          "retrieval": 67.7,
-          "generation": 300.2,
-          "total": 367.9
+          "retrieval": 116.1,
+          "generation": 670.9,
+          "total": 787.0
         }
       },
       "metrics": {
@@ -80,9 +80,9 @@
         "citation_source_recall": 0.6666666666666666,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 367.9,
-        "latency_ms_retrieval": 67.7,
-        "latency_ms_generation": 300.2
+        "latency_ms_total": 787.0,
+        "latency_ms_retrieval": 116.1,
+        "latency_ms_generation": 670.9
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -96,7 +96,7 @@
       "expected_answer": "'Happy hypoxia' described COVID patients who were sitting up and talking, appearing stable, despite dangerously low oxygen saturations (SpO2 as low as 60%). It was dangerous because these patients looked fine and then could crash suddenly.",
       "result": {
         "query": "What is 'happy hypoxia' and why was it dangerous?",
-        "answer": "Based on the interviews with Dr. Anna Weber, Dr. Arjun Mehta, Dr. Michael Anderson:\n\nThe hardest cases were those in the “happy hypoxia” category — patients sitting up and talking with SpO₂ of 60%. One of the most startling patterns early on was \"silent hypoxia,\" where patients presented with dangerously low oxygen saturations but relatively little subjective dyspnea. Some patients responded well to oxygen therapy and steroids, while others deteriorated suddenly with cytokine storms. We also faced the challenge of disinformation false claims about masks causing hypoxia or vaccines altering DNA.",
+        "answer": "Based on the interviews with Dr. Arjun Mehta, Dr. Michael Anderson:\n\nThe hardest cases were those in the “happy hypoxia” category — patients sitting up and talking with SpO₂ of 60%. One of the most startling patterns early on was \"silent hypoxia,\" where patients presented with dangerously low oxygen saturations but relatively little subjective dyspnea. First, early diagnosis and oxygen access save more lives than high-end drugs. Some patients responded well to oxygen therapy and steroids, while others deteriorated suddenly with cytokine storms.",
         "is_fallback": false,
         "fallback_reason": "",
         "confidence": 0.455,
@@ -119,45 +119,45 @@
             "relevance": 0.581
           },
           {
+            "chunk_id": "Dr_Arjun_Mehta_India_Detailed_Interview::q12",
+            "doctor": "Dr. Arjun Mehta",
+            "country": "India",
+            "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
+            "quote": "First, early diagnosis and oxygen access save more lives than high-end drugs.",
+            "relevance": 0.433
+          },
+          {
             "chunk_id": "Dr_Arjun_Mehta_India_Detailed_Interview::q03",
             "doctor": "Dr. Arjun Mehta",
             "country": "India",
             "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
             "quote": "Some patients responded well to oxygen therapy and steroids, while others deteriorated suddenly with cytokine storms.",
             "relevance": 0.339
-          },
-          {
-            "chunk_id": "Dr_Anna_Weber_Germany_Detailed_Interview::q04",
-            "doctor": "Dr. Anna Weber",
-            "country": "Germany",
-            "source_file": "Dr_Anna_Weber_Germany_Detailed_Interview.pdf",
-            "quote": "We also faced the challenge of disinformation false claims about masks causing hypoxia or vaccines altering DNA.",
-            "relevance": 0.325
           }
         ],
         "used_chunk_ids": [
           "Dr_Arjun_Mehta_India_Detailed_Interview::q03",
           "Dr_Michael_Anderson_US_Detailed_Interview::q03",
-          "Dr_Anna_Weber_Germany_Detailed_Interview::q04"
+          "Dr_Arjun_Mehta_India_Detailed_Interview::q12"
         ],
         "retrieved_chunk_ids": [
           "Dr_Arjun_Mehta_India_Detailed_Interview::q03",
-          "Dr_Anna_Weber_Germany_Detailed_Interview::q13",
           "Dr_Michael_Anderson_US_Detailed_Interview::q03",
+          "Dr_Anna_Weber_Germany_Detailed_Interview::q13",
           "Dr_Anna_Weber_Germany_Detailed_Interview::q04",
-          "Dr_James_Miller_US_Detailed_Interview::q07"
+          "Dr_Arjun_Mehta_India_Detailed_Interview::q12"
         ],
         "timings_ms": {
-          "retrieval": 47.2,
-          "generation": 341.5,
-          "total": 388.7
+          "retrieval": 36.1,
+          "generation": 263.5,
+          "total": 299.6
         }
       },
       "metrics": {
-        "context_relevance": 0.27744549661874773,
-        "groundedness": 0.6574678208146777,
-        "answer_relevance": 0.6159133911132812,
-        "answer_correctness": 0.679084062576294,
+        "context_relevance": 0.3258630454540253,
+        "groundedness": 0.7734014391899109,
+        "answer_relevance": 0.6187416911125183,
+        "answer_correctness": 0.7067464590072632,
         "hit_rate": 1.0,
         "mrr": 1.0,
         "context_precision": 0.2,
@@ -167,9 +167,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 388.7,
-        "latency_ms_retrieval": 47.2,
-        "latency_ms_generation": 341.5
+        "latency_ms_total": 299.6,
+        "latency_ms_retrieval": 36.1,
+        "latency_ms_generation": 263.5
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -223,21 +223,21 @@
           }
         ],
         "used_chunk_ids": [
-          "Dr_Lukas_Meier_Germany_Detailed_Interview::q03",
           "Dr_James_Miller_US_Detailed_Interview::q04",
+          "Dr_Lukas_Meier_Germany_Detailed_Interview::q03",
           "Dr_David_Thompson_US_Detailed_Interview::q11"
         ],
         "retrieved_chunk_ids": [
           "Dr_David_Thompson_US_Detailed_Interview::q03",
           "Dr_Arjun_Mehta_India_Detailed_Interview::q06",
-          "Dr_Lukas_Meier_Germany_Detailed_Interview::q03",
           "Dr_James_Miller_US_Detailed_Interview::q04",
+          "Dr_Lukas_Meier_Germany_Detailed_Interview::q03",
           "Dr_David_Thompson_US_Detailed_Interview::q11"
         ],
         "timings_ms": {
-          "retrieval": 50.4,
-          "generation": 302.0,
-          "total": 352.4
+          "retrieval": 23.5,
+          "generation": 158.8,
+          "total": 182.3
         }
       },
       "metrics": {
@@ -254,9 +254,9 @@
         "citation_source_recall": 0.3333333333333333,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 352.4,
-        "latency_ms_retrieval": 50.4,
-        "latency_ms_generation": 302.0
+        "latency_ms_total": 182.3,
+        "latency_ms_retrieval": 23.5,
+        "latency_ms_generation": 158.8
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -322,9 +322,9 @@
           "Dr_Sarah_Johnson_US_Detailed_Interview::q02"
         ],
         "timings_ms": {
-          "retrieval": 50.6,
-          "generation": 365.8,
-          "total": 416.4
+          "retrieval": 18.9,
+          "generation": 169.9,
+          "total": 188.8
         }
       },
       "metrics": {
@@ -341,9 +341,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 416.4,
-        "latency_ms_retrieval": 50.6,
-        "latency_ms_generation": 365.8
+        "latency_ms_total": 188.8,
+        "latency_ms_retrieval": 18.9,
+        "latency_ms_generation": 169.9
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -357,7 +357,7 @@
       "expected_answer": "During the Delta wave, desperate families paid absurd prices on the black market for oxygen cylinders and drugs like remdesivir and tocilizumab. Dr. Mehta recalled a relative who paid ₹40,000 for a remdesivir vial that wouldn't even help at that disease stage. The government eventually cracked down, but chaos ruled during peak weeks.",
       "result": {
         "query": "What was the black market problem during India's Delta wave?",
-        "answer": "Based on the interviews with Dr. Arjun Mehta, Dr. Kavita Joshi, Dr. Siddharth Rao:\n\nThe Delta wave in 2021 was ten times worse than the first. The Delta variant was an epidemiologist s nightmare. What was most striking was how heterogeneous the epidemic became urban centers peaked and declined while rural districts were still climbing. Bengaluru s healthcare system was stretched to the edge.",
+        "answer": "Based on the interviews with Dr. Arjun Mehta, Dr. Kavita Joshi:\n\nThe Delta wave in 2021 was ten times worse than the first. The Delta variant was an epidemiologist s nightmare. What was most striking was how heterogeneous the epidemic became urban centers peaked and declined while rural districts were still climbing. The government eventually cracked down, but during those peak weeks, chaos ruled.",
         "is_fallback": false,
         "fallback_reason": "",
         "confidence": 0.504,
@@ -388,49 +388,49 @@
             "relevance": 0.278
           },
           {
-            "chunk_id": "Dr_Siddharth_Rao_India_Detailed_Interview::q05",
-            "doctor": "Dr. Siddharth Rao",
+            "chunk_id": "Dr_Arjun_Mehta_India_Detailed_Interview::q05",
+            "doctor": "Dr. Arjun Mehta",
             "country": "India",
-            "source_file": "Dr_Siddharth_Rao_India_Detailed_Interview.pdf",
-            "quote": "Bengaluru s healthcare system was stretched to the edge.",
-            "relevance": 0.273
+            "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
+            "quote": "The government eventually cracked down, but during those peak weeks, chaos ruled.",
+            "relevance": 0.26
           }
         ],
         "used_chunk_ids": [
-          "Dr_Kavita_Joshi_India_Detailed_Interview::q05",
+          "Dr_Arjun_Mehta_India_Detailed_Interview::q05",
           "Dr_Arjun_Mehta_India_Detailed_Interview::q04",
-          "Dr_Siddharth_Rao_India_Detailed_Interview::q05"
+          "Dr_Kavita_Joshi_India_Detailed_Interview::q05"
         ],
         "retrieved_chunk_ids": [
           "Dr_Arjun_Mehta_India_Detailed_Interview::q05",
           "Dr_Priya_Sharma_India_Detailed_Interview::q08",
-          "Dr_Kavita_Joshi_India_Detailed_Interview::q05",
           "Dr_Arjun_Mehta_India_Detailed_Interview::q04",
-          "Dr_Siddharth_Rao_India_Detailed_Interview::q05"
+          "Dr_Kavita_Joshi_India_Detailed_Interview::q05",
+          "Dr_Priya_Sharma_India_Detailed_Interview::q02"
         ],
         "timings_ms": {
-          "retrieval": 57.2,
-          "generation": 335.7,
-          "total": 392.9
+          "retrieval": 73.8,
+          "generation": 564.6,
+          "total": 638.4
         }
       },
       "metrics": {
-        "context_relevance": 0.4343747317790985,
-        "groundedness": 0.6662858703306743,
-        "answer_relevance": 0.554149866104126,
-        "answer_correctness": 0.38436436653137207,
+        "context_relevance": 0.43404181599617003,
+        "groundedness": 0.7336551348368326,
+        "answer_relevance": 0.5135073661804199,
+        "answer_correctness": 0.37803053855895996,
         "hit_rate": 1.0,
         "mrr": 1.0,
         "context_precision": 0.2,
         "context_recall": 1.0,
         "citation_grounding": 1.0,
-        "citation_source_precision": 0.0,
-        "citation_source_recall": 0.0,
+        "citation_source_precision": 0.3333333333333333,
+        "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 392.9,
-        "latency_ms_retrieval": 57.2,
-        "latency_ms_generation": 335.7
+        "latency_ms_total": 638.4,
+        "latency_ms_retrieval": 73.8,
+        "latency_ms_generation": 564.6
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -491,18 +491,18 @@
         "retrieved_chunk_ids": [
           "Dr_Arjun_Mehta_India_Detailed_Interview::q10",
           "Dr_Kavita_Joshi_India_Detailed_Interview::q02",
-          "Dr_Emily_Roberts_US_Detailed_Interview::q11",
           "Dr_Kavita_Joshi_India_Detailed_Interview::q11",
-          "Dr_Kavita_Joshi_India_Detailed_Interview::q01"
+          "Dr_Emily_Roberts_US_Detailed_Interview::q11",
+          "Dr_Kavita_Joshi_India_Detailed_Interview::q10"
         ],
         "timings_ms": {
-          "retrieval": 50.1,
-          "generation": 297.4,
-          "total": 347.5
+          "retrieval": 70.1,
+          "generation": 552.0,
+          "total": 622.1
         }
       },
       "metrics": {
-        "context_relevance": 0.4185055911540985,
+        "context_relevance": 0.42056389451026915,
         "groundedness": 0.7418969298402468,
         "answer_relevance": 0.7833645343780518,
         "answer_correctness": 0.8316770195960999,
@@ -515,9 +515,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 347.5,
-        "latency_ms_retrieval": 50.1,
-        "latency_ms_generation": 297.4
+        "latency_ms_total": 622.1,
+        "latency_ms_retrieval": 70.1,
+        "latency_ms_generation": 552.0
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -583,9 +583,9 @@
           "Dr_Anjali_Singh_India_Detailed_Interview::q07"
         ],
         "timings_ms": {
-          "retrieval": 52.3,
-          "generation": 360.9,
-          "total": 413.2
+          "retrieval": 114.4,
+          "generation": 760.2,
+          "total": 874.6
         }
       },
       "metrics": {
@@ -602,9 +602,9 @@
         "citation_source_recall": 0.3333333333333333,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 413.2,
-        "latency_ms_retrieval": 52.3,
-        "latency_ms_generation": 360.9
+        "latency_ms_total": 874.6,
+        "latency_ms_retrieval": 114.4,
+        "latency_ms_generation": 760.2
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -665,14 +665,14 @@
         "retrieved_chunk_ids": [
           "Dr_Anna_Weber_Germany_Detailed_Interview::q10",
           "Dr_Kavita_Joshi_India_Detailed_Interview::q10",
-          "Dr_Erik_Vogel_Germany_Detailed_Interview::q11",
           "Dr_Erik_Vogel_Germany_Detailed_Interview::q06",
+          "Dr_Erik_Vogel_Germany_Detailed_Interview::q11",
           "Dr_Jonas_Fischer_Germany_Detailed_Interview::q11"
         ],
         "timings_ms": {
-          "retrieval": 62.6,
-          "generation": 292.0,
-          "total": 354.6
+          "retrieval": 72.1,
+          "generation": 496.6,
+          "total": 568.7
         }
       },
       "metrics": {
@@ -689,9 +689,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 354.6,
-        "latency_ms_retrieval": 62.6,
-        "latency_ms_generation": 292.0
+        "latency_ms_total": 568.7,
+        "latency_ms_retrieval": 72.1,
+        "latency_ms_generation": 496.6
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -751,15 +751,15 @@
         ],
         "retrieved_chunk_ids": [
           "Dr_Lukas_Meier_Germany_Detailed_Interview::q02",
-          "Dr_Anna_Weber_Germany_Detailed_Interview::q10",
-          "Dr_Anna_Weber_Germany_Detailed_Interview::q06",
           "Dr_Lukas_Meier_Germany_Detailed_Interview::q07",
-          "Dr_Anna_Weber_Germany_Detailed_Interview::q01"
+          "Dr_Anna_Weber_Germany_Detailed_Interview::q01",
+          "Dr_Anna_Weber_Germany_Detailed_Interview::q06",
+          "Dr_Anna_Weber_Germany_Detailed_Interview::q10"
         ],
         "timings_ms": {
-          "retrieval": 49.9,
-          "generation": 350.6,
-          "total": 400.5
+          "retrieval": 68.2,
+          "generation": 666.9,
+          "total": 735.1
         }
       },
       "metrics": {
@@ -768,7 +768,7 @@
         "answer_relevance": 0.5590376853942871,
         "answer_correctness": 0.49737390875816345,
         "hit_rate": 1.0,
-        "mrr": 0.3333333333333333,
+        "mrr": 0.25,
         "context_precision": 0.2,
         "context_recall": 1.0,
         "citation_grounding": 1.0,
@@ -776,9 +776,9 @@
         "citation_source_recall": 0.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 400.5,
-        "latency_ms_retrieval": 49.9,
-        "latency_ms_generation": 350.6
+        "latency_ms_total": 735.1,
+        "latency_ms_retrieval": 68.2,
+        "latency_ms_generation": 666.9
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -844,9 +844,9 @@
           "Dr_Emily_Roberts_US_Detailed_Interview::q01"
         ],
         "timings_ms": {
-          "retrieval": 51.0,
-          "generation": 314.6,
-          "total": 365.6
+          "retrieval": 87.5,
+          "generation": 625.6,
+          "total": 713.1
         }
       },
       "metrics": {
@@ -863,9 +863,9 @@
         "citation_source_recall": 0.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 365.6,
-        "latency_ms_retrieval": 51.0,
-        "latency_ms_generation": 314.6
+        "latency_ms_total": 713.1,
+        "latency_ms_retrieval": 87.5,
+        "latency_ms_generation": 625.6
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -879,19 +879,27 @@
       "expected_answer": "Hospitals reused and extended N95 use with sterilization via vaporized hydrogen peroxide and UV systems, trained 'PPE monitors' to oversee donning/doffing, and relied on 3D-printed face shields and community-sewn fabric gowns (Dr. Roberts). Rural hospitals used conservation, regional distributors, and local manufacturers who pivoted to making masks and gowns (Dr. Thompson).",
       "result": {
         "query": "What creative solutions did hospitals use during PPE shortages?",
-        "answer": "Based on the interviews with Dr. David Thompson, Dr. Olivia Davis, Dr. Ravi Kumar:\n\nThat allowed EMS and transfer centers to direct patients efficiently and reduced unnecessary delays in care. Some creative solutions included mobile oxygen trailer deployments and pooling resources with nearby hospitals to balance supplies. The first few weeks were chaotic - PPE shortages, unclear protocols - but the team adapted fast. It also helped the state allocate ventilators and PPE where they were most needed.",
+        "answer": "Based on the interviews with Dr. Anna Weber, Dr. David Thompson, Dr. Ravi Kumar:\n\nWe also helped design hospital-wide infection control protocols, covering everything from elevator use to handling lab samples. My team trained hundreds of healthcare workers in donning and doffing PPE, contact tracing, and surface disinfection. Some creative solutions included mobile oxygen trailer deployments and pooling resources with nearby hospitals to balance supplies. The first few weeks were chaotic - PPE shortages, unclear protocols - but the team adapted fast.",
         "is_fallback": false,
         "fallback_reason": "",
         "confidence": 0.748,
         "provider": "extractive",
         "citations": [
           {
-            "chunk_id": "Dr_Olivia_Davis_US_Detailed_Interview::q03",
-            "doctor": "Dr. Olivia Davis",
-            "country": "US",
-            "source_file": "Dr_Olivia_Davis_US_Detailed_Interview.docx",
-            "quote": "That allowed EMS and transfer centers to direct patients efficiently and reduced unnecessary delays in care.",
-            "relevance": 0.5
+            "chunk_id": "Dr_Anna_Weber_Germany_Detailed_Interview::q02",
+            "doctor": "Dr. Anna Weber",
+            "country": "Germany",
+            "source_file": "Dr_Anna_Weber_Germany_Detailed_Interview.pdf",
+            "quote": "We also helped design hospital-wide infection control protocols, covering everything from elevator use to handling lab samples.",
+            "relevance": 0.504
+          },
+          {
+            "chunk_id": "Dr_Anna_Weber_Germany_Detailed_Interview::q02",
+            "doctor": "Dr. Anna Weber",
+            "country": "Germany",
+            "source_file": "Dr_Anna_Weber_Germany_Detailed_Interview.pdf",
+            "quote": "My team trained hundreds of healthcare workers in donning and doffing PPE, contact tracing, and surface disinfection.",
+            "relevance": 0.492
           },
           {
             "chunk_id": "Dr_David_Thompson_US_Detailed_Interview::q11",
@@ -908,39 +916,31 @@
             "source_file": "Dr_Ravi_Kumar_India_Detailed_Interview.pdf",
             "quote": "The first few weeks were chaotic - PPE shortages, unclear protocols - but the team adapted fast.",
             "relevance": 0.48
-          },
-          {
-            "chunk_id": "Dr_Olivia_Davis_US_Detailed_Interview::q03",
-            "doctor": "Dr. Olivia Davis",
-            "country": "US",
-            "source_file": "Dr_Olivia_Davis_US_Detailed_Interview.docx",
-            "quote": "It also helped the state allocate ventilators and PPE where they were most needed.",
-            "relevance": 0.463
           }
         ],
         "used_chunk_ids": [
           "Dr_David_Thompson_US_Detailed_Interview::q11",
           "Dr_Ravi_Kumar_India_Detailed_Interview::q02",
-          "Dr_Olivia_Davis_US_Detailed_Interview::q03"
+          "Dr_Anna_Weber_Germany_Detailed_Interview::q02"
         ],
         "retrieved_chunk_ids": [
           "Dr_Emily_Roberts_US_Detailed_Interview::q04",
           "Dr_David_Thompson_US_Detailed_Interview::q11",
-          "Dr_Ravi_Kumar_India_Detailed_Interview::q02",
           "Dr_James_Miller_US_Detailed_Interview::q07",
-          "Dr_Olivia_Davis_US_Detailed_Interview::q03"
+          "Dr_Ravi_Kumar_India_Detailed_Interview::q02",
+          "Dr_Anna_Weber_Germany_Detailed_Interview::q02"
         ],
         "timings_ms": {
-          "retrieval": 48.6,
-          "generation": 312.0,
-          "total": 360.6
+          "retrieval": 70.5,
+          "generation": 707.0,
+          "total": 777.5
         }
       },
       "metrics": {
-        "context_relevance": 0.5767941236495971,
-        "groundedness": 0.6664714046886989,
-        "answer_relevance": 0.6072453260421753,
-        "answer_correctness": 0.4352402687072754,
+        "context_relevance": 0.5769961893558502,
+        "groundedness": 0.6806345901318959,
+        "answer_relevance": 0.6621454954147339,
+        "answer_correctness": 0.609505832195282,
         "hit_rate": 1.0,
         "mrr": 1.0,
         "context_precision": 0.4,
@@ -950,9 +950,9 @@
         "citation_source_recall": 0.5,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 360.6,
-        "latency_ms_retrieval": 48.6,
-        "latency_ms_generation": 312.0
+        "latency_ms_total": 777.5,
+        "latency_ms_retrieval": 70.5,
+        "latency_ms_generation": 707.0
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -966,7 +966,7 @@
       "expected_answer": "Patients on home remote monitoring were instructed to seek emergency care if their SpO2 (oxygen saturation) fell below 92%, or if they developed new confusion or chest pain.",
       "result": {
         "query": "At what oxygen saturation did Dr. Johnson tell home-monitored patients to seek emergency care?",
-        "answer": "Based on the interviews with Dr. Felix Schneider, Dr. Priya Sharma, Dr. Sarah Johnson:\n\nSome Scandinavian centers emphasized home-care oxygen and telemonitoring early on sending moderate patients home with pulse oximeters and monitoring rather than admitting them prematurely. We had over 150 patients on oxygen. We were monitoring oxygen levels in tanks like we monitor blood pressure in patients — every hour mattered. Remote monitoring with pulse oximeters was a game changer for managing mild to moderate cases at home, with clear thresholds for escalation.",
+        "answer": "Based on the interviews with Dr. Felix Schneider, Dr. Priya Sharma, Dr. Sarah Johnson:\n\nSome Scandinavian centers emphasized home-care oxygen and telemonitoring early on sending moderate patients home with pulse oximeters and monitoring rather than admitting them prematurely. Use of home pulse oximetry and establishing clear escalation criteria reduced unnecessary ED visits while ensuring timely transfers for those who needed oxygen or advanced care. We had over 150 patients on oxygen. We were monitoring oxygen levels in tanks like we monitor blood pressure in patients — every hour mattered.",
         "is_fallback": false,
         "fallback_reason": "",
         "confidence": 0.577,
@@ -979,6 +979,14 @@
             "source_file": "Dr_Felix_Schneider_Germany_Detailed_Interview.pdf",
             "quote": "Some Scandinavian centers emphasized home-care oxygen and telemonitoring early on sending moderate patients home with pulse oximeters and monitoring rather than admitting them prematurely.",
             "relevance": 0.655
+          },
+          {
+            "chunk_id": "Dr_Sarah_Johnson_US_Detailed_Interview::q08",
+            "doctor": "Dr. Sarah Johnson",
+            "country": "US",
+            "source_file": "Dr_Sarah_Johnson_US_Detailed_Interview.pdf",
+            "quote": "Use of home pulse oximetry and establishing clear escalation criteria reduced unnecessary ED visits while ensuring timely transfers for those who needed oxygen or advanced care.",
+            "relevance": 0.615
           },
           {
             "chunk_id": "Dr_Priya_Sharma_India_Detailed_Interview::q03",
@@ -995,39 +1003,31 @@
             "source_file": "Dr_Priya_Sharma_India_Detailed_Interview.docx",
             "quote": "We were monitoring oxygen levels in tanks like we monitor blood pressure in patients — every hour mattered.",
             "relevance": 0.576
-          },
-          {
-            "chunk_id": "Dr_Sarah_Johnson_US_Detailed_Interview::q03",
-            "doctor": "Dr. Sarah Johnson",
-            "country": "US",
-            "source_file": "Dr_Sarah_Johnson_US_Detailed_Interview.pdf",
-            "quote": "Remote monitoring with pulse oximeters was a game changer for managing mild to moderate cases at home, with clear thresholds for escalation.",
-            "relevance": 0.474
           }
         ],
         "used_chunk_ids": [
           "Dr_Priya_Sharma_India_Detailed_Interview::q03",
           "Dr_Felix_Schneider_Germany_Detailed_Interview::q11",
-          "Dr_Sarah_Johnson_US_Detailed_Interview::q03"
+          "Dr_Sarah_Johnson_US_Detailed_Interview::q08"
         ],
         "retrieved_chunk_ids": [
           "Dr_Priya_Sharma_India_Detailed_Interview::q03",
           "Dr_Felix_Schneider_Germany_Detailed_Interview::q11",
           "Dr_Neha_Reddy_India_Detailed_Interview::q07",
           "Dr_Sarah_Johnson_US_Detailed_Interview::q03",
-          "Dr_Michael_Anderson_US_Detailed_Interview::q04"
+          "Dr_Sarah_Johnson_US_Detailed_Interview::q08"
         ],
         "timings_ms": {
-          "retrieval": 57.2,
-          "generation": 346.7,
-          "total": 403.9
+          "retrieval": 84.5,
+          "generation": 646.3,
+          "total": 730.8
         }
       },
       "metrics": {
-        "context_relevance": 0.5076206803321839,
-        "groundedness": 0.6848606914281845,
-        "answer_relevance": 0.6645458936691284,
-        "answer_correctness": 0.5492697954177856,
+        "context_relevance": 0.5063372671604156,
+        "groundedness": 0.6848606658833367,
+        "answer_relevance": 0.6911067962646484,
+        "answer_correctness": 0.529857337474823,
         "hit_rate": 0.0,
         "mrr": 0.0,
         "context_precision": 0.0,
@@ -1037,9 +1037,9 @@
         "citation_source_recall": 0.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 403.9,
-        "latency_ms_retrieval": 57.2,
-        "latency_ms_generation": 346.7
+        "latency_ms_total": 730.8,
+        "latency_ms_retrieval": 84.5,
+        "latency_ms_generation": 646.3
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -1105,9 +1105,9 @@
           "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q05"
         ],
         "timings_ms": {
-          "retrieval": 49.3,
-          "generation": 322.2,
-          "total": 371.5
+          "retrieval": 266.1,
+          "generation": 564.7,
+          "total": 830.8
         }
       },
       "metrics": {
@@ -1124,9 +1124,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 371.5,
-        "latency_ms_retrieval": 49.3,
-        "latency_ms_generation": 322.2
+        "latency_ms_total": 830.8,
+        "latency_ms_retrieval": 266.1,
+        "latency_ms_generation": 564.7
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -1191,9 +1191,9 @@
           "Dr_David_Thompson_US_Detailed_Interview::q16"
         ],
         "timings_ms": {
-          "retrieval": 53.7,
-          "generation": 255.4,
-          "total": 309.1
+          "retrieval": 72.3,
+          "generation": 484.6,
+          "total": 556.9
         }
       },
       "metrics": {
@@ -1210,9 +1210,9 @@
         "citation_source_recall": 0.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 309.1,
-        "latency_ms_retrieval": 53.7,
-        "latency_ms_generation": 255.4
+        "latency_ms_total": 556.9,
+        "latency_ms_retrieval": 72.3,
+        "latency_ms_generation": 484.6
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -1278,9 +1278,9 @@
           "Dr_Kavita_Joshi_India_Detailed_Interview::q11"
         ],
         "timings_ms": {
-          "retrieval": 54.7,
-          "generation": 306.9,
-          "total": 361.6
+          "retrieval": 82.0,
+          "generation": 601.0,
+          "total": 683.0
         }
       },
       "metrics": {
@@ -1297,9 +1297,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 361.6,
-        "latency_ms_retrieval": 54.7,
-        "latency_ms_generation": 306.9
+        "latency_ms_total": 683.0,
+        "latency_ms_retrieval": 82.0,
+        "latency_ms_generation": 601.0
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -1365,9 +1365,9 @@
           "Dr_Emily_Roberts_US_Detailed_Interview::q13"
         ],
         "timings_ms": {
-          "retrieval": 45.1,
-          "generation": 351.4,
-          "total": 396.5
+          "retrieval": 82.8,
+          "generation": 674.3,
+          "total": 757.1
         }
       },
       "metrics": {
@@ -1384,9 +1384,9 @@
         "citation_source_recall": NaN,
         "n_citations": 4,
         "fallback_correct": 0.0,
-        "latency_ms_total": 396.5,
-        "latency_ms_retrieval": 45.1,
-        "latency_ms_generation": 351.4
+        "latency_ms_total": 757.1,
+        "latency_ms_retrieval": 82.8,
+        "latency_ms_generation": 674.3
       },
       "is_fallback": false,
       "fallback_correct": false
@@ -1453,9 +1453,9 @@
           "Dr_Felix_Schneider_Germany_Detailed_Interview::q01"
         ],
         "timings_ms": {
-          "retrieval": 52.3,
-          "generation": 377.4,
-          "total": 429.7
+          "retrieval": 85.6,
+          "generation": 744.6,
+          "total": 830.2
         }
       },
       "metrics": {
@@ -1472,9 +1472,9 @@
         "citation_source_recall": NaN,
         "n_citations": 4,
         "fallback_correct": 0.0,
-        "latency_ms_total": 429.7,
-        "latency_ms_retrieval": 52.3,
-        "latency_ms_generation": 377.4
+        "latency_ms_total": 830.2,
+        "latency_ms_retrieval": 85.6,
+        "latency_ms_generation": 744.6
       },
       "is_fallback": false,
       "fallback_correct": false
@@ -1499,17 +1499,17 @@
           "Dr_Sarah_Johnson_US_Detailed_Interview::q01",
           "Dr_Michael_Anderson_US_Detailed_Interview::q01",
           "Dr_Priya_Sharma_India_Detailed_Interview::q01",
-          "Dr_Neha_Reddy_India_Detailed_Interview::q13",
+          "Dr_Kavita_Joshi_India_Detailed_Interview::q01",
           "Dr_James_Miller_US_Detailed_Interview::q04"
         ],
         "timings_ms": {
-          "retrieval": 54.6,
+          "retrieval": 83.6,
           "generation": 0.0,
-          "total": 54.6
+          "total": 83.6
         }
       },
       "metrics": {
-        "context_relevance": 0.028956525772809983,
+        "context_relevance": 0.046531278640031815,
         "groundedness": NaN,
         "answer_relevance": NaN,
         "answer_correctness": NaN,
@@ -1522,8 +1522,8 @@
         "citation_source_recall": NaN,
         "n_citations": 0,
         "fallback_correct": 1.0,
-        "latency_ms_total": 54.6,
-        "latency_ms_retrieval": 54.6,
+        "latency_ms_total": 83.6,
+        "latency_ms_retrieval": 83.6,
         "latency_ms_generation": 0.0
       },
       "is_fallback": true,
@@ -1535,27 +1535,27 @@
     "n_answerable": 15,
     "n_fallback_expected": 3,
     "rag_triad": {
-      "context_relevance": 0.4893,
-      "groundedness": 0.7141,
-      "answer_relevance": 0.6681
+      "context_relevance": 0.493,
+      "groundedness": 0.7257,
+      "answer_relevance": 0.6707
     },
-    "rag_triad_score": 0.6238,
+    "rag_triad_score": 0.6298,
     "all_metrics": {
-      "context_relevance": 0.4893,
-      "groundedness": 0.7141,
-      "answer_relevance": 0.6681,
-      "answer_correctness": 0.6175,
+      "context_relevance": 0.493,
+      "groundedness": 0.7257,
+      "answer_relevance": 0.6707,
+      "answer_correctness": 0.6278,
       "hit_rate": 0.9333,
-      "mrr": 0.8444,
+      "mrr": 0.8389,
       "context_precision": 0.2667,
       "context_recall": 0.8889,
       "citation_grounding": 1.0,
-      "citation_source_precision": 0.2667,
-      "citation_source_recall": 0.5222,
+      "citation_source_precision": 0.2889,
+      "citation_source_recall": 0.5889,
       "fallback_correct": 0.8889,
-      "latency_ms_total": 360.4,
-      "latency_ms_retrieval": 53.0278,
-      "latency_ms_generation": 307.3722
+      "latency_ms_total": 603.3111,
+      "latency_ms_retrieval": 83.7833,
+      "latency_ms_generation": 519.5278
     },
     "by_type": {
       "comparative": {
@@ -1566,7 +1566,7 @@
       },
       "factual": {
         "n": 8,
-        "answer_correctness": 0.5717,
+        "answer_correctness": 0.5685,
         "context_recall": 0.875,
         "fallback_correct": 1.0
       },
@@ -1578,13 +1578,13 @@
       },
       "multi_hop": {
         "n": 3,
-        "answer_correctness": 0.5081,
+        "answer_correctness": 0.5661,
         "context_recall": 0.8889,
         "fallback_correct": 1.0
       },
       "specific_term": {
         "n": 3,
-        "answer_correctness": 0.7852,
+        "answer_correctness": 0.7944,
         "context_recall": 0.8889,
         "fallback_correct": 1.0
       }
@@ -1594,6 +1594,6 @@
     "embedder": "sentence-transformers:all-MiniLM-L6-v2",
     "provider": "extractive",
     "judge_llm": false,
-    "generated_at": "2026-06-04T12:41:19"
+    "generated_at": "2026-06-10T05:08:34"
   }
 }

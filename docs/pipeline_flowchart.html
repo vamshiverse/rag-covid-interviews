@@ -19,7 +19,7 @@
 <body>
   <header>
     <h1>Conversational RAG over COVID-19 Doctor Interviews — Pipeline</h1>
-    <p>Current config: MiniLM embeddings · hybrid (dense + BM25 → RRF) · MMR λ=0.8 · extractive generation · math judge</p>
+    <p>Current config: MiniLM embeddings · hybrid (dense + BM25 → RRF) · extractive generation · math judge</p>
   </header>
   <p class="hint">Tip: press <b>Ctrl+P → Save as PDF</b> to drop this into a slide deck. Edit the diagram in the
   <code>&lt;pre class="mermaid"&gt;</code> block below (same source as <code>docs/PIPELINE.md</code>).</p>
@@ -40,12 +40,7 @@ flowchart TD
   Q([User question]) --> R
   subgraph RETRIEVE["③ Hybrid Retrieval Engine"]
     R["Score every chunk:<br/>dense cosine + BM25"] --> S["Reciprocal Rank Fusion (RRF)"]
-    S --> T{"Metadata filter?<br/>(country / topic)"}
-    T -->|yes| U[Restrict to matching chunks]
-    T -->|no| V[Keep all candidates]
-    U --> W
-    V --> W["MMR re-rank<br/>drop near-duplicates · λ=0.8"]
-    W --> X[Top-k chunks + scores]
+    S --> X[Top-k chunks + scores]
   end
   G -.loads.-> R
   X --> GATE{"Fallback gate:<br/>best similarity ≥ threshold?"}
@@ -68,7 +63,7 @@ flowchart TD
   classDef store fill:#eef4fb,stroke:#1d6fb8,color:#0d3b66;
   classDef gate fill:#fff7ed,stroke:#ea8c00,color:#7a3e00;
   class G,GD store;
-  class GATE,T gate;
+  class GATE gate;
 </pre>
   </div></div>
   <script>mermaid.initialize({startOnLoad:true, theme:"base", flowchart:{useMaxWidth:true}});</script>

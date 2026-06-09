@@ -1,9 +1,8 @@
 # RAG Pipeline — Current Architecture (flowchart)
 
 This diagram renders automatically on GitHub. It is the **current** configuration
-(sentence-transformers embeddings · hybrid retrieval + RRF · MMR λ=0.8 · extractive
-generation · math judge). Edit the Mermaid block below to keep it in sync as the
-pipeline evolves.
+(sentence-transformers embeddings · hybrid retrieval + RRF · extractive generation ·
+math judge). Edit the Mermaid block below to keep it in sync as the pipeline evolves.
 
 ```mermaid
 flowchart TD
@@ -26,12 +25,7 @@ flowchart TD
   Q([User question]) --> R
   subgraph RETRIEVE["③ Hybrid Retrieval Engine"]
     R["Score every chunk:<br/>dense cosine + BM25"] --> S["Reciprocal Rank Fusion (RRF)"]
-    S --> T{"Metadata filter?<br/>(country / topic)"}
-    T -->|yes| U[Restrict to matching chunks]
-    T -->|no| V[Keep all candidates]
-    U --> W
-    V --> W["MMR re-rank<br/>drop near-duplicates · λ=0.8"]
-    W --> X[Top-k chunks + scores]
+    S --> X[Top-k chunks + scores]
   end
   G -.loads.-> R
 
@@ -59,7 +53,7 @@ flowchart TD
   classDef store fill:#eef4fb,stroke:#1d6fb8,color:#0d3b66;
   classDef gate fill:#fff7ed,stroke:#ea8c00,color:#7a3e00;
   class G,GD store;
-  class GATE,T gate;
+  class GATE gate;
 ```
 
 ## Access points (where you trigger each stage)
