@@ -15,7 +15,7 @@ import json
 import time
 
 from rag_app import config
-from rag_app.ingestion import ingest_corpus, corpus_stats
+from rag_app.ingestion import ingest_corpus_with_docs, corpus_stats
 from rag_app.vectorstore import HybridIndex
 
 
@@ -27,12 +27,12 @@ def main():
 
     print(f"[1/3] Ingesting transcripts from: {config.DATA_DIR}")
     t0 = time.perf_counter()
-    chunks = ingest_corpus()
+    chunks, documents = ingest_corpus_with_docs()
     stats = corpus_stats(chunks)
     print(json.dumps(stats, indent=2))
 
     print(f"\n[2/3] Building hybrid index (embeddings + BM25) ...")
-    index = HybridIndex.build(chunks, backend=args.backend)
+    index = HybridIndex.build(chunks, backend=args.backend, documents=documents)
     print(f"      embedder: {index.embedder.name}  ({index.embedder_note})")
 
     print(f"\n[3/3] Persisting index to: {config.INDEX_DIR}")

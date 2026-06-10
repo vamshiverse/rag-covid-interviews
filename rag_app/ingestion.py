@@ -81,6 +81,55 @@ def _normalize(text: str) -> str:
     return text.strip()
 
 
+def _normalize_with_map(raw: str) -> tuple[str, list[int]]:
+    """Same normalisation as `_normalize`, but also return idx_map where
+    idx_map[j] = index into the (CR-replaced) `raw` string that normalised
+    char j came from. Lets us map a cited sentence back to its source line(s).
+    `raw.replace('\\r','\\n')` is length-preserving, so the indices line up."""
+    s = raw.replace("\r", "\n")
+    out: list[str] = []
+    idx: list[int] = []
+    i, n = 0, len(s)
+    while i < n:
+        ch = s[i]
+        if ch == "-" and i + 1 < n and s[i + 1] == "\n":   # de-hyphenate "-\n\s*"
+            out.append("-"); idx.append(i)
+            i += 2
+            while i < n and s[i].isspace():
+                i += 1
+            continue
+        if ch.isspace():                                   # collapse whitespace run
+            out.append(" "); idx.append(i)
+            i += 1
+            while i < n and s[i].isspace():
+                i += 1
+            continue
+        out.append(ch); idx.append(i)
+        i += 1
+    # mimic .strip() on the single-space-normalised result
+    start, end = 0, len(out)
+    while start < end and out[start] == " ":
+        start += 1
+    while end > start and out[end - 1] == " ":
+        end -= 1
+    return "".join(out[start:end]), idx[start:end]
+
+
+def _line_starts(text: str) -> list[int]:
+    """Char offsets at which each line begins (text assumed CR-replaced)."""
+    starts = [0]
+    for i, ch in enumerate(text):
+        if ch == "\n":
+            starts.append(i + 1)
+    return starts
+
+
+def _line_of(starts: list[int], pos: int) -> int:
+    """1-indexed line number containing char offset `pos`."""
+    import bisect
+    return bisect.bisect_right(starts, pos)
+
+
 def _parse_header(preamble: str, filename: str) -> dict:
     """Extract doctor / location / role / country from the title line + filename."""
     # Filename: Dr_Sarah_Johnson_US_Detailed_Interview
@@ -128,13 +177,20 @@ def _tag_topics(text: str) -> list[str]:
 
 # --------------------------------------------------------------- chunking ---
 def chunk_transcript(raw_text: str, filename: str) -> list[dict]:
-    """Split one transcript into Q&A turn chunks (question + answer kept together)."""
-    text = _normalize(raw_text)
-    # everything up to the first "Interviewer:" is the header/preamble
-    parts = re.split(r"Interviewer\s*:", text)
-    preamble = parts[0]
-    meta = _parse_header(preamble, filename)
+    """Split one transcript into Q&A turn chunks (question + answer kept together).
+
+    Chunking is anchored to the RAW (newline-preserving) text so every chunk
+    knows the literal source line where its answer begins -> enables line-level
+    citations. The `answer`/`question`/`text` fields are still normalised for
+    embedding & search; `raw_answer` keeps the original newlines.
+    """
+    raw = raw_text.replace("\r", "\n")     # keep newlines; only fold CRs
+    starts = _line_starts(raw)
     doc_id = Path(filename).stem
+
+    matches = list(re.finditer(r"Interviewer\s*:", raw))
+    preamble = raw[:matches[0].start()] if matches else raw
+    meta = _parse_header(_normalize(preamble), filename)
 
     # The doctor's reply label, e.g. "Dr. Johnson:". Build a tolerant pattern.
     speaker_pat = re.compile(
@@ -143,31 +199,43 @@ def chunk_transcript(raw_text: str, filename: str) -> list[dict]:
 
     chunks: list[dict] = []
     turn = 0
-    for segment in parts[1:]:
-        segment = segment.strip()
-        if not segment:
-            continue
-        split = speaker_pat.split(segment, maxsplit=1)
-        if len(split) == 2:
-            question, answer = split[0].strip(), split[1].strip()
+    for k, m in enumerate(matches):
+        seg_start = m.end()
+        seg_end = matches[k + 1].start() if k + 1 < len(matches) else len(raw)
+        segment = raw[seg_start:seg_end]
+
+        sm = speaker_pat.search(segment)
+        if sm:
+            question_raw = segment[:sm.start()]
+            answer_raw = segment[sm.end():]
+            answer_off = seg_start + sm.end()           # raw offset where answer begins
         else:
-            # no detectable doctor label -> treat whole segment as answer
-            question, answer = "", segment
-        # drop trailing "--- End of Interview ---" markers from the last answer
-        answer = re.sub(r"-{2,}\s*End of Interview\s*-{2,}.*$", "", answer,
-                        flags=re.IGNORECASE).strip()
-        if not answer:
+            question_raw, answer_raw, answer_off = "", segment, seg_start
+
+        # drop trailing "--- End of Interview ---" marker
+        end_m = re.search(r"-{2,}\s*End of Interview\s*-{2,}", answer_raw, re.IGNORECASE)
+        if end_m:
+            answer_raw = answer_raw[:end_m.start()]
+        # advance past leading whitespace so answer_off points at real text
+        lead = len(answer_raw) - len(answer_raw.lstrip())
+        answer_off += lead
+        answer_raw = answer_raw.strip()
+        if not answer_raw:
             continue
+
         turn += 1
+        question = _normalize(question_raw)
+        answer = _normalize(answer_raw)
         combined = (f"Q: {question}\nA: {answer}" if question else f"A: {answer}")
-        chunk_id = f"{doc_id}::q{turn:02d}"
         chunks.append({
-            "id": chunk_id,
+            "id": f"{doc_id}::q{turn:02d}",
             "doc_id": doc_id,
             "source_file": filename,
             "turn_index": turn,
             "question": question,
             "answer": answer,
+            "raw_answer": answer_raw,                    # original newlines preserved
+            "answer_line_start": _line_of(starts, answer_off),
             "text": combined,             # what we embed / search over (Q + A together)
             "topics": _tag_topics(combined),
             "n_chars": len(combined),
@@ -188,16 +256,27 @@ def iter_source_files(data_dir: Path | None = None) -> Iterable[Path]:
             yield path
 
 
-def ingest_corpus(data_dir: Path | None = None) -> list[dict]:
-    """Load + chunk every transcript in the data directory."""
+def ingest_corpus_with_docs(data_dir: Path | None = None) -> tuple[list[dict], dict]:
+    """Load + chunk every transcript, AND return the raw transcripts (for the
+    line-level source viewer). documents: doc_id -> {source_file, raw_text}."""
     all_chunks: list[dict] = []
+    documents: dict = {}
     for path in iter_source_files(data_dir):
         try:
             raw = load_any(path)
             all_chunks.extend(chunk_transcript(raw, path.name))
+            documents[Path(path.name).stem] = {
+                "source_file": path.name,
+                "raw_text": raw.replace("\r", "\n"),
+            }
         except Exception as exc:  # keep going on a single bad file
             print(f"[ingest] FAILED {path.name}: {exc}")
-    return all_chunks
+    return all_chunks, documents
+
+
+def ingest_corpus(data_dir: Path | None = None) -> list[dict]:
+    """Load + chunk every transcript in the data directory."""
+    return ingest_corpus_with_docs(data_dir)[0]
 
 
 def corpus_stats(chunks: list[dict]) -> dict:

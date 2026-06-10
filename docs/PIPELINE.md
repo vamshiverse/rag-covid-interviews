@@ -34,7 +34,7 @@ flowchart TD
   GATE -->|no| FB["⚠️ Fallback answer + reason<br/>(anti-hallucination)"]
   GATE -->|yes| GEN
   subgraph RESPOND["④ Response Engine"]
-    GEN["Generate answer<br/>extractive (default) · or LLM"] --> CITE["Attach citations<br/>quoted lines + doctor/country/file"]
+    GEN["Generate answer<br/>extractive (default) · or LLM"] --> CITE["Attach line-level citations<br/>quoted line + literal source line no.<br/>+ view-in-transcript highlight"]
   end
   CITE --> ANS([Grounded answer + citations])
   FB --> ANS

@@ -9,12 +9,14 @@ Run:  streamlit run app.py
 """
 from __future__ import annotations
 
+import html as _html
 import json
 import time
 
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
+import streamlit.components.v1 as components
 
 from rag_app import config
 from rag_app.ingestion import ingest_corpus, corpus_stats
@@ -82,6 +84,50 @@ def metric_card(label: str, value, sub: str = "", color: str | None = None):
                 f"<div class='metric-big' style='color:{col}'>{val}</div>"
                 f"<div style='color:#7a8493;font-size:.8rem'>{sub}</div></div>",
                 unsafe_allow_html=True)
+
+
+# ------------------------------------------------- line-level source viewer --
+def line_label(start, end) -> str:
+    if not start:
+        return "line n/a"
+    return f"line {start}" if (not end or end == start) else f"lines {start}–{end}"
+
+
+def _transcript_html(raw_text: str, start_line, end_line) -> str:
+    """Full transcript with line-number gutter; the cited line range is
+    highlighted and auto-scrolled into view (JS runs inside the iframe)."""
+    lines = raw_text.split("\n")
+    rows = []
+    for n, line in enumerate(lines, start=1):
+        safe = _html.escape(line) if line.strip() else "&nbsp;"
+        hot = bool(start_line) and start_line <= n <= (end_line or start_line)
+        anchor = " id='hl'" if (start_line and n == start_line) else ""
+        rows.append(f"<tr class='{'hot' if hot else ''}'>"
+                    f"<td class='ln'>{n}</td><td{anchor}>{safe}</td></tr>")
+    return f"""<!doctype html><html><head><meta charset='utf-8'><style>
+      body{{font-family:'Segoe UI',Arial,sans-serif;margin:0;background:#fff;color:#1a2533;}}
+      table{{border-collapse:collapse;width:100%;font-size:13px;line-height:1.55;}}
+      td.ln{{width:40px;text-align:right;color:#aab3c0;padding:1px 10px 1px 4px;
+             user-select:none;border-right:1px solid #eef1f5;}}
+      td{{padding:1px 10px;vertical-align:top;white-space:pre-wrap;word-break:break-word;}}
+      tr.hot td{{background:#fff3bf;}}
+      tr.hot td.ln{{background:#ffe98a;color:#7a5b00;font-weight:700;}}
+    </style></head><body><table>{''.join(rows)}</table>
+    <script>const e=document.getElementById('hl');if(e){{e.scrollIntoView({{block:'center'}});}}</script>
+    </body></html>"""
+
+
+@st.dialog("📄 Source transcript", width="large")
+def show_source_dialog(doc: dict, doctor: str, country: str, quote: str,
+                       start_line, end_line):
+    if not doc:
+        st.warning("Transcript not available — rebuild the index from the ① Ingest tab.")
+        return
+    st.markdown(f"**{doctor} · {country}**  ·  `{doc['source_file']}`  ·  "
+                f"**{line_label(start_line, end_line)}**")
+    st.markdown(f"<div class='cite'>“{quote}”</div>", unsafe_allow_html=True)
+    components.html(_transcript_html(doc["raw_text"], start_line, end_line),
+                    height=460, scrolling=True)
 
 
 # ------------------------------------------------------- cached resources ---
@@ -289,8 +335,12 @@ with tab_ask:
 
         if go_btn and query.strip():
             with st.spinner("Retrieving + composing grounded answer …"):
-                result = res["engine"].answer(query)
+                st.session_state["ask_result"] = res["engine"].answer(query)
 
+        # Render from session_state so the per-citation "View source" buttons
+        # (which trigger a rerun) keep the answer + citations on screen.
+        result = st.session_state.get("ask_result")
+        if result is not None:
             # --- confidence + latency strip ---
             t = st.columns([1, 1, 1, 3])
             with t[0]: metric_card("Confidence", result.confidence, "best semantic match",
@@ -311,13 +361,21 @@ with tab_ask:
             else:
                 st.markdown(f"<div class='answer-box'>{result.answer}</div>",
                             unsafe_allow_html=True)
-                st.markdown("##### 📌 Citations (grounding)")
-                for c in result.citations:
-                    st.markdown(
-                        f"<div class='cite'><span class='src'>{c.doctor} · {c.country} · "
-                        f"{c.source_file}</span> &nbsp; <span style='color:#8a93a0'>"
-                        f"(relevance {c.relevance:.2f})</span><br>“{c.quote}”</div>",
-                        unsafe_allow_html=True)
+                st.markdown("##### 📌 Citations (grounding) — click **Source** to see the highlighted line in the transcript")
+                docs = res["index"].documents
+                for i, c in enumerate(result.citations):
+                    col1, col2 = st.columns([7, 1])
+                    with col1:
+                        st.markdown(
+                            f"<div class='cite'><span class='src'>{c.doctor} · {c.country} · "
+                            f"{c.source_file}</span> &nbsp; <span style='color:#8a93a0'>"
+                            f"({line_label(c.start_line, c.end_line)} · relevance {c.relevance:.2f})"
+                            f"</span><br>“{c.quote}”</div>", unsafe_allow_html=True)
+                    with col2:
+                        doc = docs.get(c.chunk_id.split("::")[0])
+                        if c.start_line and doc and st.button("📄 Source", key=f"src_{i}"):
+                            show_source_dialog(doc, c.doctor, c.country, c.quote,
+                                               c.start_line, c.end_line)
 
             # --- retrieval transparency ---
             with st.expander("🔬 Retrieval details — how hybrid search ranked the chunks"):
@@ -449,9 +507,10 @@ with tab_eval:
                 if item["result"]["citations"]:
                     st.markdown("**Citations:**")
                     for c in item["result"]["citations"]:
+                        loc = line_label(c.get("start_line"), c.get("end_line"))
                         st.markdown(f"<div class='cite'><span class='src'>{c['doctor']} · "
-                                    f"{c['country']}</span><br>“{c['quote']}”</div>",
-                                    unsafe_allow_html=True)
+                                    f"{c['country']}</span> <span style='color:#8a93a0'>· {loc}</span>"
+                                    f"<br>“{c['quote']}”</div>", unsafe_allow_html=True)
             st.markdown("**Metrics for this question:**")
             st.json({k: (round(v, 3) if isinstance(v, float) and v == v else v)
                      for k, v in item["metrics"].items()})

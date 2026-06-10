@@ -33,7 +33,17 @@ assert ("MIS-C" in md_blob) or ("immunoglobulin" in md_blob.lower()), \
     "answer text not found in rendered markdown"
 assert ("Citations" in md_blob) or ("relevance" in md_blob.lower()), \
     "citations block not rendered"
-print("[ask] OK — answer + citations rendered for MIS-C query")
+assert ("line " in md_blob), "citation line locator not rendered"
+print("[ask] OK — answer + citations + line locators rendered for MIS-C query")
+
+# ---- Line-level source viewer: click the first '📄 Source' button -> dialog ----
+src_clicked = False
+for b in at.button:
+    if "Source" in b.label:
+        b.click(); at.run(); src_clicked = True; break
+assert src_clicked, "no 'Source' button found (line-level viewer missing)"
+assert not at.exception, f"raise after opening source dialog: {at.exception}"
+print("[viewer] OK — source-transcript dialog opens with no exception")
 
 # ---- Evaluate tab: click 'Load last results' ----
 loaded = False

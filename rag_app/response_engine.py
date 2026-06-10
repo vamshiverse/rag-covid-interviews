@@ -24,6 +24,7 @@ from dataclasses import dataclass, field
 import numpy as np
 
 from . import config
+from .ingestion import _normalize_with_map
 from .retriever import HybridRetriever, RetrievedChunk
 
 _SENT_RE = re.compile(r"(?<=[.!?])\s+(?=[A-Z0-9\"'])")
@@ -35,6 +36,25 @@ def split_sentences(text: str) -> list[str]:
     return sents
 
 
+def locate_lines(chunk: dict, sentence: str) -> tuple[int | None, int | None]:
+    """Map a cited sentence back to its literal source line range (1-indexed in
+    the original PDF/DOCX). Returns (None, None) if it can't be located."""
+    raw = chunk.get("raw_answer")
+    base = chunk.get("answer_line_start")
+    if not raw or not base:
+        return (None, None)
+    normalized, idx_map = _normalize_with_map(raw)
+    pos = normalized.find(sentence)
+    if pos < 0 or not idx_map:
+        return (None, None)
+    raw = raw.replace("\r", "\n")
+    raw_start = idx_map[pos]
+    raw_end = idx_map[min(pos + len(sentence) - 1, len(idx_map) - 1)]
+    start_line = base + raw[:raw_start].count("\n")
+    end_line = base + raw[:raw_end + 1].count("\n")
+    return (start_line, end_line)
+
+
 @dataclass
 class Citation:
     chunk_id: str
@@ -43,6 +63,8 @@ class Citation:
     source_file: str
     quote: str
     relevance: float
+    start_line: int | None = None
+    end_line: int | None = None
 
 
 @dataclass
@@ -171,8 +193,10 @@ class ResponseEngine:
             if key in seen:
                 continue
             seen.add(key)
+            sl, el = locate_lines(rc.chunk, sent)
             citations.append(Citation(rc.id, rc.chunk["doctor"], rc.chunk["country"],
-                                       rc.chunk["source_file"], sent, round(sim, 3)))
+                                       rc.chunk["source_file"], sent, round(sim, 3),
+                                       sl, el))
             lines.append(sent)
 
         docs = sorted({retrieved[ci].chunk["doctor"] for _, ci, _ in top_sents})
@@ -208,9 +232,10 @@ class ResponseEngine:
             sents = split_sentences(rc.chunk["answer"]) or [rc.chunk["answer"]]
             svecs = self.retriever.index.embedder.encode(sents)
             best = int(np.argmax(svecs @ qv))
+            sl, el = locate_lines(rc.chunk, sents[best])
             citations.append(Citation(rc.id, rc.chunk["doctor"], rc.chunk["country"],
                                        rc.chunk["source_file"], sents[best],
-                                       round(float((svecs @ qv)[best]), 3)))
+                                       round(float((svecs @ qv)[best]), 3), sl, el))
         return raw, citations, False, "", used
 
 

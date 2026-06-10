@@ -26,23 +26,24 @@ def tokenize(text: str) -> list[str]:
 
 
 class HybridIndex:
-    def __init__(self, chunks, dense_matrix, embedder, embedder_note=""):
+    def __init__(self, chunks, dense_matrix, embedder, embedder_note="", documents=None):
         self.chunks = chunks
         self.dense_matrix = dense_matrix            # (N, d) L2-normalised
         self.embedder = embedder
         self.embedder_note = embedder_note
+        self.documents = documents or {}            # doc_id -> {source_file, raw_text}
         self._tokenized = [tokenize(c["text"]) for c in chunks]
         self.bm25 = BM25Okapi(self._tokenized)
         self.id_to_pos = {c["id"]: i for i, c in enumerate(chunks)}
 
     # --------------------------------------------------------------- build --
     @classmethod
-    def build(cls, chunks, backend: str | None = None):
+    def build(cls, chunks, backend: str | None = None, documents=None):
         embedder, note = build_embedder(backend)
         texts = [c["text"] for c in chunks]
         embedder.fit(texts)
         dense = embedder.encode(texts).astype(np.float32)
-        return cls(chunks, dense, embedder, note)
+        return cls(chunks, dense, embedder, note, documents)
 
     # --------------------------------------------------------- query helpers
     def encode_query(self, query: str) -> np.ndarray:
@@ -54,6 +55,8 @@ class HybridIndex:
         d.mkdir(parents=True, exist_ok=True)
         with open(d / "chunks.json", "w", encoding="utf-8") as f:
             json.dump(self.chunks, f, ensure_ascii=False)
+        with open(d / "documents.json", "w", encoding="utf-8") as f:
+            json.dump(self.documents, f, ensure_ascii=False)
         np.save(d / "dense.npy", self.dense_matrix)
         meta = {"backend": self.embedder.kind, "name": self.embedder.name,
                 "note": self.embedder_note, "n_chunks": len(self.chunks),
@@ -69,6 +72,10 @@ class HybridIndex:
         d = Path(index_dir or config.INDEX_DIR)
         with open(d / "chunks.json", encoding="utf-8") as f:
             chunks = json.load(f)
+        documents = {}
+        if (d / "documents.json").exists():
+            with open(d / "documents.json", encoding="utf-8") as f:
+                documents = json.load(f)
         dense = np.load(d / "dense.npy")
         with open(d / "embedder_meta.json", encoding="utf-8") as f:
             meta = json.load(f)
@@ -84,7 +91,7 @@ class HybridIndex:
             embedder = OpenAIEmbedder()
         else:
             raise ValueError(f"Unknown persisted backend: {backend}")
-        return cls(chunks, dense, embedder, meta.get("note", ""))
+        return cls(chunks, dense, embedder, meta.get("note", ""), documents)
 
     @staticmethod
     def exists(index_dir: Path | None = None) -> bool:

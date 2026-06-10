@@ -88,8 +88,10 @@ This is exactly why a single method is not enough here, and why "hybrid" is the
 chosen retrieval method after reading the corpus.
 
 ### c) Grounding + Fallback — the two anti-hallucination levers
-- **Grounding:** every answer quotes the exact supporting lines and attributes them
-  to a doctor / country / file.
+- **Grounding (line-level):** every answer quotes its supporting lines, attributes
+  them to a doctor / country / file **with a literal source line number**, and a
+  **"📄 Source"** button opens the full transcript with that line highlighted and
+  scrolled into view. (PDF → precise wrap-line; DOCX → the answer's paragraph line.)
 - **Fallback:** a relevance gate refuses to answer when nothing relevant is found,
   and **explains why** (e.g. off-topic, or out of scope). See limitations below.
 

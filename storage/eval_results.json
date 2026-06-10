@@ -21,7 +21,9 @@
             "country": "Germany",
             "source_file": "Dr_Clara_Hoffmann_Germany_Detailed_Interview.pdf",
             "quote": "We later discovered the post-infectious syndrome called MIS-C, which can be life-threatening.",
-            "relevance": 0.633
+            "relevance": 0.633,
+            "start_line": 13,
+            "end_line": 14
           },
           {
             "chunk_id": "Dr_Anjali_Singh_India_Detailed_Interview::q05",
@@ -29,7 +31,9 @@
             "country": "India",
             "source_file": "Dr_Anjali_Singh_India_Detailed_Interview.pdf",
             "quote": "Yes, the MIS-C cases - Multi-System Inflammatory Syndrome in Children - were our biggest concern.",
-            "relevance": 0.624
+            "relevance": 0.624,
+            "start_line": 41,
+            "end_line": 42
           },
           {
             "chunk_id": "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q03",
@@ -37,7 +41,9 @@
             "country": "Germany",
             "source_file": "Dr_Clara_Hoffmann_Germany_Detailed_Interview.pdf",
             "quote": "By late 2020, however, MIS-C began appearing: high fevers, rashes, shock, and cardiac involvement weeks after infection.",
-            "relevance": 0.608
+            "relevance": 0.608,
+            "start_line": 22,
+            "end_line": 23
           },
           {
             "chunk_id": "Dr_Anjali_Singh_India_Detailed_Interview::q05",
@@ -45,7 +51,9 @@
             "country": "India",
             "source_file": "Dr_Anjali_Singh_India_Detailed_Interview.pdf",
             "quote": "These children came in with persistent fever, rash, low blood pressure, and cardiac involvement.",
-            "relevance": 0.409
+            "relevance": 0.409,
+            "start_line": 43,
+            "end_line": 44
           }
         ],
         "used_chunk_ids": [
@@ -61,9 +69,9 @@
           "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q04"
         ],
         "timings_ms": {
-          "retrieval": 116.1,
-          "generation": 670.9,
-          "total": 787.0
+          "retrieval": 30.5,
+          "generation": 124.4,
+          "total": 154.9
         }
       },
       "metrics": {
@@ -80,9 +88,9 @@
         "citation_source_recall": 0.6666666666666666,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 787.0,
-        "latency_ms_retrieval": 116.1,
-        "latency_ms_generation": 670.9
+        "latency_ms_total": 154.9,
+        "latency_ms_retrieval": 30.5,
+        "latency_ms_generation": 124.4
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -108,7 +116,9 @@
             "country": "India",
             "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
             "quote": "The hardest cases were those in the “happy hypoxia” category — patients sitting up and talking with SpO₂ of 60%.",
-            "relevance": 0.584
+            "relevance": 0.584,
+            "start_line": 19,
+            "end_line": 19
           },
           {
             "chunk_id": "Dr_Michael_Anderson_US_Detailed_Interview::q03",
@@ -116,7 +126,9 @@
             "country": "US",
             "source_file": "Dr_Michael_Anderson_US_Detailed_Interview.pdf",
             "quote": "One of the most startling patterns early on was \"silent hypoxia,\" where patients presented with dangerously low oxygen saturations but relatively little subjective dyspnea.",
-            "relevance": 0.581
+            "relevance": 0.581,
+            "start_line": 21,
+            "end_line": 22
           },
           {
             "chunk_id": "Dr_Arjun_Mehta_India_Detailed_Interview::q12",
@@ -124,7 +136,9 @@
             "country": "India",
             "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
             "quote": "First, early diagnosis and oxygen access save more lives than high-end drugs.",
-            "relevance": 0.433
+            "relevance": 0.433,
+            "start_line": 75,
+            "end_line": 75
           },
           {
             "chunk_id": "Dr_Arjun_Mehta_India_Detailed_Interview::q03",
@@ -132,7 +146,9 @@
             "country": "India",
             "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
             "quote": "Some patients responded well to oxygen therapy and steroids, while others deteriorated suddenly with cytokine storms.",
-            "relevance": 0.339
+            "relevance": 0.339,
+            "start_line": 17,
+            "end_line": 17
           }
         ],
         "used_chunk_ids": [
@@ -148,9 +164,9 @@
           "Dr_Arjun_Mehta_India_Detailed_Interview::q12"
         ],
         "timings_ms": {
-          "retrieval": 36.1,
-          "generation": 263.5,
-          "total": 299.6
+          "retrieval": 12.6,
+          "generation": 126.2,
+          "total": 138.8
         }
       },
       "metrics": {
@@ -167,9 +183,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 299.6,
-        "latency_ms_retrieval": 36.1,
-        "latency_ms_generation": 263.5
+        "latency_ms_total": 138.8,
+        "latency_ms_retrieval": 12.6,
+        "latency_ms_generation": 126.2
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -195,7 +211,9 @@
             "country": "US",
             "source_file": "Dr_David_Thompson_US_Detailed_Interview.docx",
             "quote": "For oxygen, we coordinated with suppliers and the state emergency management to prioritize deliveries; we also used concentrators when cylinders were scarce.",
-            "relevance": 0.532
+            "relevance": 0.532,
+            "start_line": 34,
+            "end_line": 34
           },
           {
             "chunk_id": "Dr_Lukas_Meier_Germany_Detailed_Interview::q03",
@@ -203,7 +221,9 @@
             "country": "Germany",
             "source_file": "Dr_Lukas_Meier_Germany_Detailed_Interview.pdf",
             "quote": "By late 2021, staff shortages not ventilator shortages became our bottleneck.",
-            "relevance": 0.528
+            "relevance": 0.528,
+            "start_line": 28,
+            "end_line": 29
           },
           {
             "chunk_id": "Dr_James_Miller_US_Detailed_Interview::q04",
@@ -211,7 +231,9 @@
             "country": "US",
             "source_file": "Dr_James_Miller_US_Detailed_Interview.docx",
             "quote": "That required converting post-anesthesia care units, step-downs, and even parts of the cafeteria into patient care areas.",
-            "relevance": 0.486
+            "relevance": 0.486,
+            "start_line": 22,
+            "end_line": 22
           },
           {
             "chunk_id": "Dr_Lukas_Meier_Germany_Detailed_Interview::q03",
@@ -219,7 +241,9 @@
             "country": "Germany",
             "source_file": "Dr_Lukas_Meier_Germany_Detailed_Interview.pdf",
             "quote": "When ICUs in Munich or Hamburg filled up, patients were airlifted to less burdened regions.",
-            "relevance": 0.479
+            "relevance": 0.479,
+            "start_line": 25,
+            "end_line": 25
           }
         ],
         "used_chunk_ids": [
@@ -235,9 +259,9 @@
           "Dr_David_Thompson_US_Detailed_Interview::q11"
         ],
         "timings_ms": {
-          "retrieval": 23.5,
-          "generation": 158.8,
-          "total": 182.3
+          "retrieval": 13.1,
+          "generation": 120.7,
+          "total": 133.8
         }
       },
       "metrics": {
@@ -254,9 +278,9 @@
         "citation_source_recall": 0.3333333333333333,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 182.3,
-        "latency_ms_retrieval": 23.5,
-        "latency_ms_generation": 158.8
+        "latency_ms_total": 133.8,
+        "latency_ms_retrieval": 13.1,
+        "latency_ms_generation": 120.7
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -282,7 +306,9 @@
             "country": "India",
             "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
             "quote": "The game-changer was dexamethasone for moderate to severe cases.",
-            "relevance": 0.563
+            "relevance": 0.563,
+            "start_line": 49,
+            "end_line": 49
           },
           {
             "chunk_id": "Dr_Felix_Schneider_Germany_Detailed_Interview::q06",
@@ -290,7 +316,9 @@
             "country": "Germany",
             "source_file": "Dr_Felix_Schneider_Germany_Detailed_Interview.pdf",
             "quote": "Noninvasive therapies were used more aggressively, balanced by close surveillance.",
-            "relevance": 0.523
+            "relevance": 0.523,
+            "start_line": 50,
+            "end_line": 50
           },
           {
             "chunk_id": "Dr_Felix_Schneider_Germany_Detailed_Interview::q06",
@@ -298,7 +326,9 @@
             "country": "Germany",
             "source_file": "Dr_Felix_Schneider_Germany_Detailed_Interview.pdf",
             "quote": "For example, ivermectin and unproven antivirals were rejected in our protocols until sufficient evidence emerged.",
-            "relevance": 0.472
+            "relevance": 0.472,
+            "start_line": 51,
+            "end_line": 52
           },
           {
             "chunk_id": "Dr_Felix_Schneider_Germany_Detailed_Interview::q01",
@@ -306,7 +336,9 @@
             "country": "Germany",
             "source_file": "Dr_Felix_Schneider_Germany_Detailed_Interview.pdf",
             "quote": "But COVID challenged nearly every assumption we had about respiratory failure.",
-            "relevance": 0.416
+            "relevance": 0.416,
+            "start_line": 11,
+            "end_line": 11
           }
         ],
         "used_chunk_ids": [
@@ -322,9 +354,9 @@
           "Dr_Sarah_Johnson_US_Detailed_Interview::q02"
         ],
         "timings_ms": {
-          "retrieval": 18.9,
-          "generation": 169.9,
-          "total": 188.8
+          "retrieval": 19.0,
+          "generation": 162.9,
+          "total": 181.9
         }
       },
       "metrics": {
@@ -341,9 +373,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 188.8,
-        "latency_ms_retrieval": 18.9,
-        "latency_ms_generation": 169.9
+        "latency_ms_total": 181.9,
+        "latency_ms_retrieval": 19.0,
+        "latency_ms_generation": 162.9
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -369,7 +401,9 @@
             "country": "India",
             "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
             "quote": "The Delta wave in 2021 was ten times worse than the first.",
-            "relevance": 0.381
+            "relevance": 0.381,
+            "start_line": 23,
+            "end_line": 23
           },
           {
             "chunk_id": "Dr_Kavita_Joshi_India_Detailed_Interview::q05",
@@ -377,7 +411,9 @@
             "country": "India",
             "source_file": "Dr_Kavita_Joshi_India_Detailed_Interview.pdf",
             "quote": "The Delta variant was an epidemiologist s nightmare.",
-            "relevance": 0.359
+            "relevance": 0.359,
+            "start_line": 38,
+            "end_line": 38
           },
           {
             "chunk_id": "Dr_Kavita_Joshi_India_Detailed_Interview::q05",
@@ -385,7 +421,9 @@
             "country": "India",
             "source_file": "Dr_Kavita_Joshi_India_Detailed_Interview.pdf",
             "quote": "What was most striking was how heterogeneous the epidemic became urban centers peaked and declined while rural districts were still climbing.",
-            "relevance": 0.278
+            "relevance": 0.278,
+            "start_line": 41,
+            "end_line": 42
           },
           {
             "chunk_id": "Dr_Arjun_Mehta_India_Detailed_Interview::q05",
@@ -393,7 +431,9 @@
             "country": "India",
             "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
             "quote": "The government eventually cracked down, but during those peak weeks, chaos ruled.",
-            "relevance": 0.26
+            "relevance": 0.26,
+            "start_line": 31,
+            "end_line": 31
           }
         ],
         "used_chunk_ids": [
@@ -409,9 +449,9 @@
           "Dr_Priya_Sharma_India_Detailed_Interview::q02"
         ],
         "timings_ms": {
-          "retrieval": 73.8,
-          "generation": 564.6,
-          "total": 638.4
+          "retrieval": 12.8,
+          "generation": 153.0,
+          "total": 165.8
         }
       },
       "metrics": {
@@ -428,9 +468,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 638.4,
-        "latency_ms_retrieval": 73.8,
-        "latency_ms_generation": 564.6
+        "latency_ms_total": 165.8,
+        "latency_ms_retrieval": 12.8,
+        "latency_ms_generation": 153.0
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -456,7 +496,9 @@
             "country": "India",
             "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
             "quote": "We saw dozens of patients with black fungus infections — disfiguring, painful, and often fatal.",
-            "relevance": 0.567
+            "relevance": 0.567,
+            "start_line": 61,
+            "end_line": 61
           },
           {
             "chunk_id": "Dr_Arjun_Mehta_India_Detailed_Interview::q10",
@@ -464,7 +506,9 @@
             "country": "India",
             "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
             "quote": "The mucormycosis crisis in mid-2021 was another nightmare.",
-            "relevance": 0.544
+            "relevance": 0.544,
+            "start_line": 61,
+            "end_line": 61
           },
           {
             "chunk_id": "Dr_Kavita_Joshi_India_Detailed_Interview::q02",
@@ -472,7 +516,9 @@
             "country": "India",
             "source_file": "Dr_Kavita_Joshi_India_Detailed_Interview.pdf",
             "quote": "In January 2020, we were monitoring the outbreak in Wuhan closely.",
-            "relevance": 0.43
+            "relevance": 0.43,
+            "start_line": 12,
+            "end_line": 12
           },
           {
             "chunk_id": "Dr_Kavita_Joshi_India_Detailed_Interview::q11",
@@ -480,7 +526,9 @@
             "country": "India",
             "source_file": "Dr_Kavita_Joshi_India_Detailed_Interview.pdf",
             "quote": "Initially, vaccine hesitancy was significant, especially in rural areas.",
-            "relevance": 0.405
+            "relevance": 0.405,
+            "start_line": 88,
+            "end_line": 89
           }
         ],
         "used_chunk_ids": [
@@ -496,9 +544,9 @@
           "Dr_Kavita_Joshi_India_Detailed_Interview::q10"
         ],
         "timings_ms": {
-          "retrieval": 70.1,
-          "generation": 552.0,
-          "total": 622.1
+          "retrieval": 13.2,
+          "generation": 115.7,
+          "total": 128.9
         }
       },
       "metrics": {
@@ -515,9 +563,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 622.1,
-        "latency_ms_retrieval": 70.1,
-        "latency_ms_generation": 552.0
+        "latency_ms_total": 128.9,
+        "latency_ms_retrieval": 13.2,
+        "latency_ms_generation": 115.7
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -543,7 +591,9 @@
             "country": "Germany",
             "source_file": "Dr_Lukas_Meier_Germany_Detailed_Interview.pdf",
             "quote": "Vaccine hesitancy wasn t just ignorance it was mistrust, amplified by online echo chambers.",
-            "relevance": 0.695
+            "relevance": 0.695,
+            "start_line": 62,
+            "end_line": 63
           },
           {
             "chunk_id": "Dr_Lukas_Meier_Germany_Detailed_Interview::q07",
@@ -551,7 +601,9 @@
             "country": "Germany",
             "source_file": "Dr_Lukas_Meier_Germany_Detailed_Interview.pdf",
             "quote": "Some patients came in unvaccinated and dying, still convinced COVID was exaggerated.",
-            "relevance": 0.66
+            "relevance": 0.66,
+            "start_line": 61,
+            "end_line": 61
           },
           {
             "chunk_id": "Dr_Anjali_Singh_India_Detailed_Interview::q07",
@@ -559,7 +611,9 @@
             "country": "India",
             "source_file": "Dr_Anjali_Singh_India_Detailed_Interview.pdf",
             "quote": "We spoke in local languages, through radio and WhatsApp groups, explaining simply: \"The vaccine teaches your child's body to fight, not harm it.\" The key was empathy, not argument.",
-            "relevance": 0.619
+            "relevance": 0.619,
+            "start_line": 62,
+            "end_line": 65
           },
           {
             "chunk_id": "Dr_Neha_Reddy_India_Detailed_Interview::q08",
@@ -567,7 +621,9 @@
             "country": "India",
             "source_file": "Dr_Neha_Reddy_India_Detailed_Interview.docx",
             "quote": "Myths about infertility, rapid vaccine development, and side effects were rampant.",
-            "relevance": 0.572
+            "relevance": 0.572,
+            "start_line": 47,
+            "end_line": 47
           }
         ],
         "used_chunk_ids": [
@@ -583,9 +639,9 @@
           "Dr_Anjali_Singh_India_Detailed_Interview::q07"
         ],
         "timings_ms": {
-          "retrieval": 114.4,
-          "generation": 760.2,
-          "total": 874.6
+          "retrieval": 12.3,
+          "generation": 151.5,
+          "total": 163.8
         }
       },
       "metrics": {
@@ -602,9 +658,9 @@
         "citation_source_recall": 0.3333333333333333,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 874.6,
-        "latency_ms_retrieval": 114.4,
-        "latency_ms_generation": 760.2
+        "latency_ms_total": 163.8,
+        "latency_ms_retrieval": 12.3,
+        "latency_ms_generation": 151.5
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -630,7 +686,9 @@
             "country": "Germany",
             "source_file": "Dr_Anna_Weber_Germany_Detailed_Interview.pdf",
             "quote": "I believe the next phase of digital health in Germany will need clearer frameworks for responsible data sharing, especially during crises.",
-            "relevance": 0.696
+            "relevance": 0.696,
+            "start_line": 89,
+            "end_line": 90
           },
           {
             "chunk_id": "Dr_Erik_Vogel_Germany_Detailed_Interview::q06",
@@ -638,7 +696,9 @@
             "country": "Germany",
             "source_file": "Dr_Erik_Vogel_Germany_Detailed_Interview.pdf",
             "quote": "Harmonizing that into a unified national dataset required digital modernization that Germany had long postponed.",
-            "relevance": 0.587
+            "relevance": 0.587,
+            "start_line": 51,
+            "end_line": 52
           },
           {
             "chunk_id": "Dr_Kavita_Joshi_India_Detailed_Interview::q10",
@@ -646,7 +706,9 @@
             "country": "India",
             "source_file": "Dr_Kavita_Joshi_India_Detailed_Interview.pdf",
             "quote": "The ICMR COVID Data Portal integrating lab results nationwide was a game-changer.",
-            "relevance": 0.447
+            "relevance": 0.447,
+            "start_line": 79,
+            "end_line": 80
           },
           {
             "chunk_id": "Dr_Kavita_Joshi_India_Detailed_Interview::q10",
@@ -654,7 +716,9 @@
             "country": "India",
             "source_file": "Dr_Kavita_Joshi_India_Detailed_Interview.pdf",
             "quote": "For the first time, we had near real-time epidemiological data at a national scale.",
-            "relevance": 0.442
+            "relevance": 0.442,
+            "start_line": 80,
+            "end_line": 81
           }
         ],
         "used_chunk_ids": [
@@ -670,9 +734,9 @@
           "Dr_Jonas_Fischer_Germany_Detailed_Interview::q11"
         ],
         "timings_ms": {
-          "retrieval": 72.1,
-          "generation": 496.6,
-          "total": 568.7
+          "retrieval": 12.8,
+          "generation": 113.2,
+          "total": 126.0
         }
       },
       "metrics": {
@@ -689,9 +753,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 568.7,
-        "latency_ms_retrieval": 72.1,
-        "latency_ms_generation": 496.6
+        "latency_ms_total": 126.0,
+        "latency_ms_retrieval": 12.8,
+        "latency_ms_generation": 113.2
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -717,7 +781,9 @@
             "country": "Germany",
             "source_file": "Dr_Anna_Weber_Germany_Detailed_Interview.pdf",
             "quote": "That early success gave Germany a brief sense of control one that faded quickly once community spread began.",
-            "relevance": 0.533
+            "relevance": 0.533,
+            "start_line": 11,
+            "end_line": 12
           },
           {
             "chunk_id": "Dr_Lukas_Meier_Germany_Detailed_Interview::q02",
@@ -725,7 +791,9 @@
             "country": "Germany",
             "source_file": "Dr_Lukas_Meier_Germany_Detailed_Interview.pdf",
             "quote": "Germany had a head start thanks to our strong laboratory network and decentralized health system.",
-            "relevance": 0.482
+            "relevance": 0.482,
+            "start_line": 14,
+            "end_line": 15
           },
           {
             "chunk_id": "Dr_Lukas_Meier_Germany_Detailed_Interview::q07",
@@ -733,7 +801,9 @@
             "country": "Germany",
             "source_file": "Dr_Lukas_Meier_Germany_Detailed_Interview.pdf",
             "quote": "On the positive side, Germany s data transparency allowed us to prove vaccine effectiveness quickly hospitalization rates dropped sharply among the vaccinated.",
-            "relevance": 0.468
+            "relevance": 0.468,
+            "start_line": 64,
+            "end_line": 65
           },
           {
             "chunk_id": "Dr_Anna_Weber_Germany_Detailed_Interview::q01",
@@ -741,7 +811,9 @@
             "country": "Germany",
             "source_file": "Dr_Anna_Weber_Germany_Detailed_Interview.pdf",
             "quote": "In January 2020, I was part of the team that treated Germany s first confirmed COVID case a man infected via a business meeting with visitors from China.",
-            "relevance": 0.435
+            "relevance": 0.435,
+            "start_line": 8,
+            "end_line": 9
           }
         ],
         "used_chunk_ids": [
@@ -757,9 +829,9 @@
           "Dr_Anna_Weber_Germany_Detailed_Interview::q10"
         ],
         "timings_ms": {
-          "retrieval": 68.2,
-          "generation": 666.9,
-          "total": 735.1
+          "retrieval": 14.2,
+          "generation": 131.8,
+          "total": 146.0
         }
       },
       "metrics": {
@@ -776,9 +848,9 @@
         "citation_source_recall": 0.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 735.1,
-        "latency_ms_retrieval": 68.2,
-        "latency_ms_generation": 666.9
+        "latency_ms_total": 146.0,
+        "latency_ms_retrieval": 14.2,
+        "latency_ms_generation": 131.8
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -804,7 +876,9 @@
             "country": "Germany",
             "source_file": "Dr_Anna_Weber_Germany_Detailed_Interview.pdf",
             "quote": "We also helped design hospital-wide infection control protocols, covering everything from elevator use to handling lab samples.",
-            "relevance": 0.656
+            "relevance": 0.656,
+            "start_line": 16,
+            "end_line": 17
           },
           {
             "chunk_id": "Dr_Emily_Roberts_US_Detailed_Interview::q11",
@@ -812,7 +886,9 @@
             "country": "US",
             "source_file": "Dr_Emily_Roberts_US_Detailed_Interview.docx",
             "quote": "On a broader level, infection prevention is recognized as a cornerstone of hospital resilience, not an afterthought.",
-            "relevance": 0.647
+            "relevance": 0.647,
+            "start_line": 52,
+            "end_line": 52
           },
           {
             "chunk_id": "Dr_Neha_Reddy_India_Detailed_Interview::q03",
@@ -820,7 +896,9 @@
             "country": "India",
             "source_file": "Dr_Neha_Reddy_India_Detailed_Interview.docx",
             "quote": "That simple measure drastically reduced staff infections.",
-            "relevance": 0.62
+            "relevance": 0.62,
+            "start_line": 19,
+            "end_line": 19
           },
           {
             "chunk_id": "Dr_Emily_Roberts_US_Detailed_Interview::q11",
@@ -828,7 +906,9 @@
             "country": "US",
             "source_file": "Dr_Emily_Roberts_US_Detailed_Interview.docx",
             "quote": "Infection prevention became everyone’s business, not just the infection control team’s.",
-            "relevance": 0.612
+            "relevance": 0.612,
+            "start_line": 52,
+            "end_line": 52
           }
         ],
         "used_chunk_ids": [
@@ -844,9 +924,9 @@
           "Dr_Emily_Roberts_US_Detailed_Interview::q01"
         ],
         "timings_ms": {
-          "retrieval": 87.5,
-          "generation": 625.6,
-          "total": 713.1
+          "retrieval": 12.2,
+          "generation": 111.9,
+          "total": 124.1
         }
       },
       "metrics": {
@@ -863,9 +943,9 @@
         "citation_source_recall": 0.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 713.1,
-        "latency_ms_retrieval": 87.5,
-        "latency_ms_generation": 625.6
+        "latency_ms_total": 124.1,
+        "latency_ms_retrieval": 12.2,
+        "latency_ms_generation": 111.9
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -891,7 +971,9 @@
             "country": "Germany",
             "source_file": "Dr_Anna_Weber_Germany_Detailed_Interview.pdf",
             "quote": "We also helped design hospital-wide infection control protocols, covering everything from elevator use to handling lab samples.",
-            "relevance": 0.504
+            "relevance": 0.504,
+            "start_line": 16,
+            "end_line": 17
           },
           {
             "chunk_id": "Dr_Anna_Weber_Germany_Detailed_Interview::q02",
@@ -899,7 +981,9 @@
             "country": "Germany",
             "source_file": "Dr_Anna_Weber_Germany_Detailed_Interview.pdf",
             "quote": "My team trained hundreds of healthcare workers in donning and doffing PPE, contact tracing, and surface disinfection.",
-            "relevance": 0.492
+            "relevance": 0.492,
+            "start_line": 15,
+            "end_line": 16
           },
           {
             "chunk_id": "Dr_David_Thompson_US_Detailed_Interview::q11",
@@ -907,7 +991,9 @@
             "country": "US",
             "source_file": "Dr_David_Thompson_US_Detailed_Interview.docx",
             "quote": "Some creative solutions included mobile oxygen trailer deployments and pooling resources with nearby hospitals to balance supplies.",
-            "relevance": 0.48
+            "relevance": 0.48,
+            "start_line": 34,
+            "end_line": 34
           },
           {
             "chunk_id": "Dr_Ravi_Kumar_India_Detailed_Interview::q02",
@@ -915,7 +1001,9 @@
             "country": "India",
             "source_file": "Dr_Ravi_Kumar_India_Detailed_Interview.pdf",
             "quote": "The first few weeks were chaotic - PPE shortages, unclear protocols - but the team adapted fast.",
-            "relevance": 0.48
+            "relevance": 0.48,
+            "start_line": 22,
+            "end_line": 23
           }
         ],
         "used_chunk_ids": [
@@ -931,9 +1019,9 @@
           "Dr_Anna_Weber_Germany_Detailed_Interview::q02"
         ],
         "timings_ms": {
-          "retrieval": 70.5,
-          "generation": 707.0,
-          "total": 777.5
+          "retrieval": 13.3,
+          "generation": 115.3,
+          "total": 128.6
         }
       },
       "metrics": {
@@ -950,9 +1038,9 @@
         "citation_source_recall": 0.5,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 777.5,
-        "latency_ms_retrieval": 70.5,
-        "latency_ms_generation": 707.0
+        "latency_ms_total": 128.6,
+        "latency_ms_retrieval": 13.3,
+        "latency_ms_generation": 115.3
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -978,7 +1066,9 @@
             "country": "Germany",
             "source_file": "Dr_Felix_Schneider_Germany_Detailed_Interview.pdf",
             "quote": "Some Scandinavian centers emphasized home-care oxygen and telemonitoring early on sending moderate patients home with pulse oximeters and monitoring rather than admitting them prematurely.",
-            "relevance": 0.655
+            "relevance": 0.655,
+            "start_line": 86,
+            "end_line": 88
           },
           {
             "chunk_id": "Dr_Sarah_Johnson_US_Detailed_Interview::q08",
@@ -986,7 +1076,9 @@
             "country": "US",
             "source_file": "Dr_Sarah_Johnson_US_Detailed_Interview.pdf",
             "quote": "Use of home pulse oximetry and establishing clear escalation criteria reduced unnecessary ED visits while ensuring timely transfers for those who needed oxygen or advanced care.",
-            "relevance": 0.615
+            "relevance": 0.615,
+            "start_line": 64,
+            "end_line": 66
           },
           {
             "chunk_id": "Dr_Priya_Sharma_India_Detailed_Interview::q03",
@@ -994,7 +1086,9 @@
             "country": "India",
             "source_file": "Dr_Priya_Sharma_India_Detailed_Interview.docx",
             "quote": "We had over 150 patients on oxygen.",
-            "relevance": 0.597
+            "relevance": 0.597,
+            "start_line": 19,
+            "end_line": 19
           },
           {
             "chunk_id": "Dr_Priya_Sharma_India_Detailed_Interview::q03",
@@ -1002,7 +1096,9 @@
             "country": "India",
             "source_file": "Dr_Priya_Sharma_India_Detailed_Interview.docx",
             "quote": "We were monitoring oxygen levels in tanks like we monitor blood pressure in patients — every hour mattered.",
-            "relevance": 0.576
+            "relevance": 0.576,
+            "start_line": 17,
+            "end_line": 17
           }
         ],
         "used_chunk_ids": [
@@ -1018,9 +1114,9 @@
           "Dr_Sarah_Johnson_US_Detailed_Interview::q08"
         ],
         "timings_ms": {
-          "retrieval": 84.5,
-          "generation": 646.3,
-          "total": 730.8
+          "retrieval": 17.9,
+          "generation": 127.2,
+          "total": 145.1
         }
       },
       "metrics": {
@@ -1037,9 +1133,9 @@
         "citation_source_recall": 0.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 730.8,
-        "latency_ms_retrieval": 84.5,
-        "latency_ms_generation": 646.3
+        "latency_ms_total": 145.1,
+        "latency_ms_retrieval": 17.9,
+        "latency_ms_generation": 127.2
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -1065,7 +1161,9 @@
             "country": "India",
             "source_file": "Dr_Anjali_Singh_India_Detailed_Interview.pdf",
             "quote": "Beyond direct infections, the pandemic disrupted immunizations, nutrition programs, and mental health among children.",
-            "relevance": 0.606
+            "relevance": 0.606,
+            "start_line": 10,
+            "end_line": 12
           },
           {
             "chunk_id": "Dr_Anjali_Singh_India_Detailed_Interview::q12",
@@ -1073,7 +1171,9 @@
             "country": "India",
             "source_file": "Dr_Anjali_Singh_India_Detailed_Interview.pdf",
             "quote": "Immunizations and nutrition programs must continue even during lockdowns.",
-            "relevance": 0.573
+            "relevance": 0.573,
+            "start_line": 98,
+            "end_line": 99
           },
           {
             "chunk_id": "Dr_Anjali_Singh_India_Detailed_Interview::q03",
@@ -1081,7 +1181,9 @@
             "country": "India",
             "source_file": "Dr_Anjali_Singh_India_Detailed_Interview.pdf",
             "quote": "For months, routine immunizations were delayed, especially in rural and peri-urban areas.",
-            "relevance": 0.54
+            "relevance": 0.54,
+            "start_line": 24,
+            "end_line": 25
           },
           {
             "chunk_id": "Dr_Anjali_Singh_India_Detailed_Interview::q03",
@@ -1089,7 +1191,9 @@
             "country": "India",
             "source_file": "Dr_Anjali_Singh_India_Detailed_Interview.pdf",
             "quote": "We saw children coming in with weight loss, anemia, and developmental delays.",
-            "relevance": 0.525
+            "relevance": 0.525,
+            "start_line": 26,
+            "end_line": 27
           }
         ],
         "used_chunk_ids": [
@@ -1105,9 +1209,9 @@
           "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q05"
         ],
         "timings_ms": {
-          "retrieval": 266.1,
-          "generation": 564.7,
-          "total": 830.8
+          "retrieval": 14.5,
+          "generation": 128.8,
+          "total": 143.3
         }
       },
       "metrics": {
@@ -1124,9 +1228,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 830.8,
-        "latency_ms_retrieval": 266.1,
-        "latency_ms_generation": 564.7
+        "latency_ms_total": 143.3,
+        "latency_ms_retrieval": 14.5,
+        "latency_ms_generation": 128.8
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -1152,7 +1256,9 @@
             "country": "US",
             "source_file": "Dr_David_Thompson_US_Detailed_Interview.docx",
             "quote": "The pandemic showed the fragility and resilience of rural healthcare simultaneously.",
-            "relevance": 0.549
+            "relevance": 0.549,
+            "start_line": 49,
+            "end_line": 49
           },
           {
             "chunk_id": "Dr_David_Thompson_US_Detailed_Interview::q16",
@@ -1160,7 +1266,9 @@
             "country": "US",
             "source_file": "Dr_David_Thompson_US_Detailed_Interview.docx",
             "quote": "If we act on lessons learned, rural hospitals can be stronger and more equitable partners in national health security.",
-            "relevance": 0.537
+            "relevance": 0.537,
+            "start_line": 49,
+            "end_line": 49
           },
           {
             "chunk_id": "Dr_David_Thompson_US_Detailed_Interview::q16",
@@ -1168,7 +1276,9 @@
             "country": "US",
             "source_file": "Dr_David_Thompson_US_Detailed_Interview.docx",
             "quote": "Policy makers must recognize rural healthcare's distinct needs and fund durable solutions — not temporary stopgaps.",
-            "relevance": 0.462
+            "relevance": 0.462,
+            "start_line": 49,
+            "end_line": 49
           },
           {
             "chunk_id": "Dr_Olivia_Davis_US_Detailed_Interview::q03",
@@ -1176,7 +1286,9 @@
             "country": "US",
             "source_file": "Dr_Olivia_Davis_US_Detailed_Interview.docx",
             "quote": "Hospitals were overwhelmed and understandably focused on patient care.",
-            "relevance": 0.457
+            "relevance": 0.457,
+            "start_line": 15,
+            "end_line": 15
           }
         ],
         "used_chunk_ids": [
@@ -1191,9 +1303,9 @@
           "Dr_David_Thompson_US_Detailed_Interview::q16"
         ],
         "timings_ms": {
-          "retrieval": 72.3,
-          "generation": 484.6,
-          "total": 556.9
+          "retrieval": 15.4,
+          "generation": 102.4,
+          "total": 117.8
         }
       },
       "metrics": {
@@ -1210,9 +1322,9 @@
         "citation_source_recall": 0.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 556.9,
-        "latency_ms_retrieval": 72.3,
-        "latency_ms_generation": 484.6
+        "latency_ms_total": 117.8,
+        "latency_ms_retrieval": 15.4,
+        "latency_ms_generation": 102.4
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -1238,7 +1350,9 @@
             "country": "Germany",
             "source_file": "Dr_Clara_Hoffmann_Germany_Detailed_Interview.pdf",
             "quote": "The European Medicines Agency approved vaccines for 12- to 15-year-olds mid-2021, and younger age groups later.",
-            "relevance": 0.658
+            "relevance": 0.658,
+            "start_line": 44,
+            "end_line": 45
           },
           {
             "chunk_id": "Dr_Anjali_Singh_India_Detailed_Interview::q06",
@@ -1246,7 +1360,9 @@
             "country": "India",
             "source_file": "Dr_Anjali_Singh_India_Detailed_Interview.pdf",
             "quote": "When India approved vaccines for 15 18-year-olds, we organized school-based vaccination drives in coordination with the district health department.",
-            "relevance": 0.632
+            "relevance": 0.632,
+            "start_line": 49,
+            "end_line": 50
           },
           {
             "chunk_id": "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q06",
@@ -1254,7 +1370,9 @@
             "country": "Germany",
             "source_file": "Dr_Clara_Hoffmann_Germany_Detailed_Interview.pdf",
             "quote": "By early 2022, vaccination uptake among adolescents in our region exceeded 70%.",
-            "relevance": 0.62
+            "relevance": 0.62,
+            "start_line": 48,
+            "end_line": 49
           },
           {
             "chunk_id": "Dr_Kavita_Joshi_India_Detailed_Interview::q11",
@@ -1262,7 +1380,9 @@
             "country": "India",
             "source_file": "Dr_Kavita_Joshi_India_Detailed_Interview.pdf",
             "quote": "Initially, vaccine hesitancy was significant, especially in rural areas.",
-            "relevance": 0.546
+            "relevance": 0.546,
+            "start_line": 88,
+            "end_line": 89
           }
         ],
         "used_chunk_ids": [
@@ -1278,9 +1398,9 @@
           "Dr_Kavita_Joshi_India_Detailed_Interview::q11"
         ],
         "timings_ms": {
-          "retrieval": 82.0,
-          "generation": 601.0,
-          "total": 683.0
+          "retrieval": 17.5,
+          "generation": 126.4,
+          "total": 143.9
         }
       },
       "metrics": {
@@ -1297,9 +1417,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 683.0,
-        "latency_ms_retrieval": 82.0,
-        "latency_ms_generation": 601.0
+        "latency_ms_total": 143.9,
+        "latency_ms_retrieval": 17.5,
+        "latency_ms_generation": 126.4
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -1325,7 +1445,9 @@
             "country": "US",
             "source_file": "Dr_Emily_Roberts_US_Detailed_Interview.docx",
             "quote": "The pandemic underscored that pathogens don’t respect borders, and neither should solutions.",
-            "relevance": 0.349
+            "relevance": 0.349,
+            "start_line": 60,
+            "end_line": 60
           },
           {
             "chunk_id": "Dr_Priya_Sharma_India_Detailed_Interview::q01",
@@ -1333,7 +1455,9 @@
             "country": "India",
             "source_file": "Dr_Priya_Sharma_India_Detailed_Interview.docx",
             "quote": "I’ve been in critical care medicine for over 12 years, but nothing in my training prepared me for what we faced in 2020 and especially during the Delta wave in 2021.",
-            "relevance": 0.348
+            "relevance": 0.348,
+            "start_line": 5,
+            "end_line": 5
           },
           {
             "chunk_id": "Dr_Lukas_Meier_Germany_Detailed_Interview::q09",
@@ -1341,7 +1465,9 @@
             "country": "Germany",
             "source_file": "Dr_Lukas_Meier_Germany_Detailed_Interview.pdf",
             "quote": "COVID may have isolated people physically, but it united scientists intellectually.",
-            "relevance": 0.331
+            "relevance": 0.331,
+            "start_line": 81,
+            "end_line": 82
           },
           {
             "chunk_id": "Dr_Lukas_Meier_Germany_Detailed_Interview::q09",
@@ -1349,7 +1475,9 @@
             "country": "Germany",
             "source_file": "Dr_Lukas_Meier_Germany_Detailed_Interview.pdf",
             "quote": "During the first wave, we shared ventilator protocols and mortality data weekly with colleagues abroad.",
-            "relevance": 0.283
+            "relevance": 0.283,
+            "start_line": 76,
+            "end_line": 77
           }
         ],
         "used_chunk_ids": [
@@ -1365,9 +1493,9 @@
           "Dr_Emily_Roberts_US_Detailed_Interview::q13"
         ],
         "timings_ms": {
-          "retrieval": 82.8,
-          "generation": 674.3,
-          "total": 757.1
+          "retrieval": 13.6,
+          "generation": 146.8,
+          "total": 160.4
         }
       },
       "metrics": {
@@ -1384,9 +1512,9 @@
         "citation_source_recall": NaN,
         "n_citations": 4,
         "fallback_correct": 0.0,
-        "latency_ms_total": 757.1,
-        "latency_ms_retrieval": 82.8,
-        "latency_ms_generation": 674.3
+        "latency_ms_total": 160.4,
+        "latency_ms_retrieval": 13.6,
+        "latency_ms_generation": 146.8
       },
       "is_fallback": false,
       "fallback_correct": false
@@ -1412,7 +1540,9 @@
             "country": "India",
             "source_file": "Dr_Arjun_Mehta_India_Detailed_Interview.docx",
             "quote": "The game-changer was dexamethasone for moderate to severe cases.",
-            "relevance": 0.49
+            "relevance": 0.49,
+            "start_line": 49,
+            "end_line": 49
           },
           {
             "chunk_id": "Dr_Michael_Anderson_US_Detailed_Interview::q08",
@@ -1420,7 +1550,9 @@
             "country": "US",
             "source_file": "Dr_Michael_Anderson_US_Detailed_Interview.pdf",
             "quote": "Trials that later demonstrated benefit, such as dexamethasone for hypoxic patients, were rapidly adopted and became part of our standardized order sets.",
-            "relevance": 0.479
+            "relevance": 0.479,
+            "start_line": 73,
+            "end_line": 75
           },
           {
             "chunk_id": "Dr_Priya_Sharma_India_Detailed_Interview::q01",
@@ -1428,7 +1560,9 @@
             "country": "India",
             "source_file": "Dr_Priya_Sharma_India_Detailed_Interview.docx",
             "quote": "We were treating hundreds of patients a day — from mild infections to fulminant ARDS — with limited staff and resources.",
-            "relevance": 0.341
+            "relevance": 0.341,
+            "start_line": 5,
+            "end_line": 5
           },
           {
             "chunk_id": "Dr_Ravi_Kumar_India_Detailed_Interview::q01",
@@ -1436,7 +1570,9 @@
             "country": "India",
             "source_file": "Dr_Ravi_Kumar_India_Detailed_Interview.pdf",
             "quote": "I've been managing ICUs for more than 15 years, but COVID-19 was unlike anything we had ever faced.",
-            "relevance": 0.327
+            "relevance": 0.327,
+            "start_line": 6,
+            "end_line": 7
           }
         ],
         "used_chunk_ids": [
@@ -1453,9 +1589,9 @@
           "Dr_Felix_Schneider_Germany_Detailed_Interview::q01"
         ],
         "timings_ms": {
-          "retrieval": 85.6,
-          "generation": 744.6,
-          "total": 830.2
+          "retrieval": 14.6,
+          "generation": 140.8,
+          "total": 155.4
         }
       },
       "metrics": {
@@ -1472,9 +1608,9 @@
         "citation_source_recall": NaN,
         "n_citations": 4,
         "fallback_correct": 0.0,
-        "latency_ms_total": 830.2,
-        "latency_ms_retrieval": 85.6,
-        "latency_ms_generation": 744.6
+        "latency_ms_total": 155.4,
+        "latency_ms_retrieval": 14.6,
+        "latency_ms_generation": 140.8
       },
       "is_fallback": false,
       "fallback_correct": false
@@ -1503,9 +1639,9 @@
           "Dr_James_Miller_US_Detailed_Interview::q04"
         ],
         "timings_ms": {
-          "retrieval": 83.6,
+          "retrieval": 19.2,
           "generation": 0.0,
-          "total": 83.6
+          "total": 19.2
         }
       },
       "metrics": {
@@ -1522,8 +1658,8 @@
         "citation_source_recall": NaN,
         "n_citations": 0,
         "fallback_correct": 1.0,
-        "latency_ms_total": 83.6,
-        "latency_ms_retrieval": 83.6,
+        "latency_ms_total": 19.2,
+        "latency_ms_retrieval": 19.2,
         "latency_ms_generation": 0.0
       },
       "is_fallback": true,
@@ -1553,9 +1689,9 @@
       "citation_source_precision": 0.2889,
       "citation_source_recall": 0.5889,
       "fallback_correct": 0.8889,
-      "latency_ms_total": 603.3111,
-      "latency_ms_retrieval": 83.7833,
-      "latency_ms_generation": 519.5278
+      "latency_ms_total": 137.65,
+      "latency_ms_retrieval": 15.4833,
+      "latency_ms_generation": 122.1667
     },
     "by_type": {
       "comparative": {
@@ -1594,6 +1730,6 @@
     "embedder": "sentence-transformers:all-MiniLM-L6-v2",
     "provider": "extractive",
     "judge_llm": false,
-    "generated_at": "2026-06-10T05:08:34"
+    "generated_at": "2026-06-10T06:11:16"
   }
 }
