@@ -87,11 +87,14 @@ def metric_card(label: str, value, sub: str = "", color: str | None = None):
 
 
 def eval_section(title: str, subtitle: str, hero_value: float, hero_label: str,
-                 cards: list[tuple]):
-    """One evaluation dimension: a big 'hero' gauge + 1–3 supporting metric cards.
+                 cards: list[tuple], slots: int = 4):
+    """One evaluation dimension: a big 'hero' gauge (a RAG-Triad metric) + its
+    supporting 'side' metrics.
 
     `cards` is a list of (label, value, sub) tuples. A numeric value (0–1) is
     colour-coded by score; a pre-formatted string (e.g. latency) renders neutral.
+    Side metrics are laid out in `slots` fixed-width columns so card sizing stays
+    consistent across sections regardless of how many a section has.
     """
     st.markdown(f"##### {title}")
     if subtitle:
@@ -101,7 +104,7 @@ def eval_section(title: str, subtitle: str, hero_value: float, hero_label: str,
         st.plotly_chart(gauge(hero_value, hero_label), width="stretch")
     with right:
         st.write("")
-        cc = st.columns(len(cards))
+        cc = st.columns(max(slots, len(cards)))
         for col, (lbl, val, sub) in zip(cc, cards):
             with col:
                 color = score_color(val) if isinstance(val, (int, float)) and not isinstance(val, bool) else None
@@ -484,43 +487,59 @@ with tab_eval:
                        f"{agg['n_items']} questions ({agg['n_answerable']} answerable, "
                        f"{agg['n_fallback_expected']} expected-fallback)")
 
-            # ---- 4 dimensions: each = 1 hero metric + 1–3 supporting KPIs ----
+            # ---- 4 MECE dimensions: each hero = one RAG-Triad metric (Ops uses
+            #      Fallback Correctness, since the triad has no Ops member).
+            #      Every supporting metric belongs to exactly one section. ----
             rt = agg["rag_triad"]
 
+            # Overall headline = mean of the three triad heroes (a roll-up, not a 5th metric).
+            st.markdown(
+                f"##### 🎯 RAG Triad (overall): "
+                f"<span style='color:{score_color(agg['rag_triad_score'])};font-weight:800'>"
+                f"{agg['rag_triad_score']:.2f}</span> "
+                f"<span style='color:#7a8493;font-size:.85rem'>— mean of the three hero "
+                f"metrics below (Context Relevance · Groundedness · Answer Relevance)</span>",
+                unsafe_allow_html=True)
+            st.write("")
+
+            # ① RETRIEVE — all four standard retrieval metrics live here (MECE).
             eval_section(
-                "① Context Relevance — did retrieval surface the right context?",
-                "Hero: **Context Relevance** (RAG Triad). Supporting KPIs check whether the "
-                "gold chunks were actually retrieved and ranked highly.",
+                "① Context Relevance · Retrieval — did we fetch the right context?",
+                "Hero: **Context Relevance** (RAG Triad — semantic match of retrieved chunks "
+                "to the question). Side metrics are the four standard retrieval facets — "
+                "**success · coverage · purity · ranking** — and don't overlap.",
                 rt["context_relevance"], "Context Relevance",
-                [("Hit Rate @5", M["hit_rate"], "gold chunk in top-5"),
-                 ("MRR", M["mrr"], "rank of 1st gold chunk"),
-                 ("Context Recall", M["context_recall"], "gold chunks found")])
+                [("Hit Rate @5", M["hit_rate"], "≥1 gold chunk in top-5 (success)"),
+                 ("Context Recall", M["context_recall"], "fraction of gold found (coverage)"),
+                 ("Context Precision", M["context_precision"], "top-5 that are gold (purity)"),
+                 ("MRR", M["mrr"], "rank of 1st gold chunk (ranking)")])
 
             st.divider()
+            # ② GROUND — faithfulness of the answer to its sources.
             eval_section(
-                "② Groundedness — is every claim backed by the sources?",
-                "Hero: **Groundedness / Faithfulness** (RAG Triad). Supporting KPIs verify the "
-                "literal citations and how clean the retrieved context was.",
+                "② Groundedness · Faithfulness — is every claim backed by the sources?",
+                "Hero: **Groundedness** (RAG Triad — is the answer supported by the retrieved "
+                "context?). Side metric verifies the literal citations against the source text.",
                 rt["groundedness"], "Groundedness",
-                [("Citation Grounding", M["citation_grounding"], "quotes verified in source"),
-                 ("Context Precision", M["context_precision"], "top-5 that are gold (sparse ⇒ low ceiling)")])
+                [("Citation Grounding", M["citation_grounding"], "quoted lines verified in source")])
 
             st.divider()
+            # ③ ANSWER — does the answer serve the question.
             eval_section(
-                "③ Answer Relevance — does the answer address the question?",
-                "Hero: **Answer Relevance** (RAG Triad). Supporting KPI compares the answer "
-                "against the curated ideal answer.",
+                "③ Answer Relevance · Quality — does the answer address the question?",
+                "Hero: **Answer Relevance** (RAG Triad — does the answer actually respond to the "
+                "question?). Side metric compares it against the curated ideal answer.",
                 rt["answer_relevance"], "Answer Relevance",
-                [("Answer Correctness", M["answer_correctness"], "vs ideal answer")])
+                [("Answer Correctness", M["answer_correctness"], "vs ideal answer (accuracy)")])
 
             st.divider()
+            # ④ OPS — reliability & cost (no triad member ⇒ Fallback Correctness is the hero).
             eval_section(
-                "④ Ops — reliability & cost",
-                "Hero: **Fallback Correctness** — abstains when it should rather than "
-                "hallucinate. Supporting KPIs cover speed and overall triad health.",
+                "④ Ops · Reliability — does it abstain safely and respond fast?",
+                "Hero: **Fallback Correctness** — abstains when the answer isn't in the corpus "
+                "instead of hallucinating. Side metric is end-to-end speed.",
                 M["fallback_correct"], "Fallback Correctness",
-                [("Latency", f"{M['latency_ms_total']:.0f} ms", "per question"),
-                 ("RAG Triad (mean)", agg["rag_triad_score"], "overall — mean of the 3")])
+                [("Latency", f"{M['latency_ms_total']:.0f} ms", "per question (end-to-end)")])
 
             st.divider()
 
