@@ -86,6 +86,28 @@ def metric_card(label: str, value, sub: str = "", color: str | None = None):
                 unsafe_allow_html=True)
 
 
+def eval_section(title: str, subtitle: str, hero_value: float, hero_label: str,
+                 cards: list[tuple]):
+    """One evaluation dimension: a big 'hero' gauge + 1–3 supporting metric cards.
+
+    `cards` is a list of (label, value, sub) tuples. A numeric value (0–1) is
+    colour-coded by score; a pre-formatted string (e.g. latency) renders neutral.
+    """
+    st.markdown(f"##### {title}")
+    if subtitle:
+        st.caption(subtitle)
+    left, right = st.columns([1.1, 2.6])
+    with left:
+        st.plotly_chart(gauge(hero_value, hero_label), width="stretch")
+    with right:
+        st.write("")
+        cc = st.columns(len(cards))
+        for col, (lbl, val, sub) in zip(cc, cards):
+            with col:
+                color = score_color(val) if isinstance(val, (int, float)) and not isinstance(val, bool) else None
+                metric_card(lbl, val, sub, color)
+
+
 # ------------------------------------------------- line-level source viewer --
 def line_label(start, end) -> str:
     if not start:
@@ -306,16 +328,30 @@ with tab_ingest:
                 st.markdown(f"**A:** {c['answer']}")
 
 # ============================================================== ② ASK ======
+# Fallback list used only if the golden dataset can't be loaded.
 SAMPLES = [
     "What is MIS-C and how was it treated in children?",
-    "How did hospitals cope with oxygen shortages during surges?",
-    "What is 'happy hypoxia' and why was it dangerous?",
-    "How did doctors address vaccine hesitancy and misinformation?",
-    "What digital tools supported Germany's pandemic response?",
-    "What is the exact recommended dose of dexamethasone for COVID?",  # should fallback (detail absent)
-    "What was the COVID-19 mortality rate in Brazil?",                  # should fallback (out of scope)
-    "Give me a recipe for chicken biryani.",                            # should fallback (off-topic)
+    "What is the exact recommended dose of dexamethasone for COVID?",
+    "Give me a recipe for chicken biryani.",
 ]
+
+
+@st.cache_data(show_spinner=False)
+def sample_questions() -> list[tuple[str, str]]:
+    """All curated questions from the golden benchmark — (question, tag).
+    Answerable ones show their type; fallback demos are clearly marked so the
+    Ask tab and the Evaluate tab stay in sync."""
+    try:
+        items = load_golden()
+    except Exception:
+        return [(q, "") for q in SAMPLES]
+    out = []
+    for it in items:
+        tag = ("⚠️ fallback demo" if not it.get("answerable", True)
+               else it.get("type", "").replace("_", " "))
+        out.append((it["question"], tag))
+    return out
+
 
 with tab_ask:
     st.markdown("#### Access Point ② — Response Engine (single-turn QA)")
@@ -325,8 +361,17 @@ with tab_ask:
     if res is None:
         st.warning("Build the knowledge base in the ① Ingest tab first.")
     else:
-        sample = st.selectbox("Try a sample question (or type your own below)",
-                              ["—"] + SAMPLES)
+        samples = sample_questions()
+        tag_of = dict(samples)
+
+        def _fmt_sample(q: str) -> str:
+            if q == "—":
+                return "— pick a curated question (or type your own below) —"
+            t = tag_of.get(q, "")
+            return f"{q}   ·  {t}" if t else q
+
+        sample = st.selectbox("Try a sample question (all curated benchmark questions)",
+                              ["—"] + [q for q, _ in samples], format_func=_fmt_sample)
         default_q = "" if sample == "—" else sample
         query = st.text_input("Your question", value=default_q,
                               placeholder="Ask about the COVID-19 doctor interviews …")
@@ -439,30 +484,45 @@ with tab_eval:
                        f"{agg['n_items']} questions ({agg['n_answerable']} answerable, "
                        f"{agg['n_fallback_expected']} expected-fallback)")
 
-            # ---- RAG TRIAD gauges ----
-            st.markdown("##### 🎯 RAG Triad")
-            g = st.columns(3)
-            with g[0]: st.plotly_chart(gauge(agg["rag_triad"]["context_relevance"], "Context Relevance"), width="stretch")
-            with g[1]: st.plotly_chart(gauge(agg["rag_triad"]["groundedness"], "Groundedness / Faithfulness"), width="stretch")
-            with g[2]: st.plotly_chart(gauge(agg["rag_triad"]["answer_relevance"], "Answer Relevance"), width="stretch")
+            # ---- 4 dimensions: each = 1 hero metric + 1–3 supporting KPIs ----
+            rt = agg["rag_triad"]
 
-            # ---- KPI cards by stage ----
-            st.markdown("##### 📊 KPIs by stage")
-            st.markdown("**① Retrieval quality**")
-            r = st.columns(5)
-            with r[0]: metric_card("Hit Rate @5", M["hit_rate"], color=score_color(M["hit_rate"]))
-            with r[1]: metric_card("MRR", M["mrr"], "rank of 1st gold", score_color(M["mrr"]))
-            with r[2]: metric_card("Context Recall", M["context_recall"], "gold chunks found", score_color(M["context_recall"]))
-            with r[3]: metric_card("Context Precision", M["context_precision"], "of top-5 (sparse gold ⇒ low ceiling)")
-            with r[4]: metric_card("Ctx Relevance", M["context_relevance"], "semantic", score_color(M["context_relevance"]))
+            eval_section(
+                "① Context Relevance — did retrieval surface the right context?",
+                "Hero: **Context Relevance** (RAG Triad). Supporting KPIs check whether the "
+                "gold chunks were actually retrieved and ranked highly.",
+                rt["context_relevance"], "Context Relevance",
+                [("Hit Rate @5", M["hit_rate"], "gold chunk in top-5"),
+                 ("MRR", M["mrr"], "rank of 1st gold chunk"),
+                 ("Context Recall", M["context_recall"], "gold chunks found")])
 
-            st.markdown("**② Answer quality &nbsp;&nbsp; ③ Grounding &nbsp;&nbsp; Ops**", unsafe_allow_html=True)
-            r2 = st.columns(5)
-            with r2[0]: metric_card("Answer Relevance", M["answer_relevance"], color=score_color(M["answer_relevance"]))
-            with r2[1]: metric_card("Answer Correctness", M["answer_correctness"], "vs ideal", score_color(M["answer_correctness"]))
-            with r2[2]: metric_card("Citation Grounding", M["citation_grounding"], "quotes verified in source", score_color(M["citation_grounding"]))
-            with r2[3]: metric_card("Fallback Correct", M["fallback_correct"], "abstains when it should", score_color(M["fallback_correct"]))
-            with r2[4]: metric_card("Latency", f"{M['latency_ms_total']:.0f} ms", "per question")
+            st.divider()
+            eval_section(
+                "② Groundedness — is every claim backed by the sources?",
+                "Hero: **Groundedness / Faithfulness** (RAG Triad). Supporting KPIs verify the "
+                "literal citations and how clean the retrieved context was.",
+                rt["groundedness"], "Groundedness",
+                [("Citation Grounding", M["citation_grounding"], "quotes verified in source"),
+                 ("Context Precision", M["context_precision"], "top-5 that are gold (sparse ⇒ low ceiling)")])
+
+            st.divider()
+            eval_section(
+                "③ Answer Relevance — does the answer address the question?",
+                "Hero: **Answer Relevance** (RAG Triad). Supporting KPI compares the answer "
+                "against the curated ideal answer.",
+                rt["answer_relevance"], "Answer Relevance",
+                [("Answer Correctness", M["answer_correctness"], "vs ideal answer")])
+
+            st.divider()
+            eval_section(
+                "④ Ops — reliability & cost",
+                "Hero: **Fallback Correctness** — abstains when it should rather than "
+                "hallucinate. Supporting KPIs cover speed and overall triad health.",
+                M["fallback_correct"], "Fallback Correctness",
+                [("Latency", f"{M['latency_ms_total']:.0f} ms", "per question"),
+                 ("RAG Triad (mean)", agg["rag_triad_score"], "overall — mean of the 3")])
+
+            st.divider()
 
             # ---- per-item table ----
             st.markdown("##### 🧾 Per-question results")
