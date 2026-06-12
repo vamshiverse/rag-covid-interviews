@@ -29,10 +29,12 @@ flowchart TD
   end
   G -.loads.-> R
 
-  %% ---------------- Fallback + Response ----------------
-  X --> GATE{"Fallback gate (hybrid):<br/>dense best ≥ θ <b>or</b> BM25 best ≥ θ?<br/>abstain only if BOTH fail"}
-  GATE -->|no| FB["⚠️ Fallback answer + reason<br/>(anti-hallucination)"]
-  GATE -->|yes| GEN
+  %% ---------------- Fallback gate (hybrid: two threshold checks) ----------------
+  X --> DGATE{"Dense gate:<br/>best cosine ≥ θ_dense?<br/>(MiniLM, θ = 0.40)"}
+  DGATE -->|"yes, at/above θ"| GEN
+  DGATE -->|"no, below θ"| SGATE{"Sparse gate:<br/>best BM25 ≥ θ_sparse?<br/>(θ = 10)"}
+  SGATE -->|"yes, at/above θ"| GEN
+  SGATE -->|"no, below θ — BOTH failed"| FB["⚠️ Fallback answer + reason<br/>both searches below threshold<br/>(anti-hallucination)"]
   subgraph RESPOND["④ Response Engine"]
     GEN["Generate answer<br/>extractive (default) · or LLM"] --> CITE["Attach line-level citations<br/>quoted line + literal source line no.<br/>+ view-in-transcript highlight"]
   end
@@ -54,7 +56,7 @@ flowchart TD
   classDef store fill:#eef4fb,stroke:#1d6fb8,color:#0d3b66;
   classDef gate fill:#fff7ed,stroke:#ea8c00,color:#7a3e00;
   class G,GD store;
-  class GATE gate;
+  class DGATE,SGATE gate;
 ```
 
 ## Access points (where you trigger each stage)
