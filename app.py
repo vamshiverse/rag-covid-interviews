@@ -86,14 +86,143 @@ def metric_card(label: str, value, sub: str = "", color: str | None = None):
                 unsafe_allow_html=True)
 
 
-def eval_section(title: str, subtitle: str, hero_value: float, hero_label: str,
-                 cards: list[tuple], slots: int = 4):
-    """One evaluation dimension: a big 'hero' gauge (a RAG-Triad metric) + its
-    supporting 'side' metrics.
+# ------------------------------------------------- metric definitions ------
+# Each entry: human name + plain-English definition + the EXACT formula we use
+# (math-judge implementation in rag_app/evaluation.py) + value range + how it's
+# computed. Surfaced via click-to-open popovers on every metric name.
+METRIC_INFO = {
+    "rag_triad": {
+        "name": "RAG Triad (overall)",
+        "definition": "Headline score = the mean of the three RAG-Triad hero metrics "
+                      "(Context Relevance · Groundedness · Answer Relevance). The triad "
+                      "is the evaluation framework from the *Building & Evaluating "
+                      "Advanced RAG* course (TruLens).",
+        "formula": r"\text{RAG Triad}=\frac{\text{Context Relevance}+\text{Groundedness}+\text{Answer Relevance}}{3}",
+        "range": "0 – 1 (NaNs ignored in the mean).",
+    },
+    "context_relevance": {
+        "name": "Context Relevance",
+        "definition": "Average semantic similarity between the question and each of the "
+                      "*k* retrieved chunks — are the chunks we pulled actually about what "
+                      "was asked? A RAG-Triad metric.",
+        "formula": r"\text{Context Relevance}=\frac{1}{k}\sum_{i=1}^{k}\max\!\big(0,\ \cos(\vec q,\ \vec c_i)\big)",
+        "range": "0 – 1 (higher = more on-topic context).",
+        "source": "Math judge: mean dense-cosine of retrieved chunks vs. query (MiniLM "
+                  "embeddings). LLM mode: an LLM rates relevance 0–10.",
+    },
+    "groundedness": {
+        "name": "Groundedness / Faithfulness",
+        "definition": "For every sentence *a* in the answer, how close is it to the nearest "
+                      "sentence *c* in the retrieved context *C*? Measures whether claims are "
+                      "supported by the sources vs. made up. A RAG-Triad metric.",
+        "formula": r"\text{Groundedness}=\frac{1}{|A|}\sum_{a\in A}\ \max_{c\in C}\ \cos(\vec a,\ \vec c)",
+        "range": "0 – 1 (higher = better supported). NaN on fallback (nothing to ground).",
+        "source": "Math judge: max cosine of each answer sentence to any context sentence, "
+                  "averaged. LLM mode: an LLM checks every claim is supported.",
+    },
+    "answer_relevance": {
+        "name": "Answer Relevance",
+        "definition": "Semantic similarity between the question *q* and the answer *a* — does "
+                      "the answer actually address what was asked? A RAG-Triad metric.",
+        "formula": r"\text{Answer Relevance}=\max\!\big(0,\ \cos(\vec q,\ \vec a)\big)",
+        "range": "0 – 1. NaN on fallback.",
+        "source": "Math judge: cosine(question, answer). LLM mode: an LLM rates 0–10.",
+    },
+    "answer_correctness": {
+        "name": "Answer Correctness",
+        "definition": "Semantic similarity between the system answer and the **curated ideal "
+                      "answer** from the golden dataset — is it actually correct, not just "
+                      "on-topic?",
+        "formula": r"\text{Answer Correctness}=\max\!\big(0,\ \cos(\vec a_{\text{ideal}},\ \vec a)\big)",
+        "range": "0 – 1. NaN on fallback.",
+        "source": "Math judge: cosine(ideal answer, system answer). LLM mode: LLM rates "
+                  "meaning-match 0–10.",
+    },
+    "context_recall": {
+        "name": "Context Recall @k",
+        "definition": "Of the gold (expected) chunks for a question, what fraction appeared "
+                      "in the top-*k* retrieved? Coverage of the right context.",
+        "formula": r"\text{Context Recall@}k=\frac{|\,\text{retrieved}_{1:k}\,\cap\,\text{gold}\,|}{|\,\text{gold}\,|}",
+        "range": "0 – 1 (1 = every gold chunk retrieved).",
+        "source": "Reference-based (no model). gold = `expected_source_ids` in the golden dataset.",
+    },
+    "context_precision": {
+        "name": "Context Precision @k",
+        "definition": "Of the top-*k* chunks we retrieved, what fraction are gold? "
+                      "Signal-vs-noise / purity of the context window.",
+        "formula": r"\text{Context Precision@}k=\frac{|\,\text{retrieved}_{1:k}\,\cap\,\text{gold}\,|}{k}",
+        "range": "0 – 1. **Capped low here**: each question lists only 1–3 gold chunks, so "
+                 "precision@5 maxes near 0.2–0.4 even with perfect retrieval.",
+        "source": "Reference-based (no model).",
+    },
+    "citation_grounding": {
+        "name": "Citation Grounding",
+        "definition": "Fraction of cited quotes that genuinely occur in the source chunk they "
+                      "point to (≥ 80% of the quote's tokens found). Catches fabricated "
+                      "citations. *T(·)* = set of normalized tokens.",
+        "formula": r"\text{Citation Grounding}=\frac{1}{|\mathcal C|}\sum_{c\in\mathcal C}\mathbf{1}\!\left[\frac{|\,T(c.\text{quote})\cap T(\text{src})\,|}{|\,T(c.\text{quote})\,|}\ \ge\ 0.8\right]",
+        "range": "0 – 1 (1 = every citation verified). NaN on fallback / no citations.",
+        "source": "Reference-based token overlap (no model).",
+    },
+    "fallback_correct": {
+        "name": "Fallback Correctness",
+        "definition": "Fraction of questions where the engine abstained **exactly when it "
+                      "should** — refusing the out-of-scope / unanswerable ones and answering "
+                      "the answerable ones. The anti-hallucination guard.",
+        "formula": r"\text{Fallback Correctness}=\frac{1}{N}\sum_{i=1}^{N}\mathbf{1}\big[\,\text{abstained}_i=\text{should-abstain}_i\,\big]",
+        "range": "0 – 1 (1 = perfect abstention behaviour).",
+        "source": "should-abstain = (not answerable) from the golden dataset; abstained = "
+                  "engine returned a fallback.",
+    },
+    "latency_ms_total": {
+        "name": "Latency",
+        "definition": "Average wall-clock time to retrieve + compose an answer, per question.",
+        "formula": r"\text{Latency}=\frac{1}{N}\sum_{i=1}^{N} t_i\quad(\text{ms, end-to-end})",
+        "range": "milliseconds (lower = faster).",
+        "source": "Measured with a perf timer around the engine call.",
+    },
+}
 
-    `cards` is a list of (label, value, sub) tuples. A numeric value (0–1) is
-    colour-coded by score; a pre-formatted string (e.g. latency) renders neutral.
-    Side metrics are laid out in `slots` fixed-width columns so card sizing stays
+
+def metric_info_popover(label: str, key: str, prefix: str = ""):
+    """A click-to-open popover whose trigger IS the metric name; reveals the
+    definition, exact formula, range and how we compute it."""
+    info = METRIC_INFO.get(key, {})
+    with st.popover(f"{prefix}{label}"):
+        st.markdown(f"#### {info.get('name', label)}")
+        if info.get("definition"):
+            st.markdown(info["definition"])
+        if info.get("formula"):
+            st.latex(info["formula"])
+        tail = []
+        if info.get("range"):
+            tail.append(f"**Range:** {info['range']}")
+        if info.get("source"):
+            tail.append(f"**How we compute it:** {info['source']}")
+        if tail:
+            st.caption("  \n".join(tail))
+
+
+def side_metric(label: str, value, sub: str, key: str, color: str | None = None):
+    """A supporting metric card: clickable name (popover) + big value + caption."""
+    with st.container(border=True):
+        metric_info_popover(label, key)
+        val = value if isinstance(value, str) else (f"{value:.3f}" if value == value else "n/a")
+        col = color or "#0d3b66"
+        st.markdown(f"<div class='metric-big' style='color:{col}'>{val}</div>"
+                    f"<div style='color:#7a8493;font-size:.78rem'>{sub}</div>",
+                    unsafe_allow_html=True)
+
+
+def eval_section(title: str, subtitle: str, hero_value: float, hero_label: str,
+                 hero_key: str, cards: list[tuple], slots: int = 4):
+    """One evaluation dimension: a big 'hero' gauge (a RAG-Triad metric, with a
+    clickable name that pops up its definition + formula) + its supporting 'side'
+    metrics (each name also click-to-define).
+
+    `cards` is a list of (label, value, sub, metric_key) tuples. A numeric value
+    (0–1) is colour-coded by score; a pre-formatted string (e.g. latency) renders
+    neutral. Side metrics use `slots` fixed-width columns so card sizing stays
     consistent across sections regardless of how many a section has.
     """
     st.markdown(f"##### {title}")
@@ -103,15 +232,16 @@ def eval_section(title: str, subtitle: str, hero_value: float, hero_label: str,
     with left:
         st.markdown("<div style='text-align:center;color:#b8860b;font-weight:800;"
                     "font-size:.72rem;letter-spacing:.10em;text-transform:uppercase;'>"
-                    "★ Hero metric</div>", unsafe_allow_html=True)
+                    "★ Hero metric — click name for definition</div>", unsafe_allow_html=True)
+        metric_info_popover(hero_label, hero_key, prefix="📖 ")
         st.plotly_chart(gauge(hero_value, hero_label), width="stretch")
     with right:
         st.write("")
         cc = st.columns(max(slots, len(cards)))
-        for col, (lbl, val, sub) in zip(cc, cards):
+        for col, (lbl, val, sub, key) in zip(cc, cards):
             with col:
                 color = score_color(val) if isinstance(val, (int, float)) and not isinstance(val, bool) else None
-                metric_card(lbl, val, sub, color)
+                side_metric(lbl, val, sub, key, color)
 
 
 # ------------------------------------------------- line-level source viewer --
@@ -496,13 +626,17 @@ with tab_eval:
             rt = agg["rag_triad"]
 
             # Overall headline = mean of the three triad heroes (a roll-up, not a 5th metric).
-            st.markdown(
-                f"##### 🎯 RAG Triad (overall): "
-                f"<span style='color:{score_color(agg['rag_triad_score'])};font-weight:800'>"
-                f"{agg['rag_triad_score']:.2f}</span> "
-                f"<span style='color:#7a8493;font-size:.85rem'>— mean of the three hero "
-                f"metrics below (Context Relevance · Groundedness · Answer Relevance)</span>",
-                unsafe_allow_html=True)
+            oc1, oc2 = st.columns([2.3, 4])
+            with oc1:
+                st.markdown(
+                    f"##### 🎯 RAG Triad (overall): "
+                    f"<span style='color:{score_color(agg['rag_triad_score'])};font-weight:800'>"
+                    f"{agg['rag_triad_score']:.2f}</span>", unsafe_allow_html=True)
+                metric_info_popover("What is the RAG Triad?", "rag_triad", prefix="📖 ")
+            with oc2:
+                st.caption("Mean of the three hero metrics below (Context Relevance · "
+                           "Groundedness · Answer Relevance). Click any **📖 metric name** "
+                           "for its definition and exact formula.")
             st.write("")
 
             # ① RETRIEVE — hero + the two complementary coverage/purity metrics.
@@ -511,9 +645,9 @@ with tab_eval:
                 "Hero metric: **Context Relevance** (RAG Triad — semantic match of retrieved "
                 "chunks to the question). Side metrics: **Recall** (did we get the gold chunks?) "
                 "and **Precision** (how clean is the top-5?) — the two complementary facets.",
-                rt["context_relevance"], "Context Relevance",
-                [("Context Recall", M["context_recall"], "fraction of gold found (coverage)"),
-                 ("Context Precision", M["context_precision"], "top-5 that are gold (purity)")])
+                rt["context_relevance"], "Context Relevance", "context_relevance",
+                [("Context Recall", M["context_recall"], "fraction of gold found (coverage)", "context_recall"),
+                 ("Context Precision", M["context_precision"], "top-5 that are gold (purity)", "context_precision")])
 
             st.divider()
             # ② GROUND — faithfulness of the answer to its sources.
@@ -521,8 +655,8 @@ with tab_eval:
                 "② Groundedness · Faithfulness — is every claim backed by the sources?",
                 "Hero: **Groundedness** (RAG Triad — is the answer supported by the retrieved "
                 "context?). Side metric verifies the literal citations against the source text.",
-                rt["groundedness"], "Groundedness",
-                [("Citation Grounding", M["citation_grounding"], "quoted lines verified in source")])
+                rt["groundedness"], "Groundedness", "groundedness",
+                [("Citation Grounding", M["citation_grounding"], "quoted lines verified in source", "citation_grounding")])
 
             st.divider()
             # ③ ANSWER — does the answer serve the question.
@@ -530,8 +664,8 @@ with tab_eval:
                 "③ Answer Relevance · Quality — does the answer address the question?",
                 "Hero: **Answer Relevance** (RAG Triad — does the answer actually respond to the "
                 "question?). Side metric compares it against the curated ideal answer.",
-                rt["answer_relevance"], "Answer Relevance",
-                [("Answer Correctness", M["answer_correctness"], "vs ideal answer (accuracy)")])
+                rt["answer_relevance"], "Answer Relevance", "answer_relevance",
+                [("Answer Correctness", M["answer_correctness"], "vs ideal answer (accuracy)", "answer_correctness")])
 
             st.divider()
             # ④ OPS — reliability & cost (no triad member ⇒ Fallback Correctness is the hero).
@@ -539,8 +673,8 @@ with tab_eval:
                 "④ Ops · Reliability — does it abstain safely and respond fast?",
                 "Hero: **Fallback Correctness** — abstains when the answer isn't in the corpus "
                 "instead of hallucinating. Side metric is end-to-end speed.",
-                M["fallback_correct"], "Fallback Correctness",
-                [("Latency", f"{M['latency_ms_total']:.0f} ms", "per question (end-to-end)")])
+                M["fallback_correct"], "Fallback Correctness", "fallback_correct",
+                [("Latency", f"{M['latency_ms_total']:.0f} ms", "per question (end-to-end)", "latency_ms_total")])
 
             st.divider()
 
