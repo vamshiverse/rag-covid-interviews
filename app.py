@@ -101,6 +101,9 @@ def eval_section(title: str, subtitle: str, hero_value: float, hero_label: str,
         st.caption(subtitle)
     left, right = st.columns([1.1, 2.6])
     with left:
+        st.markdown("<div style='text-align:center;color:#b8860b;font-weight:800;"
+                    "font-size:.72rem;letter-spacing:.10em;text-transform:uppercase;'>"
+                    "★ Hero metric</div>", unsafe_allow_html=True)
         st.plotly_chart(gauge(hero_value, hero_label), width="stretch")
     with right:
         st.write("")
@@ -502,17 +505,15 @@ with tab_eval:
                 unsafe_allow_html=True)
             st.write("")
 
-            # ① RETRIEVE — all four standard retrieval metrics live here (MECE).
+            # ① RETRIEVE — hero + the two complementary coverage/purity metrics.
             eval_section(
                 "① Context Relevance · Retrieval — did we fetch the right context?",
-                "Hero: **Context Relevance** (RAG Triad — semantic match of retrieved chunks "
-                "to the question). Side metrics are the four standard retrieval facets — "
-                "**success · coverage · purity · ranking** — and don't overlap.",
+                "Hero metric: **Context Relevance** (RAG Triad — semantic match of retrieved "
+                "chunks to the question). Side metrics: **Recall** (did we get the gold chunks?) "
+                "and **Precision** (how clean is the top-5?) — the two complementary facets.",
                 rt["context_relevance"], "Context Relevance",
-                [("Hit Rate @5", M["hit_rate"], "≥1 gold chunk in top-5 (success)"),
-                 ("Context Recall", M["context_recall"], "fraction of gold found (coverage)"),
-                 ("Context Precision", M["context_precision"], "top-5 that are gold (purity)"),
-                 ("MRR", M["mrr"], "rank of 1st gold chunk (ranking)")])
+                [("Context Recall", M["context_recall"], "fraction of gold found (coverage)"),
+                 ("Context Precision", M["context_precision"], "top-5 that are gold (purity)")])
 
             st.divider()
             # ② GROUND — faithfulness of the answer to its sources.
