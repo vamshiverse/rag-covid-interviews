@@ -69,9 +69,9 @@
           "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q04"
         ],
         "timings_ms": {
-          "retrieval": 30.5,
-          "generation": 124.4,
-          "total": 154.9
+          "retrieval": 136.3,
+          "generation": 563.9,
+          "total": 700.2
         }
       },
       "metrics": {
@@ -88,9 +88,9 @@
         "citation_source_recall": 0.6666666666666666,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 154.9,
-        "latency_ms_retrieval": 30.5,
-        "latency_ms_generation": 124.4
+        "latency_ms_total": 700.2,
+        "latency_ms_retrieval": 136.3,
+        "latency_ms_generation": 563.9
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -164,9 +164,9 @@
           "Dr_Arjun_Mehta_India_Detailed_Interview::q12"
         ],
         "timings_ms": {
-          "retrieval": 12.6,
-          "generation": 126.2,
-          "total": 138.8
+          "retrieval": 74.6,
+          "generation": 630.1,
+          "total": 704.7
         }
       },
       "metrics": {
@@ -183,9 +183,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 138.8,
-        "latency_ms_retrieval": 12.6,
-        "latency_ms_generation": 126.2
+        "latency_ms_total": 704.7,
+        "latency_ms_retrieval": 74.6,
+        "latency_ms_generation": 630.1
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -259,9 +259,9 @@
           "Dr_David_Thompson_US_Detailed_Interview::q11"
         ],
         "timings_ms": {
-          "retrieval": 13.1,
-          "generation": 120.7,
-          "total": 133.8
+          "retrieval": 70.0,
+          "generation": 567.6,
+          "total": 637.6
         }
       },
       "metrics": {
@@ -278,9 +278,9 @@
         "citation_source_recall": 0.3333333333333333,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 133.8,
-        "latency_ms_retrieval": 13.1,
-        "latency_ms_generation": 120.7
+        "latency_ms_total": 637.6,
+        "latency_ms_retrieval": 70.0,
+        "latency_ms_generation": 567.6
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -354,9 +354,9 @@
           "Dr_Sarah_Johnson_US_Detailed_Interview::q02"
         ],
         "timings_ms": {
-          "retrieval": 19.0,
-          "generation": 162.9,
-          "total": 181.9
+          "retrieval": 76.3,
+          "generation": 693.5,
+          "total": 769.8
         }
       },
       "metrics": {
@@ -373,9 +373,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 181.9,
-        "latency_ms_retrieval": 19.0,
-        "latency_ms_generation": 162.9
+        "latency_ms_total": 769.8,
+        "latency_ms_retrieval": 76.3,
+        "latency_ms_generation": 693.5
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -449,9 +449,9 @@
           "Dr_Priya_Sharma_India_Detailed_Interview::q02"
         ],
         "timings_ms": {
-          "retrieval": 12.8,
-          "generation": 153.0,
-          "total": 165.8
+          "retrieval": 75.9,
+          "generation": 642.7,
+          "total": 718.6
         }
       },
       "metrics": {
@@ -468,9 +468,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 165.8,
-        "latency_ms_retrieval": 12.8,
-        "latency_ms_generation": 153.0
+        "latency_ms_total": 718.6,
+        "latency_ms_retrieval": 75.9,
+        "latency_ms_generation": 642.7
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -544,9 +544,9 @@
           "Dr_Kavita_Joshi_India_Detailed_Interview::q10"
         ],
         "timings_ms": {
-          "retrieval": 13.2,
-          "generation": 115.7,
-          "total": 128.9
+          "retrieval": 79.7,
+          "generation": 506.6,
+          "total": 586.3
         }
       },
       "metrics": {
@@ -563,9 +563,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 128.9,
-        "latency_ms_retrieval": 13.2,
-        "latency_ms_generation": 115.7
+        "latency_ms_total": 586.3,
+        "latency_ms_retrieval": 79.7,
+        "latency_ms_generation": 506.6
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -639,9 +639,9 @@
           "Dr_Anjali_Singh_India_Detailed_Interview::q07"
         ],
         "timings_ms": {
-          "retrieval": 12.3,
-          "generation": 151.5,
-          "total": 163.8
+          "retrieval": 71.8,
+          "generation": 677.5,
+          "total": 749.3
         }
       },
       "metrics": {
@@ -658,9 +658,9 @@
         "citation_source_recall": 0.3333333333333333,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 163.8,
-        "latency_ms_retrieval": 12.3,
-        "latency_ms_generation": 151.5
+        "latency_ms_total": 749.3,
+        "latency_ms_retrieval": 71.8,
+        "latency_ms_generation": 677.5
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -734,9 +734,9 @@
           "Dr_Jonas_Fischer_Germany_Detailed_Interview::q11"
         ],
         "timings_ms": {
-          "retrieval": 12.8,
-          "generation": 113.2,
-          "total": 126.0
+          "retrieval": 73.9,
+          "generation": 516.2,
+          "total": 590.1
         }
       },
       "metrics": {
@@ -753,9 +753,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 126.0,
-        "latency_ms_retrieval": 12.8,
-        "latency_ms_generation": 113.2
+        "latency_ms_total": 590.1,
+        "latency_ms_retrieval": 73.9,
+        "latency_ms_generation": 516.2
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -829,9 +829,9 @@
           "Dr_Anna_Weber_Germany_Detailed_Interview::q10"
         ],
         "timings_ms": {
-          "retrieval": 14.2,
-          "generation": 131.8,
-          "total": 146.0
+          "retrieval": 77.3,
+          "generation": 658.2,
+          "total": 735.5
         }
       },
       "metrics": {
@@ -848,9 +848,9 @@
         "citation_source_recall": 0.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 146.0,
-        "latency_ms_retrieval": 14.2,
-        "latency_ms_generation": 131.8
+        "latency_ms_total": 735.5,
+        "latency_ms_retrieval": 77.3,
+        "latency_ms_generation": 658.2
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -924,9 +924,9 @@
           "Dr_Emily_Roberts_US_Detailed_Interview::q01"
         ],
         "timings_ms": {
-          "retrieval": 12.2,
-          "generation": 111.9,
-          "total": 124.1
+          "retrieval": 74.1,
+          "generation": 571.9,
+          "total": 646.0
         }
       },
       "metrics": {
@@ -943,9 +943,9 @@
         "citation_source_recall": 0.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 124.1,
-        "latency_ms_retrieval": 12.2,
-        "latency_ms_generation": 111.9
+        "latency_ms_total": 646.0,
+        "latency_ms_retrieval": 74.1,
+        "latency_ms_generation": 571.9
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -1019,9 +1019,9 @@
           "Dr_Anna_Weber_Germany_Detailed_Interview::q02"
         ],
         "timings_ms": {
-          "retrieval": 13.3,
-          "generation": 115.3,
-          "total": 128.6
+          "retrieval": 72.9,
+          "generation": 583.1,
+          "total": 656.0
         }
       },
       "metrics": {
@@ -1038,9 +1038,9 @@
         "citation_source_recall": 0.5,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 128.6,
-        "latency_ms_retrieval": 13.3,
-        "latency_ms_generation": 115.3
+        "latency_ms_total": 656.0,
+        "latency_ms_retrieval": 72.9,
+        "latency_ms_generation": 583.1
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -1114,9 +1114,9 @@
           "Dr_Sarah_Johnson_US_Detailed_Interview::q08"
         ],
         "timings_ms": {
-          "retrieval": 17.9,
-          "generation": 127.2,
-          "total": 145.1
+          "retrieval": 90.0,
+          "generation": 646.9,
+          "total": 736.9
         }
       },
       "metrics": {
@@ -1133,9 +1133,9 @@
         "citation_source_recall": 0.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 145.1,
-        "latency_ms_retrieval": 17.9,
-        "latency_ms_generation": 127.2
+        "latency_ms_total": 736.9,
+        "latency_ms_retrieval": 90.0,
+        "latency_ms_generation": 646.9
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -1209,9 +1209,9 @@
           "Dr_Clara_Hoffmann_Germany_Detailed_Interview::q05"
         ],
         "timings_ms": {
-          "retrieval": 14.5,
-          "generation": 128.8,
-          "total": 143.3
+          "retrieval": 78.0,
+          "generation": 616.4,
+          "total": 694.4
         }
       },
       "metrics": {
@@ -1228,9 +1228,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 143.3,
-        "latency_ms_retrieval": 14.5,
-        "latency_ms_generation": 128.8
+        "latency_ms_total": 694.4,
+        "latency_ms_retrieval": 78.0,
+        "latency_ms_generation": 616.4
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -1303,9 +1303,9 @@
           "Dr_David_Thompson_US_Detailed_Interview::q16"
         ],
         "timings_ms": {
-          "retrieval": 15.4,
-          "generation": 102.4,
-          "total": 117.8
+          "retrieval": 74.4,
+          "generation": 466.0,
+          "total": 540.4
         }
       },
       "metrics": {
@@ -1322,9 +1322,9 @@
         "citation_source_recall": 0.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 117.8,
-        "latency_ms_retrieval": 15.4,
-        "latency_ms_generation": 102.4
+        "latency_ms_total": 540.4,
+        "latency_ms_retrieval": 74.4,
+        "latency_ms_generation": 466.0
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -1398,9 +1398,9 @@
           "Dr_Kavita_Joshi_India_Detailed_Interview::q11"
         ],
         "timings_ms": {
-          "retrieval": 17.5,
-          "generation": 126.4,
-          "total": 143.9
+          "retrieval": 82.6,
+          "generation": 602.1,
+          "total": 684.7
         }
       },
       "metrics": {
@@ -1417,9 +1417,9 @@
         "citation_source_recall": 1.0,
         "n_citations": 4,
         "fallback_correct": 1.0,
-        "latency_ms_total": 143.9,
-        "latency_ms_retrieval": 17.5,
-        "latency_ms_generation": 126.4
+        "latency_ms_total": 684.7,
+        "latency_ms_retrieval": 82.6,
+        "latency_ms_generation": 602.1
       },
       "is_fallback": false,
       "fallback_correct": true
@@ -1493,9 +1493,9 @@
           "Dr_Emily_Roberts_US_Detailed_Interview::q13"
         ],
         "timings_ms": {
-          "retrieval": 13.6,
-          "generation": 146.8,
-          "total": 160.4
+          "retrieval": 70.1,
+          "generation": 713.0,
+          "total": 783.1
         }
       },
       "metrics": {
@@ -1512,9 +1512,9 @@
         "citation_source_recall": NaN,
         "n_citations": 4,
         "fallback_correct": 0.0,
-        "latency_ms_total": 160.4,
-        "latency_ms_retrieval": 13.6,
-        "latency_ms_generation": 146.8
+        "latency_ms_total": 783.1,
+        "latency_ms_retrieval": 70.1,
+        "latency_ms_generation": 713.0
       },
       "is_fallback": false,
       "fallback_correct": false
@@ -1589,9 +1589,9 @@
           "Dr_Felix_Schneider_Germany_Detailed_Interview::q01"
         ],
         "timings_ms": {
-          "retrieval": 14.6,
-          "generation": 140.8,
-          "total": 155.4
+          "retrieval": 86.5,
+          "generation": 747.4,
+          "total": 833.9
         }
       },
       "metrics": {
@@ -1608,9 +1608,9 @@
         "citation_source_recall": NaN,
         "n_citations": 4,
         "fallback_correct": 0.0,
-        "latency_ms_total": 155.4,
-        "latency_ms_retrieval": 14.6,
-        "latency_ms_generation": 140.8
+        "latency_ms_total": 833.9,
+        "latency_ms_retrieval": 86.5,
+        "latency_ms_generation": 747.4
       },
       "is_fallback": false,
       "fallback_correct": false
@@ -1624,13 +1624,58 @@
       "expected_answer": "FALLBACK: This is unrelated to the COVID-19 medical interview corpus; no relevant passages exist, so the system should decline and explain why.",
       "result": {
         "query": "Can you give me a step-by-step recipe for chicken biryani?",
-        "answer": "I'm not able to answer this question from the available interview transcripts. Reason: The knowledge base does not contain interview passages that are semantically relevant to this question (best match similarity 0.09 < threshold 0.40). It may be outside the scope of these COVID-19 doctor interviews.",
-        "is_fallback": true,
-        "fallback_reason": "The knowledge base does not contain interview passages that are semantically relevant to this question (best match similarity 0.09 < threshold 0.40). It may be outside the scope of these COVID-19 doctor interviews.",
+        "answer": "Based on the interviews with Dr. James Miller, Dr. Kavita Joshi, Dr. Priya Sharma:\n\nThank you. It was medicine at its most raw and human level. We implemented a “team nursing” model pairing critical care nurses with redeployed staff to scale up safely. Priya Sharma, a critical care consultant at Safdarjung Hospital, one of Delhi’s largest public hospitals.",
+        "is_fallback": false,
+        "fallback_reason": "",
         "confidence": 0.088,
         "provider": "extractive",
-        "citations": [],
-        "used_chunk_ids": [],
+        "citations": [
+          {
+            "chunk_id": "Dr_Kavita_Joshi_India_Detailed_Interview::q01",
+            "doctor": "Dr. Kavita Joshi",
+            "country": "India",
+            "source_file": "Dr_Kavita_Joshi_India_Detailed_Interview.pdf",
+            "quote": "Thank you.",
+            "relevance": 0.131,
+            "start_line": 3,
+            "end_line": 3
+          },
+          {
+            "chunk_id": "Dr_Priya_Sharma_India_Detailed_Interview::q01",
+            "doctor": "Dr. Priya Sharma",
+            "country": "India",
+            "source_file": "Dr_Priya_Sharma_India_Detailed_Interview.docx",
+            "quote": "It was medicine at its most raw and human level.",
+            "relevance": 0.12,
+            "start_line": 5,
+            "end_line": 5
+          },
+          {
+            "chunk_id": "Dr_James_Miller_US_Detailed_Interview::q04",
+            "doctor": "Dr. James Miller",
+            "country": "US",
+            "source_file": "Dr_James_Miller_US_Detailed_Interview.docx",
+            "quote": "We implemented a “team nursing” model pairing critical care nurses with redeployed staff to scale up safely.",
+            "relevance": 0.116,
+            "start_line": 22,
+            "end_line": 22
+          },
+          {
+            "chunk_id": "Dr_Priya_Sharma_India_Detailed_Interview::q01",
+            "doctor": "Dr. Priya Sharma",
+            "country": "India",
+            "source_file": "Dr_Priya_Sharma_India_Detailed_Interview.docx",
+            "quote": "Priya Sharma, a critical care consultant at Safdarjung Hospital, one of Delhi’s largest public hospitals.",
+            "relevance": 0.109,
+            "start_line": 5,
+            "end_line": 5
+          }
+        ],
+        "used_chunk_ids": [
+          "Dr_Priya_Sharma_India_Detailed_Interview::q01",
+          "Dr_Kavita_Joshi_India_Detailed_Interview::q01",
+          "Dr_James_Miller_US_Detailed_Interview::q04"
+        ],
         "retrieved_chunk_ids": [
           "Dr_Sarah_Johnson_US_Detailed_Interview::q01",
           "Dr_Michael_Anderson_US_Detailed_Interview::q01",
@@ -1639,31 +1684,31 @@
           "Dr_James_Miller_US_Detailed_Interview::q04"
         ],
         "timings_ms": {
-          "retrieval": 19.2,
-          "generation": 0.0,
-          "total": 19.2
+          "retrieval": 79.4,
+          "generation": 693.6,
+          "total": 773.0
         }
       },
       "metrics": {
         "context_relevance": 0.046531278640031815,
-        "groundedness": NaN,
-        "answer_relevance": NaN,
-        "answer_correctness": NaN,
+        "groundedness": 0.7624809103352683,
+        "answer_relevance": 0.1577782928943634,
+        "answer_correctness": 0.10134310275316238,
         "hit_rate": NaN,
         "mrr": NaN,
         "context_precision": NaN,
         "context_recall": NaN,
-        "citation_grounding": NaN,
+        "citation_grounding": 1.0,
         "citation_source_precision": NaN,
         "citation_source_recall": NaN,
-        "n_citations": 0,
-        "fallback_correct": 1.0,
-        "latency_ms_total": 19.2,
-        "latency_ms_retrieval": 19.2,
-        "latency_ms_generation": 0.0
+        "n_citations": 4,
+        "fallback_correct": 0.0,
+        "latency_ms_total": 773.0,
+        "latency_ms_retrieval": 79.4,
+        "latency_ms_generation": 693.6
       },
-      "is_fallback": true,
-      "fallback_correct": true
+      "is_fallback": false,
+      "fallback_correct": false
     }
   ],
   "aggregate": {
@@ -1672,15 +1717,15 @@
     "n_fallback_expected": 3,
     "rag_triad": {
       "context_relevance": 0.493,
-      "groundedness": 0.7257,
-      "answer_relevance": 0.6707
+      "groundedness": 0.7278,
+      "answer_relevance": 0.6422
     },
-    "rag_triad_score": 0.6298,
+    "rag_triad_score": 0.621,
     "all_metrics": {
       "context_relevance": 0.493,
-      "groundedness": 0.7257,
-      "answer_relevance": 0.6707,
-      "answer_correctness": 0.6278,
+      "groundedness": 0.7278,
+      "answer_relevance": 0.6422,
+      "answer_correctness": 0.5986,
       "hit_rate": 0.9333,
       "mrr": 0.8389,
       "context_precision": 0.2667,
@@ -1688,10 +1733,10 @@
       "citation_grounding": 1.0,
       "citation_source_precision": 0.2889,
       "citation_source_recall": 0.5889,
-      "fallback_correct": 0.8889,
-      "latency_ms_total": 137.65,
-      "latency_ms_retrieval": 15.4833,
-      "latency_ms_generation": 122.1667
+      "fallback_correct": 0.8333,
+      "latency_ms_total": 696.6944,
+      "latency_ms_retrieval": 80.2111,
+      "latency_ms_generation": 616.4833
     },
     "by_type": {
       "comparative": {
@@ -1708,9 +1753,9 @@
       },
       "fallback": {
         "n": 3,
-        "answer_correctness": 0.5534,
+        "answer_correctness": 0.4027,
         "context_recall": NaN,
-        "fallback_correct": 0.3333
+        "fallback_correct": 0.0
       },
       "multi_hop": {
         "n": 3,
@@ -1730,6 +1775,6 @@
     "embedder": "sentence-transformers:all-MiniLM-L6-v2",
     "provider": "extractive",
     "judge_llm": false,
-    "generated_at": "2026-06-10T06:11:16"
+    "generated_at": "2026-06-12T14:00:56"
   }
 }

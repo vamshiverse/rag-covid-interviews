@@ -118,24 +118,28 @@ Two judge backends, auto-selected:
 - **`llm`** (if a provider key is set): LLM-as-judge feedback functions, mirroring
   the TruLens approach from the course.
 
-### Latest benchmark (default keyless config: MiniLM + extractive + math judge)
+### Latest benchmark (default keyless config: MiniLM + extractive + math judge + hybrid gate)
 
 | Metric | Score |
 |---|---|
-| **RAG Triad (mean)** | **0.63** |
+| **RAG Triad (mean)** | **0.62** |
 | &nbsp;&nbsp;Context Relevance | 0.49 |
 | &nbsp;&nbsp;Groundedness | 0.73 |
-| &nbsp;&nbsp;Answer Relevance | 0.67 |
+| &nbsp;&nbsp;Answer Relevance | 0.64 |
 | Context Recall | **0.89** |
 | Context Precision @5 | 0.27 \* |
 | Citation Grounding | **1.00** |
-| Fallback Correctness | 0.89 |
+| Fallback Correctness | 0.83 \*\* |
 | Latency / question | ~190 ms |
 
 \* **Context Precision is low by design, not by failure.** The golden set lists only
 1–3 *ideal* source chunks per question, so precision@5 is capped near 0.2–0.4 even
 when the other retrieved chunks are genuinely on-topic. **Context Recall (0.89) is
 the meaningful retrieval signal here.**
+
+\*\* **Fallback Correctness reflects the hybrid gate (now the default).** With the
+dense-only gate this is 0.89; the hybrid gate trades that down to 0.83 in exchange
+for never refusing a question that *either* search can support (see §5).
 
 ---
 
@@ -155,22 +159,25 @@ These two cases sit right next to the hardest answerable question (0.46), so any
 single threshold either misses them or wrongly rejects real questions. **This is the
 exact problem the RAG Triad’s LLM groundedness check is built for**: in `llm` mode the
 generator inspects whether the *specific* answer is in the context and returns
-`INSUFFICIENT_CONTEXT` if not. The keyless build catches the clearly-off-topic cases
-(fallback correctness 0.89); enabling an LLM closes the rest.
+`INSUFFICIENT_CONTEXT` if not. The keyless build catches the clearly-off-topic cases;
+enabling an LLM closes the rest.
 
-### Why the gate uses the dense signal only (a tested decision)
+### The fallback gate is hybrid (dense + sparse) — a deliberate trade-off
 
-A natural idea is to make the gate **hybrid** — abstain only if *both* the dense
-(semantic) and sparse (BM25) searches find nothing, proceeding if either does. This
-is implemented behind a flag (`RAG_HYBRID_FALLBACK=1`,
-`SPARSE_FALLBACK_THRESHOLD`), but it is **off by default because, measured on this
-corpus, it lowers Fallback Correctness (0.89 → 0.83)**. BM25 best-scores fire on
-common words, so the three off-topic golden questions score **BM25 11.8–13.6 — right
-inside the answerable range (8.8–23.8)**. No sparse threshold separates them: the
-off-topic *“chicken biryani recipe”* scores BM25 12.0 (higher than several real
-questions), so the OR-logic lets it through. Lexical relevance simply isn’t a
-trustworthy abstention signal here — which is *why* the gate is dense-only, and why
-the on-topic-but-absent cases need the LLM groundedness check above.
+The gate runs on **both** searches independently and abstains only if the dense
+(semantic) best-match **and** the sparse (BM25) best-match both fall below their
+thresholds — i.e. it proceeds if *either* search finds something relevant. This is
+the default (`RAG_HYBRID_FALLBACK=1`; set `=0` for the dense-only gate, and tune
+`SPARSE_FALLBACK_THRESHOLD`).
+
+It is a **measured trade-off**: BM25 best-scores fire on common words, so the three
+off-topic golden questions score **BM25 11.8–13.6 — right inside the answerable range
+(8.8–23.8)**. No sparse threshold cleanly separates them, so the OR-logic lets the
+off-topic *“chicken biryani recipe”* through (BM25 12.0, higher than several real
+questions), pulling **Fallback Correctness from 0.89 (dense-only) to 0.83**. The
+upside is that the engine never refuses a question that *either* modality can
+support. The clean fix for the on-topic-but-absent cases remains the LLM groundedness
+check above.
 
 ---
 

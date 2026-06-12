@@ -84,21 +84,20 @@ def fallback_threshold(embedder_kind: str) -> float:
     return FALLBACK_THRESHOLD_BY_BACKEND.get(embedder_kind, 0.20)
 
 
-# --- Optional HYBRID fallback gate (experimental, OFF by default) -----------
-# Default gate uses the dense (semantic) signal only. When the hybrid gate is
-# ON, the engine runs the gate on BOTH searches independently and abstains only
-# if the dense best-match AND the sparse (BM25) best-match both fall below their
+# --- HYBRID fallback gate (ON by default) -----------------------------------
+# The gate runs on BOTH searches independently and abstains only if the dense
+# (semantic) best-match AND the sparse (BM25) best-match both fall below their
 # thresholds; if EITHER modality finds something relevant, it proceeds with that
-# search. (Requested behaviour: "fall back only when both fail.")
+# search. ("Fall back only when both fail.") Set RAG_HYBRID_FALLBACK=0 to revert
+# to the dense-only gate.
 #
-# WARNING — calibrated on this corpus: BM25 best-scores fire on common words, so
-# the 3 off-topic golden questions score BM25 11.8-13.6, right inside the real-
-# question range (8.8-23.8). There is no sparse threshold that separates them,
-# so enabling this gate LOWERS Fallback Correctness (~0.89 -> ~0.83): the OR-logic
-# lets the off-topic "biryani" query through (its BM25 is 12.0, above several
-# answerable questions). Kept behind a flag for experimentation; the real fix for
-# on-topic-but-absent questions is the LLM groundedness check in 'llm' mode.
-HYBRID_FALLBACK_GATE = _env("RAG_HYBRID_FALLBACK", "0").lower() in ("1", "true", "yes", "on")
+# NOTE — calibrated on this corpus: BM25 best-scores fire on common words, so the
+# 3 off-topic golden questions score BM25 11.8-13.6, right inside the real-question
+# range (8.8-23.8). The hybrid gate therefore trades a bit of Fallback Correctness
+# (~0.89 dense-only -> ~0.83) for never refusing a question that either search can
+# support. This trade-off is accepted by design; the real fix for on-topic-but-
+# absent questions is the LLM groundedness check in 'llm' mode.
+HYBRID_FALLBACK_GATE = _env("RAG_HYBRID_FALLBACK", "1").lower() in ("1", "true", "yes", "on")
 # BM25 best-score threshold for the sparse side of the hybrid gate. Unlike the
 # dense cosine (0-1), BM25 is unbounded and corpus-specific — tune per corpus.
 SPARSE_FALLBACK_THRESHOLD = float(_env("RAG_SPARSE_FALLBACK_MIN", "10.0"))
