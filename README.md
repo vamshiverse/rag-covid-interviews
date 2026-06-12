@@ -158,6 +158,20 @@ generator inspects whether the *specific* answer is in the context and returns
 `INSUFFICIENT_CONTEXT` if not. The keyless build catches the clearly-off-topic cases
 (fallback correctness 0.89); enabling an LLM closes the rest.
 
+### Why the gate uses the dense signal only (a tested decision)
+
+A natural idea is to make the gate **hybrid** — abstain only if *both* the dense
+(semantic) and sparse (BM25) searches find nothing, proceeding if either does. This
+is implemented behind a flag (`RAG_HYBRID_FALLBACK=1`,
+`SPARSE_FALLBACK_THRESHOLD`), but it is **off by default because, measured on this
+corpus, it lowers Fallback Correctness (0.89 → 0.83)**. BM25 best-scores fire on
+common words, so the three off-topic golden questions score **BM25 11.8–13.6 — right
+inside the answerable range (8.8–23.8)**. No sparse threshold separates them: the
+off-topic *“chicken biryani recipe”* scores BM25 12.0 (higher than several real
+questions), so the OR-logic lets it through. Lexical relevance simply isn’t a
+trustworthy abstention signal here — which is *why* the gate is dense-only, and why
+the on-topic-but-absent cases need the LLM groundedness check above.
+
 ---
 
 ## 6. Upgrading to a hosted LLM (optional)

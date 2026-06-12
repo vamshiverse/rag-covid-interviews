@@ -84,6 +84,26 @@ def fallback_threshold(embedder_kind: str) -> float:
     return FALLBACK_THRESHOLD_BY_BACKEND.get(embedder_kind, 0.20)
 
 
+# --- Optional HYBRID fallback gate (experimental, OFF by default) -----------
+# Default gate uses the dense (semantic) signal only. When the hybrid gate is
+# ON, the engine runs the gate on BOTH searches independently and abstains only
+# if the dense best-match AND the sparse (BM25) best-match both fall below their
+# thresholds; if EITHER modality finds something relevant, it proceeds with that
+# search. (Requested behaviour: "fall back only when both fail.")
+#
+# WARNING — calibrated on this corpus: BM25 best-scores fire on common words, so
+# the 3 off-topic golden questions score BM25 11.8-13.6, right inside the real-
+# question range (8.8-23.8). There is no sparse threshold that separates them,
+# so enabling this gate LOWERS Fallback Correctness (~0.89 -> ~0.83): the OR-logic
+# lets the off-topic "biryani" query through (its BM25 is 12.0, above several
+# answerable questions). Kept behind a flag for experimentation; the real fix for
+# on-topic-but-absent questions is the LLM groundedness check in 'llm' mode.
+HYBRID_FALLBACK_GATE = _env("RAG_HYBRID_FALLBACK", "0").lower() in ("1", "true", "yes", "on")
+# BM25 best-score threshold for the sparse side of the hybrid gate. Unlike the
+# dense cosine (0-1), BM25 is unbounded and corpus-specific — tune per corpus.
+SPARSE_FALLBACK_THRESHOLD = float(_env("RAG_SPARSE_FALLBACK_MIN", "10.0"))
+
+
 def active_config() -> dict:
     """A small dict for display in the UI / logs."""
     return {
@@ -95,6 +115,8 @@ def active_config() -> dict:
         "rrf_k": RRF_K,
         "fallback_min_similarity": FALLBACK_MIN_SIMILARITY,
         "fallback_thresholds_by_backend": FALLBACK_THRESHOLD_BY_BACKEND,
+        "hybrid_fallback_gate": HYBRID_FALLBACK_GATE,
+        "sparse_fallback_threshold": SPARSE_FALLBACK_THRESHOLD,
         "openai_key_present": bool(OPENAI_API_KEY),
         "anthropic_key_present": bool(ANTHROPIC_API_KEY),
     }

@@ -63,6 +63,13 @@ class HybridRetriever:
         independent of which chunks survive rank fusion."""
         return float(np.max(self._dense_scores(query)))
 
+    def max_sparse_similarity(self, query: str) -> float:
+        """Best lexical (BM25) score of the query against ANY chunk. The sparse
+        counterpart to max_dense_similarity, used by the optional hybrid fallback
+        gate. NOTE: BM25 is unbounded (not a 0-1 cosine), so its threshold is
+        corpus-specific."""
+        return float(np.max(self._sparse_scores(query)))
+
     @staticmethod
     def _rank_map(scores: np.ndarray, k: int) -> dict[int, int]:
         """positions of top-k -> 1-based rank."""

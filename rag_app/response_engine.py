@@ -115,6 +115,9 @@ class ResponseEngine:
         # resolve the fallback threshold for the active embedding backend
         self.fallback_min_sim = (fallback_min_sim if fallback_min_sim is not None
                                  else config.fallback_threshold(retriever.index.embedder.kind))
+        # optional hybrid fallback gate (dense + sparse, OFF by default)
+        self.hybrid_gate = config.HYBRID_FALLBACK_GATE
+        self.sparse_min = config.SPARSE_FALLBACK_THRESHOLD
         self.top_k = top_k
         self._llm = None
         if self.provider in ("openai", "anthropic"):
@@ -131,20 +134,39 @@ class ResponseEngine:
 
         t0 = time.perf_counter()
         retrieved = self.retriever.search(query, top_k=top_k)
-        # Global best semantic similarity drives the fallback gate (a truer
-        # "is anything in the corpus relevant?" signal than the fused top-k).
+        # Global best signals drive the fallback gate (a truer "is anything in
+        # the corpus relevant?" check than the fused top-k).
         best_sim = self.retriever.max_dense_similarity(query) if retrieved else 0.0
+        best_sparse = (self.retriever.max_sparse_similarity(query)
+                       if (retrieved and self.hybrid_gate) else 0.0)
         timings["retrieval"] = round((time.perf_counter() - t0) * 1000, 1)
 
         confidence = float(np.clip(best_sim, 0.0, 1.0))
 
         # ---- Fallback gate (anti-hallucination) ----
-        if not retrieved or best_sim < self.fallback_min_sim:
-            reason = (
-                "The knowledge base does not contain interview passages that are "
-                f"semantically relevant to this question (best match similarity "
-                f"{best_sim:.2f} < threshold {self.fallback_min_sim:.2f}). "
-                "It may be outside the scope of these COVID-19 doctor interviews.")
+        # Default: dense-only. Hybrid (opt-in): abstain only if BOTH the dense
+        # and the sparse (BM25) best-match fall below their thresholds — if either
+        # search finds something relevant, proceed.
+        dense_fail = best_sim < self.fallback_min_sim
+        if self.hybrid_gate:
+            sparse_fail = best_sparse < self.sparse_min
+            do_fallback = (not retrieved) or (dense_fail and sparse_fail)
+        else:
+            do_fallback = (not retrieved) or dense_fail
+
+        if do_fallback:
+            if self.hybrid_gate:
+                reason = (
+                    "Neither search finds interview passages relevant to this "
+                    f"question — dense best {best_sim:.2f} < {self.fallback_min_sim:.2f} "
+                    f"AND BM25 best {best_sparse:.1f} < {self.sparse_min:.1f}. "
+                    "It may be outside the scope of these COVID-19 doctor interviews.")
+            else:
+                reason = (
+                    "The knowledge base does not contain interview passages that are "
+                    f"semantically relevant to this question (best match similarity "
+                    f"{best_sim:.2f} < threshold {self.fallback_min_sim:.2f}). "
+                    "It may be outside the scope of these COVID-19 doctor interviews.")
             timings["generation"] = 0.0
             timings["total"] = timings["retrieval"]
             return AnswerResult(query, _fallback_text(reason), [], [], retrieved,

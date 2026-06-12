@@ -30,7 +30,7 @@ flowchart TD
   G -.loads.-> R
 
   %% ---------------- Fallback + Response ----------------
-  X --> GATE{"Fallback gate:<br/>best similarity ≥ threshold?"}
+  X --> GATE{"Fallback gate:<br/>dense best ≥ threshold?<br/><i>(opt-in hybrid: OR BM25 best ≥ threshold)</i>"}
   GATE -->|no| FB["⚠️ Fallback answer + reason<br/>(anti-hallucination)"]
   GATE -->|yes| GEN
   subgraph RESPOND["④ Response Engine"]
