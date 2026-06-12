@@ -40,13 +40,14 @@ flowchart TD
   FB --> ANS
 
   %% ---------------- Evaluation ----------------
-  subgraph EVAL["⑤ Evaluation Pipeline (self-scoring)"]
+  subgraph EVAL["⑤ Evaluation Pipeline (self-scoring) — 4 MECE sections"]
     GD[(Golden dataset<br/>18 Q&A + expected chunks/citations)] --> EV["Run engine on each question"]
     EV --> JUDGE["Judge: math (default) · or LLM-as-judge"]
-    JUDGE --> M1["RAG Triad<br/>Context Relevance · Groundedness · Answer Relevance"]
-    JUDGE --> M2["Retrieval<br/>Hit Rate · MRR · Recall · Precision"]
-    JUDGE --> M3["Grounding<br/>Citation accuracy"]
-    JUDGE --> M4["Ops<br/>Fallback correctness · Latency"]
+    JUDGE --> M1["① Context Relevance <i>(hero)</i><br/>+ Context Recall · Context Precision"]
+    JUDGE --> M2["② Groundedness <i>(hero)</i><br/>+ Citation Grounding"]
+    JUDGE --> M3["③ Answer Relevance <i>(hero)</i><br/>+ Answer Correctness"]
+    JUDGE --> M4["④ Ops<br/>Fallback Correctness · Latency"]
+    M1 & M2 & M3 --> TRIAD["RAG Triad = mean of the 3 heroes"]
   end
   ANS -.evaluated by.-> EV
 

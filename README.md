@@ -104,7 +104,7 @@ these are *areas* — the actual metrics designed for each are:
 
 | Stage | Area | Metrics |
 |---|---|---|
-| Retrieve | **Quality of retrieval** | **Context Relevance** (RAG Triad), Hit Rate@k, MRR, Context Precision/Recall |
+| Retrieve | **Quality of retrieval** | **Context Relevance** (RAG Triad), Context Recall, Context Precision |
 | Answer | **Answer relevance & quality** | **Answer Relevance** (RAG Triad), Answer Correctness (vs ideal) |
 | Ground | **Citation accuracy** | **Groundedness / Faithfulness** (RAG Triad), Citation Grounding, Citation Source P/R |
 | Ops | **Reliability** | Fallback Correctness, Latency (per stage) |
@@ -114,7 +114,7 @@ framework from the *Building & Evaluating Advanced RAG* course.
 
 Two judge backends, auto-selected:
 - **`math`** (default, no key): embedding-cosine + lexical-overlap proxies for the
-  triad; reference-based metrics (Hit Rate, MRR, P/R, citation checks) need no model.
+  triad; reference-based metrics (Context Precision/Recall, citation checks) need no model.
 - **`llm`** (if a provider key is set): LLM-as-judge feedback functions, mirroring
   the TruLens approach from the course.
 
@@ -126,9 +126,7 @@ Two judge backends, auto-selected:
 | &nbsp;&nbsp;Context Relevance | 0.49 |
 | &nbsp;&nbsp;Groundedness | 0.73 |
 | &nbsp;&nbsp;Answer Relevance | 0.67 |
-| Hit Rate @5 | **0.93** |
-| MRR | 0.84 |
-| Context Recall | 0.89 |
+| Context Recall | **0.89** |
 | Context Precision @5 | 0.27 \* |
 | Citation Grounding | **1.00** |
 | Fallback Correctness | 0.89 |
@@ -136,8 +134,8 @@ Two judge backends, auto-selected:
 
 \* **Context Precision is low by design, not by failure.** The golden set lists only
 1–3 *ideal* source chunks per question, so precision@5 is capped near 0.2–0.4 even
-when the other retrieved chunks are genuinely on-topic. **Hit Rate (0.93) and Recall
-(0.89) are the meaningful retrieval signals here.**
+when the other retrieved chunks are genuinely on-topic. **Context Recall (0.89) is
+the meaningful retrieval signal here.**
 
 ---
 

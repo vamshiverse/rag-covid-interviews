@@ -377,7 +377,7 @@ with tab_overview:
         st.markdown("""
 | Stage | What we measure | Metrics |
 |---|---|---|
-| **Retrieve** | Quality of retrieval | Context Relevance · Hit Rate · MRR · Context Precision/Recall |
+| **Retrieve** | Quality of retrieval | Context Relevance · Context Recall · Context Precision |
 | **Answer** | Relevance & quality | Answer Relevance · Answer Correctness |
 | **Ground** | Citation accuracy | Groundedness/Faithfulness · Citation Grounding · Source P/R |
 | **Ops** | Reliability | Fallback Correctness · Latency |
@@ -392,7 +392,7 @@ The **RAG Triad** = *Context Relevance · Groundedness · Answer Relevance*
             st.markdown("##### Latest benchmark headline")
             k = st.columns(5)
             with k[0]: metric_card("RAG Triad", a["rag_triad_score"], "mean of 3", score_color(a["rag_triad_score"]))
-            with k[1]: metric_card("Hit Rate @5", m["hit_rate"], "gold chunk retrieved", score_color(m["hit_rate"]))
+            with k[1]: metric_card("Context Recall", m["context_recall"], "gold chunks found", score_color(m["context_recall"]))
             with k[2]: metric_card("Citation Grounding", m["citation_grounding"], "quotes verified", score_color(m["citation_grounding"]))
             with k[3]: metric_card("Fallback Correct", m["fallback_correct"], "abstains correctly", score_color(m["fallback_correct"]))
             with k[4]: metric_card("Latency", f"{m['latency_ms_total']:.0f} ms", "per question")
@@ -690,9 +690,8 @@ with tab_eval:
                     "question": it["question"][:60] + ("…" if len(it["question"]) > 60 else ""),
                     "fallback": "✓" if it["is_fallback"] else "",
                     "fb_ok": "✅" if it["fallback_correct"] else "❌",
-                    "hit": None if mm["hit_rate"] != mm["hit_rate"] else int(mm["hit_rate"]),
-                    "mrr": _num(mm["mrr"]),
                     "ctx_recall": _num(mm["context_recall"]),
+                    "ctx_precision": _num(mm["context_precision"]),
                     "answer_corr": _num(mm["answer_correctness"]),
                     "groundedness": _num(mm["groundedness"]),
                     "cite_grnd": _num(mm["citation_grounding"]),
